@@ -59,7 +59,7 @@ Panel* StudioContext::CreateButtonsForWidgets()
 	vlayout->AddWidget(group1);
 
 	Block * group2 = Manage(new Block(Horizontal));
-	
+
 	btn = Manage(new Button("TextEntry"));
 	group2->AddWidget(btn);
 
@@ -214,7 +214,7 @@ void StudioContext::OnOpenDialogForDecoration()
 	Dialog * dialog = Manage(new Dialog("Hello World"));
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	Decoration* dec = Manage(new Decoration("Test Decoration"));
+	Decoration* dec = Manage(new Decoration);
 	dec->MoveTo(50, 50);
 	dec->Resize(500, 24);
 	dialog->AddWidget(dec);
@@ -314,7 +314,7 @@ void StudioContext::OnOpenDialogForBlocks()
 	main_block->MoveTo(100, 100);
 
 	DBG_PRINT_MSG("main block size: (%d, %d)", main_block->size().width(), main_block->size().height());
-	
+
 	dialog->AddWidget(main_block);
 
 	AddFrame(dialog);
