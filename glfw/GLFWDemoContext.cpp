@@ -23,6 +23,7 @@
 #include <BlendInt/Gui/ToolBox.hpp>
 #include <BlendInt/Gui/Block.hpp>
 #include <BlendInt/Gui/CloseButton.hpp>
+#include <BlendInt/Gui/FolderList.hpp>
 
 using namespace BI;
 
@@ -46,7 +47,7 @@ void GLFWDemoContext::SynchronizeWindow()
 
 void GLFWDemoContext::Debug()
 {
-	TextureView* image = new TextureView;
+	FolderList* f = new FolderList;
 
 	Dialog * dialog = new Dialog("Tab");
 	DBG_SET_NAME(dialog, "Dialog");
@@ -54,8 +55,8 @@ void GLFWDemoContext::Debug()
 	dialog->Resize(600, 500);
 	dialog->MoveTo(100, 100);
 
-	dialog->AddWidget(image);
-	image->MoveTo(100, 100);
+	dialog->AddWidget(f);
+	f->MoveTo(100, 100);
 
 	AddFrame(dialog);
 }
