@@ -5,10 +5,11 @@ file(GLOB sourcefiles "*/*.cpp")
 list(APPEND HeadPoseEstimation_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
 list(APPEND HeadPoseEstimation_SRC ${sourcefiles})
+
 file(GLOB headerfiles "*.hpp")
-list(APPEND HeadPoseEstimation_SRC ${headfiles})
+list(APPEND HeadPoseEstimation_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND HeadPoseEstimation_SRC ${headfiles})
+list(APPEND HeadPoseEstimation_SRC ${headerfiles})
 
 add_executable(HPE ${HeadPoseEstimation_SRC})
 

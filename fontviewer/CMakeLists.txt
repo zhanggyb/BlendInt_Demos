@@ -5,10 +5,11 @@ file(GLOB sourcefiles "*/*.cpp")
 list(APPEND fontviewer_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
 list(APPEND fontviewer_SRC ${sourcefiles})
+
 file(GLOB headerfiles "*.hpp")
-list(APPEND fontviewer_SRC ${headfiles})
+list(APPEND fontviewer_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND fontviewer_SRC ${headfiles})
+list(APPEND fontviewer_SRC ${headerfiles})
 
 add_executable(fontviewer ${fontviewer_SRC})
 

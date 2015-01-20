@@ -5,10 +5,11 @@ file(GLOB sourcefiles "*/*.cpp")
 list(APPEND glfw_demo_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
 list(APPEND glfw_demo_SRC ${sourcefiles})
+
 file(GLOB headerfiles "*.hpp")
-list(APPEND glfw_demo_SRC ${headfiles})
+list(APPEND glfw_demo_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND glfw_demo_SRC ${headfiles})
+list(APPEND glfw_demo_SRC ${headerfiles})
 
 add_executable(glfw_demo ${glfw_demo_SRC})
 

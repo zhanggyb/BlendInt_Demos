@@ -6,10 +6,11 @@ file(GLOB sourcefiles "*/*.cpp")
 list(APPEND demo_common_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
 list(APPEND demo_common_SRC ${sourcefiles})
+
 file(GLOB headerfiles "*.hpp")
-list(APPEND demo_common_SRC ${headfiles})
+list(APPEND demo_common_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND demo_common_SRC ${headfiles})
+list(APPEND demo_common_SRC ${headerfiles})
 
 add_library (DemoCommon ${demo_common_SRC})
 target_link_libraries(DemoCommon BlendInt ${LIBS})

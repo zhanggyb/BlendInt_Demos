@@ -5,10 +5,11 @@ file(GLOB sourcefiles "*/*.cpp")
 list(APPEND studio_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
 list(APPEND studio_SRC ${sourcefiles})
+
 file(GLOB headerfiles "*.hpp")
-list(APPEND studio_SRC ${headfiles})
+list(APPEND studio_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND studio_SRC ${headfiles})
+list(APPEND studio_SRC ${headerfiles})
 
 add_executable(studio ${studio_SRC})
 
