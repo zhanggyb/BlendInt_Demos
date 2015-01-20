@@ -80,7 +80,7 @@ void GLFWDemoContext::Debug()
 //
 //		//DBG_PRINT_MSG("char count: %ld", cache.glyph_count());
 //
-//		FontExt font;
+//		Font font;
 //		font.SetWeight(FC_WEIGHT_BOLD);
 //	}
 //

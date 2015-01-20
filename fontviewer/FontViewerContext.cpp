@@ -76,7 +76,7 @@ void FontViewerContext::OnOpen(AbstractButton* sender)
 
 	Font font;
 
-	textureview->SetTexture(font.GetTexture(L'A'));
+	// textureview->SetTexture(font.GetTexture(L'A'));
 
 	VLayout* layout = new VLayout;
 	layout->AddWidget(textureview);
