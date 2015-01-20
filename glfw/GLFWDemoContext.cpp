@@ -5,6 +5,10 @@
 #include "GLFWDemoContext.hpp"
 
 #include <BlendInt/Core/Image.hpp>
+
+#include <BlendInt/Font/FcConfig.hpp>
+#include <BlendInt/Font/FcPattern.hpp>
+
 #include <BlendInt/Gui/Widget.hpp>
 #include <BlendInt/Gui/RadioButton.hpp>
 #include <BlendInt/Gui/CheckButton.hpp>
@@ -59,6 +63,29 @@ void GLFWDemoContext::Debug()
 	f->MoveTo(100, 100);
 
 	AddFrame(dialog);
+
+//	Fc::Pattern pattern1;
+//	pattern1.add(FC_FAMILY, "Droid Sans");
+//	Fc::Config::substitute(0, pattern1, FcMatchPattern);
+//	pattern1.default_substitute();
+//
+//	FcResult result;
+//	Fc::Pattern match1 = Fc::Config::match (0, pattern1, &result);
+//
+//	if(match1) {
+//
+//		FontCacheExt cache(match1);
+//
+//		cache.Query('A');
+//
+//		//DBG_PRINT_MSG("char count: %ld", cache.glyph_count());
+//
+//		FontExt font;
+//		font.SetWeight(FC_WEIGHT_BOLD);
+//	}
+//
+//	FontCacheExt::ReleaseAll();
+
 }
 
 void GLFWDemoContext::InitializeGLFWDemoContext ()
