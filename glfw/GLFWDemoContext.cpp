@@ -51,7 +51,8 @@ void GLFWDemoContext::SynchronizeWindow()
 
 void GLFWDemoContext::Debug()
 {
-	FolderList* f = new FolderList;
+	Button * label = new Button ("Hello World!");
+	// label->Resize(40, label->size().height());
 
 	Dialog * dialog = new Dialog("Tab");
 	DBG_SET_NAME(dialog, "Dialog");
@@ -59,10 +60,12 @@ void GLFWDemoContext::Debug()
 	dialog->Resize(600, 500);
 	dialog->MoveTo(100, 100);
 
-	dialog->AddWidget(f);
-	f->MoveTo(100, 100);
+	dialog->AddWidget(label);
+	label->MoveTo(100, 100);
 
 	AddFrame(dialog);
+
+	// DBG_PRINT_MSG("label width: %d", label->size().width());
 
 //	Fc::Pattern pattern1;
 //	pattern1.add(FC_FAMILY, "Droid Sans");
