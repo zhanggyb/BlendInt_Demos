@@ -29,6 +29,8 @@
 #include <BlendInt/Gui/CloseButton.hpp>
 #include <BlendInt/Gui/FolderList.hpp>
 
+#include <BlendInt/Gui/MenuButton.hpp>
+
 using namespace BI;
 
 GLFWDemoContext::GLFWDemoContext(GLFWwindow* win)
@@ -51,44 +53,28 @@ void GLFWDemoContext::SynchronizeWindow()
 
 void GLFWDemoContext::Debug()
 {
-	Button * label = new Button ("Hello World!");
-	// label->Resize(40, label->size().height());
+	Dialog* dlg = new Dialog("Hello");
 
-	Dialog * dialog = new Dialog("Tab");
-	DBG_SET_NAME(dialog, "Dialog");
+	Button* btn = new Button(L"Hello World!");
+	btn->MoveTo(100, 100);
 
-	dialog->Resize(600, 500);
-	dialog->MoveTo(100, 100);
+	Label* label1 = new Label(L"床前明月光，疑是地上霜。");
+	label1->MoveTo(20, 200);
 
-	dialog->AddWidget(label);
-	label->MoveTo(100, 100);
+	label1->SetFont(Font((const FcChar8*)("Droid Sans"), 24));
+	label1->Resize(label1->GetPreferredSize());
 
-	AddFrame(dialog);
+	Label* label2 = new Label(L"举头望明月，低头思故乡。");
+	label2->MoveTo(20, 150);
 
-	// DBG_PRINT_MSG("label width: %d", label->size().width());
+	label2->SetFont(Font((const FcChar8*)("Source Han Sans"), 24));
+	label2->Resize(label1->GetPreferredSize());
 
-//	Fc::Pattern pattern1;
-//	pattern1.add(FC_FAMILY, "Droid Sans");
-//	Fc::Config::substitute(0, pattern1, FcMatchPattern);
-//	pattern1.default_substitute();
-//
-//	FcResult result;
-//	Fc::Pattern match1 = Fc::Config::match (0, pattern1, &result);
-//
-//	if(match1) {
-//
-//		FontCacheExt cache(match1);
-//
-//		cache.Query('A');
-//
-//		//DBG_PRINT_MSG("char count: %ld", cache.glyph_count());
-//
-//		Font font;
-//		font.SetWeight(FC_WEIGHT_BOLD);
-//	}
-//
-//	FontCacheExt::ReleaseAll();
+	dlg->AddWidget(btn);
+	dlg->AddWidget(label1);
+	dlg->AddWidget(label2);
 
+	AddFrame(dlg);
 }
 
 void GLFWDemoContext::InitializeGLFWDemoContext ()
