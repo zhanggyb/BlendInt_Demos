@@ -2,16 +2,16 @@
 #
 
 file(GLOB sourcefiles "*/*.cpp")
-list(APPEND glfw_demo_SRC ${sourcefiles})
+list(APPEND gallery_SRC ${sourcefiles})
 file(GLOB sourcefiles "*.cpp")
-list(APPEND glfw_demo_SRC ${sourcefiles})
+list(APPEND gallery_SRC ${sourcefiles})
 
 file(GLOB headerfiles "*.hpp")
-list(APPEND glfw_demo_SRC ${headerfiles})
+list(APPEND gallery_SRC ${headerfiles})
 file(GLOB headerfiles "*/*.hpp")
-list(APPEND glfw_demo_SRC ${headerfiles})
+list(APPEND gallery_SRC ${headerfiles})
 
-add_executable(glfw_demo ${glfw_demo_SRC})
+add_executable(gallery ${gallery_SRC})
 
 if(NOT WITH_BUILTIN_GLFW3)
     if(OS_APPLE)
@@ -22,5 +22,5 @@ if(NOT WITH_BUILTIN_GLFW3)
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-target_link_libraries(glfw_demo DemoCommon BlendInt ${LIBS})
+target_link_libraries(gallery DemoCommon BlendInt ${LIBS})
 

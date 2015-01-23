@@ -2,7 +2,7 @@
  * BlendInt demo
  */
 
-#include "GLFWDemoContext.hpp"
+#include "GalleryContext.hpp"
 
 #include <BlendInt/Core/Types.hpp>
 
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 
 	Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
-	GLFWDemoContext* context = Manage (new GLFWDemoContext(win));
+	GalleryContext* context = Manage (new GalleryContext(win));
 	DBG_SET_NAME(context, "Context");
 	SetContext(context);
 	context->Resize(1280, 800);

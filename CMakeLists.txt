@@ -6,7 +6,7 @@ include_directories(${BlendInt_SOURCE_DIR}/demo)
 if(WITH_GLFW3_DEMO)
 
     add_subdirectory(Common)
-    add_subdirectory(glfw)
+    add_subdirectory(gallery)
     add_subdirectory(studio)
     add_subdirectory(fontviewer)
     #add_subdirectory(scene)

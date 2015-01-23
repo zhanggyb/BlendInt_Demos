@@ -53,13 +53,13 @@
 
 namespace BI=BlendInt;
 
-class GLFWDemoContext: public BI::Context
+class GalleryContext: public BI::Context
 {
 public:
 
-	GLFWDemoContext (GLFWwindow* win);
+	GalleryContext (GLFWwindow* win);
 
-	virtual ~GLFWDemoContext ();
+	virtual ~GalleryContext ();
 
 	virtual void SynchronizeWindow ();
 

@@ -2,7 +2,7 @@
  * GLFWContext.cpp
  */
 
-#include "GLFWDemoContext.hpp"
+#include "GalleryContext.hpp"
 
 #include <BlendInt/Core/Image.hpp>
 
@@ -33,7 +33,7 @@
 
 using namespace BI;
 
-GLFWDemoContext::GLFWDemoContext(GLFWwindow* win)
+GalleryContext::GalleryContext(GLFWwindow* win)
 : BI::Context(),
   window_(win)
 {
@@ -42,42 +42,28 @@ GLFWDemoContext::GLFWDemoContext(GLFWwindow* win)
 //	InitializeGLFWDemoContext ();
 }
 
-GLFWDemoContext::~GLFWDemoContext ()
+GalleryContext::~GalleryContext ()
 {
 }
 
-void GLFWDemoContext::SynchronizeWindow()
+void GalleryContext::SynchronizeWindow()
 {
 	glfwPostEmptyEvent();
 }
 
-void GLFWDemoContext::Debug()
+void GalleryContext::Debug()
 {
 	Dialog* dlg = new Dialog("Hello");
 
-	Button* btn = new Button(L"Hello World!");
-	btn->MoveTo(100, 100);
-
 	Label* label1 = new Label(L"床前明月光，疑是地上霜。");
-	label1->MoveTo(20, 200);
+	label1->MoveTo(100, 200);
 
-	label1->SetFont(Font((const FcChar8*)("Droid Sans"), 24));
-	label1->Resize(label1->GetPreferredSize());
-
-	Label* label2 = new Label(L"举头望明月，低头思故乡。");
-	label2->MoveTo(20, 150);
-
-	label2->SetFont(Font((const FcChar8*)("Source Han Sans"), 24));
-	label2->Resize(label1->GetPreferredSize());
-
-	dlg->AddWidget(btn);
 	dlg->AddWidget(label1);
-	dlg->AddWidget(label2);
 
 	AddFrame(dlg);
 }
 
-void GLFWDemoContext::InitializeGLFWDemoContext ()
+void GalleryContext::InitializeGLFWDemoContext ()
 {
 	ToolBox* vp1 = new ToolBox(Vertical);
 	//vp1->SetPosition(200, 200);
