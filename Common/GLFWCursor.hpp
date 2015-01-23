@@ -7,16 +7,16 @@
 
 #include <GLFW/glfw3.h>
 
-#include <BlendInt/Gui/CursorType.hpp>
+#include <BlendInt/Gui/AbstractCursorTheme.hpp>
 
 namespace BlendInt {
 
-class GLFWCursor: public CursorType
+class GLFWCursor: public AbstractCursorTheme
 {
 public:
 
 	GLFWCursor (GLFWwindow* window)
-	: CursorType(),
+	: AbstractCursorTheme(),
 	window_(window),
 	arrow_(nullptr),
 	cross_(nullptr),
