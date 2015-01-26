@@ -16,7 +16,7 @@
 #include <BlendInt/Gui/ComboBox.hpp>
 
 #include <BlendInt/Gui/ToolBox.hpp>
-#include <BlendInt/Gui/HLayout.hpp>
+#include <BlendInt/Gui/LinearLayout.hpp>
 #include <BlendInt/Gui/MenuButton.hpp>
 #include <BlendInt/Gui/ToggleButton.hpp>
 #include <BlendInt/Gui/RadioButton.hpp>

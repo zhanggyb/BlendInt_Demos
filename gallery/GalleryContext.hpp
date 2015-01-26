@@ -13,7 +13,7 @@
 #include <BlendInt/Gui/Clock.hpp>
 #include <BlendInt/Gui/ComboBox.hpp>
 #include <BlendInt/Gui/ToggleButton.hpp>
-#include <BlendInt/Gui/HLayout.hpp>
+#include <BlendInt/Gui/LinearLayout.hpp>
 #include <BlendInt/Gui/Label.hpp>
 #include <BlendInt/Gui/Slider.hpp>
 #include <BlendInt/Gui/Panel.hpp>
@@ -64,8 +64,6 @@ public:
 	virtual void SynchronizeWindow ();
 
 private:
-
-	void Debug ();
 
 	void InitializeGLFWDemoContext ();
 

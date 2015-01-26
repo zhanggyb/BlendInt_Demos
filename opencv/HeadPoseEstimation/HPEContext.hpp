@@ -21,7 +21,7 @@
 
 #include <BlendInt/Gui/Button.hpp>
 #include <BlendInt/Gui/Workspace.hpp>
-#include <BlendInt/Gui/HLayout.hpp>
+#include <BlendInt/Gui/LinearLayout.hpp>
 #include <BlendInt/Gui/ButtonGroup.hpp>
 
 namespace BI=BlendInt;

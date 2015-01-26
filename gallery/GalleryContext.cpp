@@ -31,15 +31,15 @@
 
 #include <BlendInt/Gui/MenuButton.hpp>
 
+#include <BlendInt/Gui/Node.hpp>
+
 using namespace BI;
 
 GalleryContext::GalleryContext(GLFWwindow* win)
 : BI::Context(),
   window_(win)
 {
-	Debug();
-
-//	InitializeGLFWDemoContext ();
+	InitializeGLFWDemoContext ();
 }
 
 GalleryContext::~GalleryContext ()
@@ -49,18 +49,6 @@ GalleryContext::~GalleryContext ()
 void GalleryContext::SynchronizeWindow()
 {
 	glfwPostEmptyEvent();
-}
-
-void GalleryContext::Debug()
-{
-	Dialog* dlg = new Dialog("Hello");
-
-	Label* label1 = new Label(L"床前明月光，疑是地上霜。");
-	label1->MoveTo(100, 200);
-
-	dlg->AddWidget(label1);
-
-	AddFrame(dlg);
 }
 
 void GalleryContext::InitializeGLFWDemoContext ()
@@ -118,31 +106,22 @@ void GalleryContext::InitializeGLFWDemoContext ()
 	Dialog* dlg = new Dialog(String("Hello"));
     dlg->Resize(800, 600);
     dlg->MoveTo(200, 150);
-	AddFrame(dlg);
 
-	Button* ok = new Button("OK");
-	Button* cancel = new Button("Cancel");
-	dlg->AddWidget(cancel);
-	dlg->AddWidget(ok);
+    LinearLayout* hl = new LinearLayout;
 
-	ok->MoveTo(dlg->size().width() - ok->size().width() - 10, 10);
-	cancel->MoveTo(ok->position().x() - 5 - cancel->size().width(), 10);
+    Button* b1 = new Button("B1");
+    Button* b2 = new Button("B1");
+    Button* b3 = new Button("B1");
+    Label* l = new Label("Label");
 
-	PopupFrame* cs = new PopupFrame;
-	cs->Resize(240, 320);
-	cs->MoveTo(500, 300);
-	AddFrame(cs);
+    hl->AddWidget(b1);
+    hl->AddWidget(b2);
+    hl->AddWidget(b3);
+    hl->AddWidget(l);
 
-	TextEntry* text = new TextEntry;
-	text->MoveTo(20, 20);
-	cs->AddWidget(text);
+    hl->Resize(300, 32);
 
-	ScrollBar* scroll = new ScrollBar(Horizontal);
-	scroll->MoveTo(20, 100);
-	cs->AddWidget(scroll);
+    dlg->AddWidget(hl);
 
-	Button* b = new Button("Test");
-	b->MoveTo(20, 150);
-	cs->AddWidget(b);
-
+    AddFrame(dlg);
 }
