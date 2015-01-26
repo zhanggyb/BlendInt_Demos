@@ -8,7 +8,6 @@
 
 #include <BlendInt/Gui/Frame.hpp>
 #include <BlendInt/Gui/ImageViewport.hpp>
-#include <BlendInt/Gui/VLayout.hpp>
 #include <BlendInt/Gui/Button.hpp>
 #include <BlendInt/Gui/Expander.hpp>
 #include <BlendInt/Gui/NumericalSlider.hpp>
@@ -185,7 +184,7 @@ Panel* HPEContext::CreateButtons()
 	hblock1->AddWidget(camera_no);
 	hblock1->AddWidget(btn1);
 
-	VLayout* layout = new VLayout;
+	LinearLayout* layout = new LinearLayout(Vertical);
 
 	Block* hblock2 = new Block(Horizontal);
 

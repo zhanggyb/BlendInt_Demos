@@ -46,7 +46,7 @@ Panel* StudioContext::CreateButtonsForWidgets()
 {
 	Panel* panel = Manage(new Panel);
 
-	VLayout* vlayout = Manage(new VLayout);
+	LinearLayout* vlayout = Manage(new LinearLayout(Vertical));
 
 	Block * group1 = Manage(new Block(Horizontal));
 
@@ -126,7 +126,7 @@ Panel* StudioContext::CreateButtonsForMenuTest()
 {
 	Panel* panel = Manage(new Panel);
 
-	VLayout* vlayout = Manage(new VLayout);
+	LinearLayout* vlayout = Manage(new LinearLayout(Vertical));
 
 	Block * group1 = Manage(new Block(Horizontal));
 

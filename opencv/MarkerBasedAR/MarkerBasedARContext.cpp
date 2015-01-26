@@ -8,7 +8,7 @@
 
 #include <BlendInt/Gui/Frame.hpp>
 #include <BlendInt/Gui/ImageViewport.hpp>
-#include <BlendInt/Gui/VLayout.hpp>
+#include <BlendInt/Gui/LinearLayout.hpp>
 #include <BlendInt/Gui/Button.hpp>
 #include <BlendInt/Gui/Expander.hpp>
 #include <BlendInt/Gui/NumericalSlider.hpp>

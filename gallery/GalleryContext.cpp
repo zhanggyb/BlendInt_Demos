@@ -107,7 +107,7 @@ void GalleryContext::InitializeGLFWDemoContext ()
     dlg->Resize(800, 600);
     dlg->MoveTo(200, 150);
 
-    LinearLayout* hl = new LinearLayout;
+    LinearLayout* hl = new LinearLayout(Vertical);
 
     Button* b1 = new Button("B1");
     Button* b2 = new Button("B1");
@@ -119,7 +119,7 @@ void GalleryContext::InitializeGLFWDemoContext ()
     hl->AddWidget(b3);
     hl->AddWidget(l);
 
-    hl->Resize(300, 32);
+    hl->Resize(100, 200);
 
     dlg->AddWidget(hl);
 
