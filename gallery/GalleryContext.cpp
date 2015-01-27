@@ -30,6 +30,7 @@
 #include <BlendInt/Gui/FolderList.hpp>
 
 #include <BlendInt/Gui/MenuButton.hpp>
+#include <BlendInt/Gui/LinearAdjustment.hpp>
 
 #include <BlendInt/Gui/Node.hpp>
 
@@ -53,75 +54,91 @@ void GalleryContext::SynchronizeWindow()
 
 void GalleryContext::InitializeGLFWDemoContext ()
 {
-	ToolBox* vp1 = new ToolBox(Vertical);
-	//vp1->SetPosition(200, 200);
-	//frame->Resize(400, 32);
+	ToolBox* t1 = CreateMenuBarArea();
+	AddFrame(t1);
+	ToolBox* t2 = CreateWidgetsArea();
+	AddFrame(t2);
+	Viewport* viewport = new Viewport;
+	AddFrame(viewport);
 
-	Block* block = new Block(Vertical);
+	OnResize(size());
 
-	Button* btn1 = new Button("Hello");
-	DBG_SET_NAME(btn1, "Button1");
-	Button* btn2 = new Button("Hello");
-	DBG_SET_NAME(btn2, "Button2");
-	Button* btn3 = new Button("Hello");
-	DBG_SET_NAME(btn3, "Button3");
+	//events()->connect(resized(), splitter1, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	events()->connect(resized(), this, &GalleryContext::OnResize);
 
-	block->AddWidget(btn1);
-	block->AddWidget(btn2);
-	block->AddWidget(btn3);
+}
 
-	ScrollBar* bar = new ScrollBar;
+BI::ToolBox* GalleryContext::CreateMenuBarArea ()
+{
+	ToolBox* toolbox = new ToolBox(Horizontal);
 
-	vp1->AddWidget(block);
-	vp1->AddWidget(bar);
+	LinearLayout* l1 = new LinearLayout;
 
-	Viewport* vp2 = new Viewport;
-	DBG_SET_NAME(vp2, "Viewport2");
+	MenuButton* b1 = new MenuButton("Menu1");
+	MenuButton* b2 = new MenuButton("Menu2");
+	MenuButton* b3 = new MenuButton("Menu3");
+	Separator* sp = new Separator(true);
 
-	Viewport* vp3 = new Viewport;
-	DBG_SET_NAME(vp3, "VFrame");
+	l1->AddWidget(b1);
+	l1->AddWidget(b2);
+	l1->AddWidget(b3);
+	l1->AddWidget(sp);
 
-	FrameSplitter* splitter1 = new FrameSplitter;
-	DBG_SET_NAME(splitter1, "Splitter1");
+	toolbox->AddWidget(l1);
 
-	FrameSplitter* splitter2 = new FrameSplitter(Vertical);
-	DBG_SET_NAME(splitter2, "Splitter2");
-	splitter2->Resize(600, 720);
+	return toolbox;
+}
 
-	splitter1->Resize(1200, 720);
-	//splitter1->SetPosition(20, 20);
+BI::ToolBox* GalleryContext::CreateWidgetsArea ()
+{
+	ToolBox* toolbox = new ToolBox(Vertical);
 
-	splitter2->AddFrame(vp2);
-	splitter2->AddFrame(vp3);
+	Label* label = new Label(L"Widgets Area", AlignCenter);
 
-	splitter1->AddFrame(splitter2);
-	splitter1->AddFrame(vp1, PreferredWidth);
+	LinearLayout* l1 = new LinearLayout;
 
-	AddFrame(splitter1);
+	Label* btn_lbl = new Label(L"Buttons: ", AlignRight);
+	Button* b1 = new Button("Button");
+	ToggleButton* b2 = new ToggleButton("Toggle Button");
+	RadioButton* b3 = new RadioButton("Radio Button");
+	CheckButton* b4 = new CheckButton;
+	ColorButton* b5 = new ColorButton;
+	FileButton* b6 = new FileButton;
 
-	splitter1->Resize(1200, 760);
+	l1->AddWidget(btn_lbl);
+	l1->AddWidget(b1);
+	l1->AddWidget(b2);
+	l1->AddWidget(b3);
+	l1->AddWidget(b4);
+	l1->AddWidget(b5);
+	l1->AddWidget(b6);
 
-	events()->connect(resized(), splitter1, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	LinearLayout* l2 = new LinearLayout;
 
-	Dialog* dlg = new Dialog(String("Hello"));
-    dlg->Resize(800, 600);
-    dlg->MoveTo(200, 150);
+	LinearLayout* l2_1 = new LinearLayout(Vertical, AlignCenter, 0);
+	Label* tv_lbl = new Label("TextureView: ", AlignLeft);
+	TextureView* tv = new TextureView;
+	l2_1->AddWidget(tv_lbl);
+	l2_1->AddWidget(tv);
 
-    LinearLayout* hl = new LinearLayout(Vertical);
+	LinearLayout* l2_2 = new LinearLayout(Vertical, AlignCenter, 0);
+	Label* nv_lbl = new Label("NodeView: ", AlignLeft);
+	NodeView* nv = new NodeView;
+	l2_2->AddWidget(nv_lbl);
+	l2_2->AddWidget(nv);
 
-    Button* b1 = new Button("B1");
-    Button* b2 = new Button("B1");
-    Button* b3 = new Button("B1");
-    Label* l = new Label("Label");
+	l2->AddWidget(l2_1);
+	l2->AddWidget(l2_2);
 
-    hl->AddWidget(b1);
-    hl->AddWidget(b2);
-    hl->AddWidget(b3);
-    hl->AddWidget(l);
+	toolbox->AddWidget(label);
+	toolbox->AddWidget(l1);
+	toolbox->AddWidget(l2);
 
-    hl->Resize(100, 200);
+	return toolbox;
+}
 
-    dlg->AddWidget(hl);
-
-    AddFrame(dlg);
+void GalleryContext::OnResize (const BI::Size& size)
+{
+	LinearAdjustment vertical_layout(this, Vertical, AlignCenter, 1);
+	vertical_layout.Adjust(0, 0, size.width(), size.height());
 }

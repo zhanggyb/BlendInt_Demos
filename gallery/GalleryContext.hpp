@@ -66,6 +66,12 @@ private:
 
 	void InitializeGLFWDemoContext ();
 
+	BI::ToolBox* CreateMenuBarArea ();
+
+	BI::ToolBox* CreateWidgetsArea ();
+
+	void OnResize (const BI::Size& size);
+
 	GLFWwindow* window_;
 
 };

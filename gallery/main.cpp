@@ -66,16 +66,15 @@ int main(int argc, char* argv[])
 
 	Init();
 
-	GLFWwindow* win = CreateWindow("GLFW3 Demo", 1280, 800);
+	GLFWwindow* win = CreateWindow("GLFW3 Demo", 960, 1000);
 
 	Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
 	GalleryContext* context = Manage (new GalleryContext(win));
 	DBG_SET_NAME(context, "Context");
 	SetContext(context);
-	context->Resize(1280, 800);
+	context->Resize(960, 1000);
 
-	DBG_PRINT_MSG("sizeof short: %ld", sizeof(unsigned short));
 	DBG_PRINT_MSG("view size: %ld", sizeof(AbstractView));
 
 	RunLoop(win);
