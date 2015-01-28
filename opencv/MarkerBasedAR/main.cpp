@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
 	GLFWwindow* win = CreateWindow("OpenCV Demo", 1280, 800);
 
-	Context::cursor->RegisterCursorType (new GLFWCursor(win));
+	//Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
 	MarkerBasedARContext* context = Manage(new MarkerBasedARContext(win));
 	DBG_SET_NAME(context, "Context");

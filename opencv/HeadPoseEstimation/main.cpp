@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	Init();
 
 	GLFWwindow* win = CreateWindow("OpenCV Demo", 1280, 800);
-	Context::cursor->RegisterCursorType (new GLFWCursor(win));
+	//Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
 	HPEContext* context = Manage(new HPEContext);
 	DBG_SET_NAME(context, "Context");

@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 
 	GLFWwindow* win = CreateWindow("GLFW3 Demo", 1280, 800);
 
-	Context::cursor->RegisterCursorType (new GLFWCursor(win));
+	//Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
 	FontViewerContext* context = new FontViewerContext(win);
 	DBG_SET_NAME(context, "Context");

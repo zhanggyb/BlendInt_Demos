@@ -23,7 +23,7 @@
 using namespace BlendInt;
 
 HPEContext::HPEContext()
-: BI::Context(),
+: BI::AbstractWindow(),
   viewport_3d_(0)
 {
 	FrameSplitter* vsplitter = new FrameSplitter(Vertical);
@@ -143,11 +143,11 @@ ToolBox* HPEContext::CreateRadios()
 
 	Block* hblock = new Block(Horizontal);
 
-	RadioButton* radio1 = new RadioButton(Context::icons->icon_16x16(Icons::SCENE));
-	RadioButton* radio2 = new RadioButton(Context::icons->icon_16x16(Icons::SCENE_DATA));
-	RadioButton* radio3 = new RadioButton(Context::icons->icon_16x16(Icons::SURFACE_NSURFACE));
-	RadioButton* radio4 = new RadioButton(Context::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
-	RadioButton* radio5 = new RadioButton(Context::icons->icon_16x16(Icons::SURFACE_NCURVE));
+	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
+	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
+	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
+	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
+	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
 
 	radio_group_->AddButton(radio1);
 	radio_group_->AddButton(radio2);

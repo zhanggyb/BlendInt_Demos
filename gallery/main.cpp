@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 
 	GLFWwindow* win = CreateWindow("GLFW3 Demo", 960, 1000);
 
-	Context::cursor->RegisterCursorType (new GLFWCursor(win));
+	//Context::cursor->RegisterCursorType (new GLFWCursor(win));
 
 	GalleryContext* context = Manage (new GalleryContext(win));
 	DBG_SET_NAME(context, "Context");
