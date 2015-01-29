@@ -36,39 +36,21 @@
 
 using namespace BI;
 
-GalleryContext::GalleryContext(GLFWwindow* win)
-: BI::Context(),
-  window_(win)
+void InitializeGLFWDemoContext ()
 {
-	InitializeGLFWDemoContext ();
-}
-
-GalleryContext::~GalleryContext ()
-{
-}
-
-void GalleryContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
-}
-
-void GalleryContext::InitializeGLFWDemoContext ()
-{
-	ToolBox* t1 = CreateMenuBarArea();
-	AddFrame(t1);
-	ToolBox* t2 = CreateWidgetsArea();
-	AddFrame(t2);
-	Viewport* viewport = new Viewport;
-	AddFrame(viewport);
-
-	OnResize(size());
+//	ToolBox* t1 = CreateMenuBarArea();
+//	AddFrame(t1);
+//	ToolBox* t2 = CreateWidgetsArea();
+//	AddFrame(t2);
+//	Viewport* viewport = new Viewport;
+//	AddFrame(viewport);
 
 	//events()->connect(resized(), splitter1, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
-	events()->connect(resized(), this, &GalleryContext::OnResize);
+	//events()->connect(resized(), this, &GalleryContext::OnResize);
 
 }
 
-BI::ToolBox* GalleryContext::CreateMenuBarArea ()
+BI::ToolBox* CreateMenuBarArea ()
 {
 	ToolBox* toolbox = new ToolBox(Horizontal);
 
@@ -89,7 +71,7 @@ BI::ToolBox* GalleryContext::CreateMenuBarArea ()
 	return toolbox;
 }
 
-BI::ToolBox* GalleryContext::CreateWidgetsArea ()
+BI::ToolBox* CreateWidgetsArea ()
 {
 	ToolBox* toolbox = new ToolBox(Vertical);
 
@@ -137,8 +119,8 @@ BI::ToolBox* GalleryContext::CreateWidgetsArea ()
 	return toolbox;
 }
 
-void GalleryContext::OnResize (const BI::Size& size)
-{
-	LinearAdjustment vertical_layout(this, Vertical, AlignCenter, 1);
-	vertical_layout.Adjust(0, 0, size.width(), size.height());
-}
+//void GalleryContext::OnResize (const BI::Size& size)
+//{
+//	LinearAdjustment vertical_layout(this, Vertical, AlignCenter, 1);
+//	vertical_layout.Adjust(0, 0, size.width(), size.height());
+//}

@@ -8,8 +8,8 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-#include "../Common/GLFWCursor.hpp"
-#include "../Common/GLFWWindow.hpp"
+#include <BlendInt/Gui/Window.hpp>
+#include <BlendInt/Gui/LinearAdjustment.hpp>
 
 void GenerateCrossIconVertices (float min = 0.12f, float max = 0.9f)
 {
@@ -64,21 +64,24 @@ int main(int argc, char* argv[])
 
 	BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
 
-	Init();
+	if(Window::Initialize()) {
 
-	GLFWwindow* win = CreateWindow("GLFW3 Demo", 960, 1000);
+		Window win(960, 1000, "UI Editor");
 
-	//Context::cursor->RegisterCursorType (new GLFWCursor(win));
+		ToolBox* t1 = CreateMenuBarArea();
+		win.AddFrame(t1);
+		ToolBox* t2 = CreateWidgetsArea();
+		win.AddFrame(t2);
+		Viewport* viewport = new Viewport;
+		win.AddFrame(viewport);
 
-	GalleryContext* context = Manage (new GalleryContext(win));
-	DBG_SET_NAME(context, "Context");
-	SetContext(context);
-	context->Resize(960, 1000);
+		LinearAdjustment vertical_layout(&win, Vertical, AlignCenter, 1);
+		vertical_layout.Adjust(0, 0, win.size().width(), win.size().height());
 
-	DBG_PRINT_MSG("view size: %ld", sizeof(AbstractView));
+		win.Exec();
 
-	RunLoop(win);
-	Terminate();
+		Window::Terminate();
+	}
 
 	return 0;
 }

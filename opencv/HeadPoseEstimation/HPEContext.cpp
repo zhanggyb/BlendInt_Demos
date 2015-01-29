@@ -23,7 +23,7 @@
 using namespace BlendInt;
 
 HPEContext::HPEContext()
-: BI::AbstractWindow(),
+: BI::Context(),
   viewport_3d_(0)
 {
 	FrameSplitter* vsplitter = new FrameSplitter(Vertical);
@@ -141,30 +141,30 @@ ToolBox* HPEContext::CreateRadios()
 
 	ComboBox* combo = new ComboBox;
 
-	Block* hblock = new Block(Horizontal);
+//	Block* hblock = new Block(Horizontal);
+//
+//	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
+//	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
+//	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
+//	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
+//	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
+//
+//	radio_group_->AddButton(radio1);
+//	radio_group_->AddButton(radio2);
+//	radio_group_->AddButton(radio3);
+//	radio_group_->AddButton(radio4);
+//	radio_group_->AddButton(radio5);
+//
+//	radio1->SetChecked(true);
 
-	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
-	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
-	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
-	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
-	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
-
-	radio_group_->AddButton(radio1);
-	radio_group_->AddButton(radio2);
-	radio_group_->AddButton(radio3);
-	radio_group_->AddButton(radio4);
-	radio_group_->AddButton(radio5);
-
-	radio1->SetChecked(true);
-
-	hblock->AddWidget(radio1);
-	hblock->AddWidget(radio2);
-	hblock->AddWidget(radio3);
-	hblock->AddWidget(radio4);
-	hblock->AddWidget(radio5);
+//	hblock->AddWidget(radio1);
+//	hblock->AddWidget(radio2);
+//	hblock->AddWidget(radio3);
+//	hblock->AddWidget(radio4);
+//	hblock->AddWidget(radio5);
 
 	radio_tool->AddWidget(combo);
-	radio_tool->AddWidget(hblock);
+//	radio_tool->AddWidget(hblock);
 
 	radio_tool->Resize(radio_tool->GetPreferredSize());
 

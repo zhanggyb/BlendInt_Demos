@@ -49,31 +49,14 @@
 #include <BlendInt/Gui/ListView.hpp>
 
 #include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Viewport.hpp>
 
 namespace BI=BlendInt;
 
-class GalleryContext: public BI::Context
-{
-public:
+extern void InitializeGLFWDemoContext ();
 
-	GalleryContext (GLFWwindow* win);
+extern BI::ToolBox* CreateMenuBarArea ();
 
-	virtual ~GalleryContext ();
-
-	virtual void SynchronizeWindow ();
-
-private:
-
-	void InitializeGLFWDemoContext ();
-
-	BI::ToolBox* CreateMenuBarArea ();
-
-	BI::ToolBox* CreateWidgetsArea ();
-
-	void OnResize (const BI::Size& size);
-
-	GLFWwindow* window_;
-
-};
+extern BI::ToolBox* CreateWidgetsArea ();
 
 #endif /* GLFWCONTEXT_HPP_ */
