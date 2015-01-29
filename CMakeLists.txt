@@ -1,11 +1,10 @@
 # CMake file for BIL project
 #
 
-include_directories(${BlendInt_SOURCE_DIR}/demo)
+#include_directories(${BlendInt_SOURCE_DIR}/demo)
 
 if(WITH_GLFW3_DEMO)
 
-    add_subdirectory(Common)
     add_subdirectory(gallery)
     add_subdirectory(studio)
     add_subdirectory(fontviewer)

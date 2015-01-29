@@ -22,5 +22,5 @@ if(NOT WITH_BUILTIN_GLFW3)
 endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-target_link_libraries(gallery DemoCommon BlendInt ${LIBS})
+target_link_libraries(gallery BlendInt ${LIBS})
 
