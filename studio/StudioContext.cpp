@@ -13,26 +13,20 @@
 
 using namespace BI;
 
-StudioContext::StudioContext(GLFWwindow* window)
-: BI::Context(),
+StudioContext::StudioContext(int width, int height, const char* name)
+: BI::Window(width, height, name),
   button_(0),
   pop_(0),
-  menubar_(nullptr),
-  window_(window)
+  menubar_(nullptr)
 {
 	InitializeStudioContext();
 
-	events()->connect(resized(), this, &StudioContext::OnResize);
+	// events()->connect(resized(), this, &StudioContext::OnResize);
 }
 
 StudioContext::~StudioContext ()
 {
 
-}
-
-void StudioContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
 }
 
 void StudioContext::InitializeStudioContext()

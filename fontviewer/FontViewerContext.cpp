@@ -13,24 +13,18 @@
 
 using namespace BI;
 
-FontViewerContext::FontViewerContext(GLFWwindow* window)
-: BI::Context(),
-  menubar_(nullptr),
-  window_(window)
+FontViewerContext::FontViewerContext(int width, int height, const char* name)
+: BI::Window(width, height, name),
+  menubar_(nullptr)
 {
 	InitializeFontViewerContext();
 
-	events()->connect(resized(), this, &FontViewerContext::OnResize);
+	//events()->connect(resized(), this, &FontViewerContext::OnResize);
 }
 
 FontViewerContext::~FontViewerContext ()
 {
 
-}
-
-void FontViewerContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
 }
 
 void FontViewerContext::InitializeFontViewerContext()

@@ -37,7 +37,6 @@
 #include <BlendInt/Gui/ColorButton.hpp>
 
 #include <BlendInt/Stock/Icons.hpp>
-#include <BlendInt/Gui/Context.hpp>
 #include <BlendInt/Gui/FileSelector.hpp>
 #include <BlendInt/Gui/Block.hpp>
 
@@ -48,7 +47,6 @@
 #include <BlendInt/Gui/Workspace.hpp>
 #include <BlendInt/Gui/ListView.hpp>
 
-#include <BlendInt/Gui/Context.hpp>
 #include <BlendInt/Gui/Viewport.hpp>
 
 namespace BI=BlendInt;

@@ -34,7 +34,6 @@
 #include <BlendInt/Gui/ColorButton.hpp>
 
 #include <BlendInt/Stock/Icons.hpp>
-#include <BlendInt/Gui/Context.hpp>
 #include <BlendInt/Gui/FileSelector.hpp>
 #include <BlendInt/Gui/Block.hpp>
 #include <BlendInt/Gui/Panel.hpp>
@@ -48,19 +47,17 @@
 #include <BlendInt/Gui/TextureView.hpp>
 #include <BlendInt/Gui/ToolBox.hpp>
 
-#include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Window.hpp>
 
 namespace BI=BlendInt;
 
-class FontViewerContext: public BI::Context
+class FontViewerContext: public BI::Window
 {
 public:
 
-	FontViewerContext (GLFWwindow* window);
+	FontViewerContext (int width, int height, const char* name);
 
 	virtual ~FontViewerContext ();
-
-	virtual void SynchronizeWindow ();
 
 private:
 
@@ -73,9 +70,6 @@ private:
 	void OnOpen (BI::AbstractButton* sender);
 
 	BI::ToolBox* menubar_;
-
-	GLFWwindow* window_;
-
 };
 
 #endif /* _FONTVIEWERCONTEXT_HPP_ */
