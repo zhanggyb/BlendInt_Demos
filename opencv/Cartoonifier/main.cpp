@@ -16,22 +16,9 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		Window win(1280, 800, "UI Editor");
-
-		FrameSplitter* splitter = new FrameSplitter;
-
-		Viewport* vp1 = new Viewport;
-		Viewport* vp2 = new Viewport;
-
-		splitter->AddFrame(vp1);
-		splitter->AddFrame(vp2);
-
-		splitter->Resize(win.size());
-
-		win.AddFrame(splitter);
+		CartoonifierContext win(1280, 800, "Cartoonifier");
 
 		win.Exec();
-
 		Window::Terminate();
 	}
 

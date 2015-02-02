@@ -10,7 +10,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Window.hpp>
 #include <BlendInt/Gui/ToolBox.hpp>
 
 #include <BlendInt/Gui/CVVideoViewport.hpp>
@@ -22,17 +22,13 @@
 
 namespace BI=BlendInt;
 
-class MarkerBasedARContext: public BI::Context
+class MarkerBasedARContext: public BI::Window
 {
 public:
 
-	explicit MarkerBasedARContext (GLFWwindow* window);
+	explicit MarkerBasedARContext (int width, int height, const char* name);
 
 	virtual ~MarkerBasedARContext ();
-
-	virtual void SynchronizeWindow ();
-
-	virtual void MakeGLContextCurrent ();
 
 protected:
 
@@ -41,6 +37,8 @@ private:
 	BI::ToolBox* CreateToolBoxOnce ();
 
 	BI::ToolBox* CreateToolBarOnce ();
+
+	void OnResize(Window* window, const BI::Size& size);
 
 	void OnToggleCamera (BI::AbstractButton* sender, bool toggled);
 
@@ -52,7 +50,8 @@ private:
 
 	MBARViewport* viewport_;
 
-	GLFWwindow* window_;
+	BI::FrameSplitter* main_frame_;
+
 
 };
 

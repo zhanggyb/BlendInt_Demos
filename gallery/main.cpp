@@ -70,8 +70,10 @@ int main(int argc, char* argv[])
 
 		ToolBox* t1 = CreateMenuBarArea();
 		win.AddFrame(t1);
-		ToolBox* t2 = CreateWidgetsArea();
+		ToolBox* t2 = CreateButtons();
 		win.AddFrame(t2);
+		ToolBox* t3 = CreateWidgetsArea();
+		win.AddFrame(t3);
 		Viewport* viewport = new Viewport;
 		win.AddFrame(viewport);
 

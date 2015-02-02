@@ -5,7 +5,7 @@
 #ifndef _CARTOONIFIERCONTEXT_HPP_
 #define _CARTOONIFIERCONTEXT_HPP_
 
-#include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Window.hpp>
 #include <BlendInt/Gui/ToolBox.hpp>
 
 #include <BlendInt/Gui/CVVideoViewport.hpp>
@@ -13,20 +13,18 @@
 
 namespace BI=BlendInt;
 
-class CartoonifierContext: public BI::Context
+class CartoonifierContext: public BI::Window
 {
 public:
-	CartoonifierContext ();
+	CartoonifierContext (int width, int height, const char* name);
 
 	virtual ~CartoonifierContext ();
-
-	virtual void SynchronizeWindow ();
-
-protected:
 
 private:
 
 	BI::ToolBox* CreateToolBoxOnce ();
+
+	void OnResize (BI::Window* window, const BI::Size& size);
 
 	void OnPlay (BI::AbstractButton* sender);
 
@@ -35,6 +33,8 @@ private:
 	void OnStop(BI::AbstractButton* sender);
 
 	BI::CVVideoViewport* video_;
+
+	BI::FrameSplitter* main_frame_;
 };
 
 #endif /* _CARTOONIFIERCONTEXT_HPP_ */

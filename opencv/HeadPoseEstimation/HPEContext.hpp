@@ -5,12 +5,10 @@
 #ifndef _HPECONTEXT_HPP_
 #define _HPECONTEXT_HPP_
 
-#include <GLFW/glfw3.h>
-
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Window.hpp>
 #include <BlendInt/Gui/ToolBox.hpp>
 
 #include <BlendInt/Gui/ImageViewport.hpp>
@@ -26,17 +24,13 @@
 
 namespace BI=BlendInt;
 
-class HPEContext: public BI::Context
+class HPEContext: public BI::Window
 {
 public:
 
-	HPEContext ();
+	HPEContext (int width, int height, const char* name);
 
 	virtual ~HPEContext ();
-
-	virtual void SynchronizeWindow ();
-
-protected:
 
 private:
 
@@ -58,9 +52,14 @@ private:
 
 	bool OpenCamera (int n, const BI::Size& resolution = BI::Size(640, 480));
 
+	void OnResize(Window* window, const BI::Size& size);
+
 	BI::Viewport* viewport_3d_;
 
 	BI::RefPtr<BI::ButtonGroup> radio_group_;
+
+	BI::FrameSplitter* main_frame_;
+
 };
 
 #endif /* _HPECONTEXT_HPP_ */

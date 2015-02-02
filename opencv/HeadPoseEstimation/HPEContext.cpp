@@ -22,11 +22,12 @@
 
 using namespace BlendInt;
 
-HPEContext::HPEContext()
-: BI::Context(),
-  viewport_3d_(0)
+HPEContext::HPEContext(int width, int height, const char* name)
+: BI::Window(width, height, name),
+  viewport_3d_(0),
+  main_frame_(0)
 {
-	FrameSplitter* vsplitter = new FrameSplitter(Vertical);
+	main_frame_ = new FrameSplitter(Vertical);
 
 	FrameSplitter* splitter = new FrameSplitter;
 
@@ -38,22 +39,20 @@ HPEContext::HPEContext()
 
 	ToolBox* bar = CreateToolBarOnce();
 
-	vsplitter->AddFrame(bar);
-	vsplitter->AddFrame(splitter, ExpandY);
+	main_frame_->AddFrame(bar);
+	main_frame_->AddFrame(splitter, ExpandY);
 
-	AddFrame(vsplitter);
+	AddFrame(main_frame_);
+	main_frame_->Resize(size());
 
-	events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	events()->connect(resized(), this, &HPEContext::OnResize);
+
+	//events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
 
 HPEContext::~HPEContext ()
 {
 
-}
-
-void HPEContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
 }
 
 ToolBox* HPEContext::CreateToolBarOnce()
@@ -137,34 +136,34 @@ ToolBox* HPEContext::CreateRadios()
 {
 	ToolBox* radio_tool = new ToolBox(Horizontal);
 
-	radio_group_.reset(new ButtonGroup);
+//	radio_group_.reset(new ButtonGroup);
 
 	ComboBox* combo = new ComboBox;
 
-//	Block* hblock = new Block(Horizontal);
-//
-//	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
-//	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
-//	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
-//	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
-//	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
-//
+	Block* hblock = new Block(Horizontal);
+
+	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
+	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
+	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
+	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
+	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
+
 //	radio_group_->AddButton(radio1);
 //	radio_group_->AddButton(radio2);
 //	radio_group_->AddButton(radio3);
 //	radio_group_->AddButton(radio4);
 //	radio_group_->AddButton(radio5);
-//
-//	radio1->SetChecked(true);
 
-//	hblock->AddWidget(radio1);
-//	hblock->AddWidget(radio2);
-//	hblock->AddWidget(radio3);
-//	hblock->AddWidget(radio4);
-//	hblock->AddWidget(radio5);
+	radio1->SetChecked(true);
+
+	hblock->AddWidget(radio1);
+	hblock->AddWidget(radio2);
+	hblock->AddWidget(radio3);
+	hblock->AddWidget(radio4);
+	hblock->AddWidget(radio5);
 
 	radio_tool->AddWidget(combo);
-//	radio_tool->AddWidget(hblock);
+	radio_tool->AddWidget(hblock);
 
 	radio_tool->Resize(radio_tool->GetPreferredSize());
 
@@ -203,4 +202,9 @@ Panel* HPEContext::CreateButtons()
 	panel->Resize(layout->GetPreferredSize());
 
 	return panel;
+}
+
+void HPEContext::OnResize(Window* window, const Size& size)
+{
+	main_frame_->Resize(size);
 }

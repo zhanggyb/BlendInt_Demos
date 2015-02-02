@@ -33,6 +33,7 @@
 #include <BlendInt/Gui/LinearAdjustment.hpp>
 
 #include <BlendInt/Gui/Node.hpp>
+#include <BlendInt/Gui/AbstractWindow.hpp>
 
 using namespace BI;
 
@@ -75,26 +76,6 @@ BI::ToolBox* CreateWidgetsArea ()
 {
 	ToolBox* toolbox = new ToolBox(Vertical);
 
-	Label* label = new Label(L"Widgets Area", AlignCenter);
-
-	LinearLayout* l1 = new LinearLayout;
-
-	Label* btn_lbl = new Label(L"Buttons: ", AlignRight);
-	Button* b1 = new Button("Button");
-	ToggleButton* b2 = new ToggleButton("Toggle Button");
-	RadioButton* b3 = new RadioButton("Radio Button");
-	CheckButton* b4 = new CheckButton;
-	ColorButton* b5 = new ColorButton;
-	FileButton* b6 = new FileButton;
-
-	l1->AddWidget(btn_lbl);
-	l1->AddWidget(b1);
-	l1->AddWidget(b2);
-	l1->AddWidget(b3);
-	l1->AddWidget(b4);
-	l1->AddWidget(b5);
-	l1->AddWidget(b6);
-
 	LinearLayout* l2 = new LinearLayout;
 
 	LinearLayout* l2_1 = new LinearLayout(Vertical, AlignCenter, 0);
@@ -112,12 +93,57 @@ BI::ToolBox* CreateWidgetsArea ()
 	l2->AddWidget(l2_1);
 	l2->AddWidget(l2_2);
 
-	toolbox->AddWidget(label);
-	toolbox->AddWidget(l1);
 	toolbox->AddWidget(l2);
 
 	return toolbox;
 }
+
+BI::ToolBox* CreateButtons ()
+{
+	ToolBox* toolbox = new ToolBox(Vertical);
+
+	LinearLayout* l1 = new LinearLayout;
+
+	Label* btn_lbl = new Label(L"Buttons: ", AlignLeft);
+
+	Button* b1 = new Button("Button");
+	ToggleButton* b2 = new ToggleButton("Toggle Button");
+
+	Block* block1 = new Block(Horizontal);
+	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
+	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
+	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
+	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
+	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
+
+	block1->AddWidget(radio1);
+	block1->AddWidget(radio2);
+	block1->AddWidget(radio3);
+	block1->AddWidget(radio4);
+	block1->AddWidget(radio5);
+
+	CheckButton* b4 = new CheckButton;
+	ColorButton* b5 = new ColorButton;
+	FileButton* b6 = new FileButton;
+
+	Separator* sp1 = new Separator(true);
+
+	l1->AddWidget(btn_lbl);
+	l1->AddWidget(b1);
+	l1->AddWidget(b2);
+	l1->AddWidget(block1);
+	l1->AddWidget(b4);
+	l1->AddWidget(b5);
+	l1->AddWidget(b6);
+	l1->AddWidget(sp1);
+
+	l1->Resize(l1->GetPreferredSize());
+	
+	toolbox->AddWidget(l1);
+
+	return toolbox;
+}
+
 
 //void GalleryContext::OnResize (const BI::Size& size)
 //{

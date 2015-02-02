@@ -59,4 +59,6 @@ extern BI::ToolBox* CreateMenuBarArea ();
 
 extern BI::ToolBox* CreateWidgetsArea ();
 
+extern BI::ToolBox* CreateButtons ();
+
 #endif /* GLFWCONTEXT_HPP_ */

@@ -19,31 +19,29 @@
 
 using namespace BlendInt;
 
-CartoonifierContext::CartoonifierContext()
-: BI::Context(),
+CartoonifierContext::CartoonifierContext(int width, int height, const char* name)
+: BI::Window(width, height, name),
   video_(0)
 {
-	FrameSplitter* splitter = new FrameSplitter;
+	main_frame_ = new FrameSplitter;
 
 	ToolBox* tools = CreateToolBoxOnce();
 	video_ = new CVVideoViewport;
 
-	splitter->AddFrame(video_);
-	splitter->AddFrame(tools);
+	main_frame_->AddFrame(video_);
+	main_frame_->AddFrame(tools);
 
-	AddFrame(splitter);
+	AddFrame(main_frame_);
 
-	events()->connect(resized(), splitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	main_frame_->Resize(size());
+
+	//events()->connect(resized(), splitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	events()->connect(resized(), this, &CartoonifierContext::OnResize);
 }
 
 CartoonifierContext::~CartoonifierContext ()
 {
 
-}
-
-void CartoonifierContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
 }
 
 ToolBox* CartoonifierContext::CreateToolBoxOnce()
@@ -97,4 +95,9 @@ void CartoonifierContext::OnStop(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Stop Play");
 	video_->Stop();
+}
+
+void CartoonifierContext::OnResize(Window* window, const Size& size)
+{
+	main_frame_->Resize(size);
 }

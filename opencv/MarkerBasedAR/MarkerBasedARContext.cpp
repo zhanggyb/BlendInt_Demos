@@ -23,12 +23,12 @@
 
 using namespace BlendInt;
 
-MarkerBasedARContext::MarkerBasedARContext(GLFWwindow* window)
-: BI::Context(),
+MarkerBasedARContext::MarkerBasedARContext(int width, int height, const char* name)
+: BI::Window(width, height, name),
   viewport_(0),
-  window_(window)
+  main_frame_(0)
 {
-	FrameSplitter* vsplitter = new FrameSplitter(Vertical);
+	main_frame_ = new FrameSplitter(Vertical);
 
 	FrameSplitter* splitter = new FrameSplitter;
 
@@ -40,29 +40,20 @@ MarkerBasedARContext::MarkerBasedARContext(GLFWwindow* window)
 
 	ToolBox* bar = CreateToolBarOnce();
 
-	vsplitter->AddFrame(bar);
-	vsplitter->AddFrame(splitter, ExpandY);
+	main_frame_->AddFrame(bar);
+	main_frame_->AddFrame(splitter, ExpandY);
 
-	AddFrame(vsplitter);
+	AddFrame(main_frame_);
+	main_frame_->Resize(size());
 
-	events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+	events()->connect(resized(), this, &MarkerBasedARContext::OnResize);
+
+	//events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
 
 MarkerBasedARContext::~MarkerBasedARContext ()
 {
 
-}
-
-void MarkerBasedARContext::SynchronizeWindow()
-{
-	glfwPostEmptyEvent();
-}
-
-void MarkerBasedARContext::MakeGLContextCurrent()
-{
-	assert(window_);
-
-	glfwMakeContextCurrent(window_);
 }
 
 ToolBox* MarkerBasedARContext::CreateToolBoxOnce()
@@ -129,6 +120,11 @@ ToolBox* MarkerBasedARContext::CreateToolBarOnce()
 	bar->Resize(bar->GetPreferredSize());
 
 	return bar;
+}
+
+void MarkerBasedARContext::OnResize(Window* window, const Size& size)
+{
+	main_frame_->Resize(size);
 }
 
 void MarkerBasedARContext::OnToggleCamera(AbstractButton* sender, bool toggled)
