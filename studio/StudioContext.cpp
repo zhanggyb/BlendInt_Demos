@@ -149,7 +149,7 @@ void StudioContext::OnSaveTextureToFile()
 
 void StudioContext::OnOpenDialogForButtons()
 {
-	Dialog* dialog = Manage(new Dialog);
+	Dialog* dialog = Manage(new Dialog("Test"));
 
 	Button* btn = Manage(new Button("Button"));
 	btn->MoveTo(100, 50);
@@ -171,7 +171,7 @@ void StudioContext::OnOpenDialogForButtons()
 
 void StudioContext::OnOpenDialogForTextureView()
 {
-	Dialog* dialog = Manage(new Dialog);
+	Dialog* dialog = Manage(new Dialog("ButtonTest1"));
 	TextureView* textureview = Manage(new TextureView);
 	textureview->MoveTo(50, 50);
 	dialog->Resize(textureview->size().width() + 100, textureview->size().height() + 100);

@@ -76,7 +76,7 @@ void FontViewerContext::OnOpen(AbstractButton* sender)
 	LinearLayout* layout = new LinearLayout(Vertical);
 	layout->AddWidget(textureview);
 
-	dialog->SetLayout(layout);
+	// dialog->SetLayout(layout);
 
 	dialog->Resize(textureview->size().width() + 100, textureview->size().height() + 100);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
