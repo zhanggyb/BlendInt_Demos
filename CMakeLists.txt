@@ -16,6 +16,7 @@ if(WITH_GLFW3_DEMO)
 #	add_subdirectory(cv)
 		add_subdirectory(opencv)
     endif()
+    add_subdirectory(tutorial)
 endif()
 
 if(WITH_QT5_DEMO)
