@@ -10,13 +10,14 @@
 #include <BlendInt/Gui/Clock.hpp>
 #include <BlendInt/Gui/ScrollArea.hpp>
 #include <BlendInt/Gui/TabHeader.hpp>
+#include <BlendInt/Gui/Dialog.hpp>
 
 using namespace BI;
 
 StudioContext::StudioContext(int width, int height, const char* name)
 : BI::Window(width, height, name),
   button_(0),
-  pop_(0),
+ // pop_(0),
   menubar_(nullptr)
 {
 	InitializeStudioContext();
@@ -266,6 +267,7 @@ void StudioContext::OnOpenPanel1 (AbstractButton* btn)
 	panel1->Resize(240, 320);
 	panel1->MoveTo(20, 20);
 
+	/*
 	pop_ = Manage(new PopupFrame);
 	pop_->Resize(280, 360);
 	pop_->MoveTo(size().width() - pop_->size().width(), 400);
@@ -273,6 +275,7 @@ void StudioContext::OnOpenPanel1 (AbstractButton* btn)
 	pop_->AddWidget(panel1);
 
 	AddFrame(pop_);
+	*/
 }
 
 void StudioContext::OnOpenDialogForBlocks()
@@ -347,6 +350,7 @@ void StudioContext::OnOpenPanel2(BI::AbstractButton* btn)
 	panel->Resize(240, 320);
 	panel->MoveTo(20, 20);
 
+	/*
 	pop_ = Manage(new PopupFrame);
 	pop_->Resize(280, 360);
 	pop_->MoveTo(size().width() - pop_->size().width(), 400);
@@ -354,6 +358,7 @@ void StudioContext::OnOpenPanel2(BI::AbstractButton* btn)
 	pop_->AddWidget(panel);
 
 	AddFrame(pop_);
+	*/
 }
 
 void StudioContext::OnOpenDialogForTab()

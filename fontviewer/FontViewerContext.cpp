@@ -10,6 +10,7 @@
 #include <BlendInt/Gui/Clock.hpp>
 #include <BlendInt/Gui/ScrollArea.hpp>
 #include <BlendInt/Gui/TabHeader.hpp>
+#include <BlendInt/Gui/Dialog.hpp>
 
 using namespace BI;
 

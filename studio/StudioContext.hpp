@@ -105,7 +105,7 @@ private:
 
 	BI::Button* button_;
 
-	BI::PopupFrame* pop_;
+	//BI::PopupFrame* pop_;
 
 	BI::ToolBox* menubar_;
 };

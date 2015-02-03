@@ -5,7 +5,7 @@
 #ifndef QT5CONTEXT_HPP_
 #define QT5CONTEXT_HPP_
 
-#include <BlendInt/Gui/Context.hpp>
+#include <BlendInt/Gui/Window.hpp>
 #include <QGuiApplication>
 #include <QtGui/QWindow>
 
