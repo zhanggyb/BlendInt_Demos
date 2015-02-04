@@ -10,7 +10,6 @@
 #include <BlendInt/Gui/Clock.hpp>
 #include <BlendInt/Gui/ScrollArea.hpp>
 #include <BlendInt/Gui/TabHeader.hpp>
-#include <BlendInt/Gui/Dialog.hpp>
 
 using namespace BI;
 
@@ -18,23 +17,19 @@ StudioContext::StudioContext(int width, int height, const char* name)
 : BI::Window(width, height, name),
   button_(0),
  // pop_(0),
-  menubar_(nullptr)
+  sidebar_(nullptr)
 {
-	InitializeStudioContext();
+	sidebar_ = CreateSideBar();
+	AddFrame(sidebar_);
 
-	// events()->connect(resized(), this, &StudioContext::OnResize);
+	sidebar_->MoveTo(0, (size().height() - sidebar_->size().height()) / 2);
+
+	events()->connect(resized(), this, &StudioContext::OnResize);
 }
 
 StudioContext::~StudioContext ()
 {
 
-}
-
-void StudioContext::InitializeStudioContext()
-{
-	menubar_ = CreateMenuBar();
-
-	AddFrame(menubar_);
 }
 
 Panel* StudioContext::CreateButtonsForWidgets()
@@ -196,12 +191,12 @@ void StudioContext::OnOpenFileSelector()
 	AddFrame(fs);
 }
 
-void StudioContext::OnResize(const BI::Size& size)
+void StudioContext::OnResize(Window* window, const BI::Size& size)
 {
-	Size menubar_size = menubar_->GetPreferredSize();
+	//Size menubar_size = sidebar_->GetPreferredSize();
 
-	menubar_->MoveTo(0, size.height() - menubar_size.height());
-	menubar_->Resize(size.width(), menubar_size.height());
+	sidebar_->MoveTo(0, (size.height() - sidebar_->size().height()) / 2);
+	//sidebar_->Resize(size.width(), menubar_size.height());
 }
 
 void StudioContext::OnOpenDialogForDecoration()
@@ -411,21 +406,21 @@ void StudioContext::OnOpenDialogForTabHeader()
 	AddFrame(dialog);
 }
 
-BI::ToolBox* StudioContext::CreateMenuBar()
+BI::Dialog* StudioContext::CreateSideBar()
 {
-	MenuButton* menubtn1 = Manage(new MenuButton("Widgets"));
+	Dialog* dialog = new Dialog("Func");
 
-	ToolBox* menubar = Manage(new ToolBox(size().width(), 24, Horizontal));
-	menubar->MoveTo(0, size().height() - menubar->size().height());
+	ToolButton* b1 = new ToolButton;
+	b1->SetAction(icons->icon_32x32(Icons::ACTION), "Button1");
+	dialog->AddWidget(b1);
 
-	menubar->AddWidget(menubtn1);
+	ToolButton* b2 = new ToolButton;
+	dialog->AddWidget(b2);
 
-	events()->connect(menubtn1->clicked(), this, &StudioContext::OnOpenPanel1);
+	ToolButton* b3 = new ToolButton;
+	dialog->AddWidget(b3);
 
-	MenuButton* menubtn2 = Manage(new MenuButton("Menus"));
-	menubar->AddWidget(menubtn2);
+	dialog->Resize(dialog->GetPreferredSize());
 
-	events()->connect(menubtn2->clicked(), this, &StudioContext::OnOpenPanel2);
-
-	return menubar;
+	return dialog;
 }

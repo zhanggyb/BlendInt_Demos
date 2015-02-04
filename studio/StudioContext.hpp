@@ -46,6 +46,7 @@
 #include <BlendInt/Gui/ListView.hpp>
 #include <BlendInt/Gui/TextureView.hpp>
 #include <BlendInt/Gui/ToolBox.hpp>
+#include <BlendInt/Gui/Dialog.hpp>
 
 #include <BlendInt/Gui/Window.hpp>
 
@@ -61,9 +62,7 @@ public:
 
 private:
 
-	void InitializeStudioContext ();
-
-	void OnResize(const BI::Size& size);
+	void OnResize(Window* window, const BI::Size& size);
 
 	BI::Panel* CreateButtonsForWidgets ();
 
@@ -101,13 +100,13 @@ private:
 
 	void OnOpenDialogForTabHeader ();
 
-	BI::ToolBox* CreateMenuBar ();
+	BI::Dialog* CreateSideBar ();
 
 	BI::Button* button_;
 
 	//BI::PopupFrame* pop_;
 
-	BI::ToolBox* menubar_;
+	BI::Dialog* sidebar_;
 };
 
 #endif /* STUDIOCONTEXT_HPP_ */
