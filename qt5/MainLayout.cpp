@@ -5,7 +5,7 @@
 #include <gui/widget.hpp>
 #include <core/string.hpp>
 #include <gui/menu.hpp>
-#include <blendint/stock/icons.hpp>
+#include <stock/icons.hpp>
 
 #include "MainLayout.hpp"
 
