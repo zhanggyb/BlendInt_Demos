@@ -4,21 +4,21 @@
 
 #include <GLFW/glfw3.h>
 
-#include "HPEContext.hpp"
+#include "hpecontext.hpp"
 
-#include <BlendInt/Gui/Frame.hpp>
-#include <BlendInt/Gui/ImageViewport.hpp>
-#include <BlendInt/Gui/Button.hpp>
-#include <BlendInt/Gui/Expander.hpp>
-#include <BlendInt/Gui/NumericalSlider.hpp>
-#include <BlendInt/Gui/Block.hpp>
-#include <BlendInt/Gui/ComboBox.hpp>
+#include <gui/frame.hpp>
+#include <gui/image-viewport.hpp>
+#include <gui/button.hpp>
+#include <gui/expander.hpp>
+#include <gui/numerical-slider.hpp>
+#include <gui/block.hpp>
+#include <gui/combobox.hpp>
 
-#include <BlendInt/Gui/ToolBox.hpp>
-#include <BlendInt/Gui/LinearLayout.hpp>
-#include <BlendInt/Gui/MenuButton.hpp>
-#include <BlendInt/Gui/ToggleButton.hpp>
-#include <BlendInt/Gui/RadioButton.hpp>
+#include <gui/toolbox.hpp>
+#include <gui/linear-layout.hpp>
+#include <gui/menu-button.hpp>
+#include <gui/toggle-button.hpp>
+#include <gui/radio-button.hpp>
 
 using namespace BlendInt;
 

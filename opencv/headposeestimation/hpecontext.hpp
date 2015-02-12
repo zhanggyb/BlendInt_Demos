@@ -8,19 +8,19 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <BlendInt/Gui/Window.hpp>
-#include <BlendInt/Gui/ToolBox.hpp>
+#include <gui/window.hpp>
+#include <gui/toolbox.hpp>
 
-#include <BlendInt/Gui/ImageViewport.hpp>
-#include <BlendInt/Core/Timer.hpp>
-#include <BlendInt/Gui/Viewport.hpp>
-#include <BlendInt/Gui/Panel.hpp>
-#include <BlendInt/Gui/FrameSplitter.hpp>
+#include <gui/image-viewport.hpp>
+#include <core/timer.hpp>
+#include <gui/viewport.hpp>
+#include <gui/panel.hpp>
+#include <gui/frame-splitter.hpp>
 
-#include <BlendInt/Gui/Button.hpp>
-#include <BlendInt/Gui/Workspace.hpp>
-#include <BlendInt/Gui/LinearLayout.hpp>
-#include <BlendInt/Gui/ButtonGroup.hpp>
+#include <gui/button.hpp>
+#include <gui/workspace.hpp>
+#include <gui/linear-layout.hpp>
+#include <gui/button-group.hpp>
 
 namespace BI=BlendInt;
 

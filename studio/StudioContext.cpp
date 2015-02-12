@@ -4,12 +4,12 @@
 
 #include "StudioContext.hpp"
 
-#include <BlendInt/Gui/Frame.hpp>
-#include <BlendInt/Gui/Decoration.hpp>
-#include <BlendInt/Gui/MenuButton.hpp>
-#include <BlendInt/Gui/Clock.hpp>
-#include <BlendInt/Gui/ScrollArea.hpp>
-#include <BlendInt/Gui/TabHeader.hpp>
+#include <gui/frame.hpp>
+#include <gui/decoration.hpp>
+#include <gui/menu-button.hpp>
+#include <gui/clock.hpp>
+#include <gui/scroll-area.hpp>
+#include <gui/tabheader.hpp>
 
 using namespace BI;
 

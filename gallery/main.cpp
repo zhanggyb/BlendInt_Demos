@@ -2,14 +2,14 @@
  * BlendInt demo
  */
 
-#include "GalleryContext.hpp"
+#include "gallerycontext.hpp"
 
-#include <BlendInt/Core/Types.hpp>
+#include <core/types.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-#include <BlendInt/Gui/Window.hpp>
-#include <BlendInt/Gui/LinearAdjustment.hpp>
+#include <gui/window.hpp>
+#include <gui/linear-adjustment.hpp>
 
 void GenerateCrossIconVertices (float min = 0.12f, float max = 0.9f)
 {

@@ -10,15 +10,15 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <BlendInt/Gui/Window.hpp>
-#include <BlendInt/Gui/ToolBox.hpp>
+#include <gui/window.hpp>
+#include <gui/toolbox.hpp>
 
-#include <BlendInt/Gui/CVVideoViewport.hpp>
-#include <BlendInt/Core/Timer.hpp>
-#include <BlendInt/Gui/Button.hpp>
-#include <BlendInt/Gui/ToggleButton.hpp>
+#include <gui/cvvideoviewport.hpp>
+#include <core/timer.hpp>
+#include <gui/button.hpp>
+#include <gui/toggle-button.hpp>
 
-#include "MBARViewport.hpp"
+#include "mbarviewport.hpp"
 
 namespace BI=BlendInt;
 

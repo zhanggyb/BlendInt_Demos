@@ -2,38 +2,38 @@
  * GLFWContext.cpp
  */
 
-#include "GalleryContext.hpp"
+#include "gallerycontext.hpp"
 
-#include <BlendInt/Core/Image.hpp>
+#include <core/image.hpp>
 
-#include <BlendInt/Font/FcConfig.hpp>
-#include <BlendInt/Font/FcPattern.hpp>
+#include <font/fc-config.hpp>
+#include <font/fc-pattern.hpp>
 
-#include <BlendInt/Gui/Widget.hpp>
-#include <BlendInt/Gui/RadioButton.hpp>
-#include <BlendInt/Gui/CheckButton.hpp>
-#include <BlendInt/Gui/Frame.hpp>
-#include <BlendInt/Gui/FrameSplitter.hpp>
-#include <BlendInt/Gui/FileButton.hpp>
-#include <BlendInt/Gui/ColorWheel.hpp>
-#include <BlendInt/Gui/Viewport2D.hpp>
-#include <BlendInt/Gui/Viewport.hpp>
-#include <BlendInt/Gui/ColorSelector.hpp>
+#include <gui/widget.hpp>
+#include <gui/radio-button.hpp>
+#include <gui/check-button.hpp>
+#include <gui/frame.hpp>
+#include <gui/frame-splitter.hpp>
+#include <gui/filebutton.hpp>
+#include <gui/color-wheel.hpp>
+#include <gui/viewport2d.hpp>
+#include <gui/viewport.hpp>
+#include <gui/colorselector.hpp>
 
-#include <BlendInt/Stock/Shaders.hpp>
-#include <BlendInt/Gui/Dialog.hpp>
+#include <blendint/stock/shaders.hpp>
+#include <gui/dialog.hpp>
 
-#include <BlendInt/Gui/Frame.hpp>
-#include <BlendInt/Gui/ToolBox.hpp>
-#include <BlendInt/Gui/Block.hpp>
-#include <BlendInt/Gui/CloseButton.hpp>
-#include <BlendInt/Gui/FolderList.hpp>
+#include <gui/frame.hpp>
+#include <gui/toolbox.hpp>
+#include <gui/block.hpp>
+#include <gui/close-button.hpp>
+#include <gui/folder-list.hpp>
 
-#include <BlendInt/Gui/MenuButton.hpp>
-#include <BlendInt/Gui/LinearAdjustment.hpp>
+#include <gui/menu-button.hpp>
+#include <gui/linear-adjustment.hpp>
 
-#include <BlendInt/Gui/Node.hpp>
-#include <BlendInt/Gui/AbstractWindow.hpp>
+#include <gui/node.hpp>
+#include <gui/abstract-window.hpp>
 
 using namespace BI;
 

@@ -2,10 +2,12 @@
  * A context works in GLFW
  */
 
-#ifndef _FONTVIEWERCONTEXT_HPP_
-#define _FONTVIEWERCONTEXT_HPP_
+#ifndef GLFWCONTEXT_HPP_
+#define GLFWCONTEXT_HPP_
 
 #include <GLFW/glfw3.h>
+
+#include <vector>
 
 #include <gui/button.hpp>
 #include <gui/clock.hpp>
@@ -19,6 +21,7 @@
 #include <gui/scroll-bar.hpp>
 #include <gui/scroll-view.hpp>
 #include <gui/menu.hpp>
+#include <gui/texture-view.hpp>
 #include <gui/textentry.hpp>
 #include <gui/viewport3d.hpp>
 #include <gui/numerical-slider.hpp>
@@ -36,7 +39,6 @@
 #include <blendint/stock/icons.hpp>
 #include <gui/file-selector.hpp>
 #include <gui/block.hpp>
-#include <gui/panel.hpp>
 
 #include <gui/panel.hpp>
 #include <gui/decoration.hpp>
@@ -44,32 +46,17 @@
 #include <gui/progress-bar.hpp>
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
-#include <gui/texture-view.hpp>
-#include <gui/toolbox.hpp>
 
-#include <gui/window.hpp>
+#include <gui/viewport.hpp>
 
 namespace BI=BlendInt;
 
-class FontViewerContext: public BI::Window
-{
-public:
+extern void InitializeGLFWDemoContext ();
 
-	FontViewerContext (int width, int height, const char* name);
+extern BI::ToolBox* CreateMenuBarArea ();
 
-	virtual ~FontViewerContext ();
+extern BI::ToolBox* CreateWidgetsArea ();
 
-private:
+extern BI::ToolBox* CreateButtons ();
 
-	void InitializeFontViewerContext ();
-
-	void OnResize(const BI::Size& size);
-
-	BI::ToolBox* CreateMenuBar ();
-
-	void OnOpen (BI::AbstractButton* sender);
-
-	BI::ToolBox* menubar_;
-};
-
-#endif /* _FONTVIEWERCONTEXT_HPP_ */
+#endif /* GLFWCONTEXT_HPP_ */

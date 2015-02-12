@@ -5,7 +5,7 @@
 #include "Qt5Context.hpp"
 #include <QtGui/QCursor>
 
-#include <BlendInt/Gui/Frame.hpp>
+#include <gui/frame.hpp>
 
 using namespace BI;
 

@@ -2,7 +2,7 @@
  * BlendInt demo
  */
 
-#include <BlendInt/Core/Types.hpp>
+#include <core/types.hpp>
 
 #include "FontViewerContext.hpp"
 

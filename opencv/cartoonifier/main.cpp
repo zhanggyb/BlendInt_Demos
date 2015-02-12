@@ -2,10 +2,10 @@
  * BlendInt demo
  */
 
-#include <BlendInt/Gui/Window.hpp>
-#include <BlendInt/Gui/FrameSplitter.hpp>
-#include <BlendInt/Gui/Viewport.hpp>
-#include "CartoonifierContext.hpp"
+#include <gui/window.hpp>
+#include <gui/frame-splitter.hpp>
+#include <gui/viewport.hpp>
+#include "cartoonifiercontext.hpp"
 
 using namespace BlendInt;
 using namespace std;

@@ -5,12 +5,12 @@
 #ifndef QT5CONTEXT_HPP_
 #define QT5CONTEXT_HPP_
 
-#include <BlendInt/Gui/Window.hpp>
+#include <gui/window.hpp>
 #include <QGuiApplication>
 #include <QtGui/QWindow>
 
-#include <BlendInt/Gui/Viewport3D.hpp>
-#include <BlendInt/Gui/Button.hpp>
+#include <gui/viewport3d.hpp>
+#include <gui/button.hpp>
 
 #include "MainLayout.hpp"
 

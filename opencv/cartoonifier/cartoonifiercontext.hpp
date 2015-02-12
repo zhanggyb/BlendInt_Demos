@@ -5,11 +5,11 @@
 #ifndef _CARTOONIFIERCONTEXT_HPP_
 #define _CARTOONIFIERCONTEXT_HPP_
 
-#include <BlendInt/Gui/Window.hpp>
-#include <BlendInt/Gui/ToolBox.hpp>
+#include <gui/window.hpp>
+#include <gui/toolbox.hpp>
 
-#include <BlendInt/Gui/CVVideoViewport.hpp>
-#include <BlendInt/Gui/Button.hpp>
+#include <gui/cvvideoviewport.hpp>
+#include <gui/button.hpp>
 
 namespace BI=BlendInt;
 

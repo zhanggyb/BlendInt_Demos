@@ -4,18 +4,18 @@
 
 #include <GLFW/glfw3.h>
 
-#include "CartoonifierContext.hpp"
+#include "cartoonifiercontext.hpp"
 
-#include <BlendInt/Gui/Frame.hpp>
-#include <BlendInt/Gui/ImageViewport.hpp>
-#include <BlendInt/Gui/LinearLayout.hpp>
-#include <BlendInt/Gui/Button.hpp>
-#include <BlendInt/Gui/Expander.hpp>
-#include <BlendInt/Gui/NumericalSlider.hpp>
-#include <BlendInt/Gui/Block.hpp>
+#include <gui/frame.hpp>
+#include <gui/image-viewport.hpp>
+#include <gui/linear-layout.hpp>
+#include <gui/button.hpp>
+#include <gui/expander.hpp>
+#include <gui/numerical-slider.hpp>
+#include <gui/block.hpp>
 
-#include <BlendInt/Gui/ToolBox.hpp>
-#include <BlendInt/Gui/FrameSplitter.hpp>
+#include <gui/toolbox.hpp>
+#include <gui/frame-splitter.hpp>
 
 using namespace BlendInt;
 

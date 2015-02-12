@@ -7,8 +7,8 @@
 
 #include <BlendInt/Gui/VLayout.hpp>
 
-#include <BlendInt/Gui/Viewport3D.hpp>
-#include <BlendInt/Gui/Button.hpp>
+#include <gui/viewport3d.hpp>
+#include <gui/button.hpp>
 
 namespace BI = BlendInt;
 

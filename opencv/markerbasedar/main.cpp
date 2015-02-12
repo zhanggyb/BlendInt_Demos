@@ -3,9 +3,9 @@
  */
 
 #include <Cpp/Events.hpp>
-#include <BlendInt/Core/Types.hpp>
+#include <core/types.hpp>
 
-#include "HPEContext.hpp"
+#include "markerbasedarcontext.hpp"
 
 using namespace BlendInt;
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		HPEContext win(1280, 800, "HeadPoseEstimation");
+		MarkerBasedARContext win(1280, 800, "MarkerBasedAR");
 
 		win.Exec();
 		Window::Terminate();

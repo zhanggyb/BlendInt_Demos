@@ -5,7 +5,7 @@
  *      Author: zhanggyb
  */
 
-#include "MBARViewport.hpp"
+#include "mbarviewport.hpp"
 
 #include <opencv2/imgproc/imgproc.hpp>
 

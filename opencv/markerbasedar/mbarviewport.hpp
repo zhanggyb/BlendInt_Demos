@@ -8,7 +8,7 @@
 #ifndef _MARKERBASEDAR_MBARVIEWPORT_HPP_
 #define _MARKERBASEDAR_MBARVIEWPORT_HPP_
 
-#include <BlendInt/Gui/CVVideoViewport.hpp>
+#include <gui/cvvideoviewport.hpp>
 
 class MBARViewport: public BlendInt::CVVideoViewport
 {
