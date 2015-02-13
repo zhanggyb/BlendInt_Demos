@@ -58,7 +58,7 @@ MarkerBasedARContext::~MarkerBasedARContext ()
 
 ToolBox* MarkerBasedARContext::CreateToolBoxOnce()
 {
-	ToolBox* tools = new ToolBox(Vertical);
+	ToolBox* tools = new ToolBox(new LinearLayout(Vertical));
 
 	Expander* expander = new Expander("Resolution");
 
@@ -103,7 +103,7 @@ ToolBox* MarkerBasedARContext::CreateToolBoxOnce()
 
 ToolBox* MarkerBasedARContext::CreateToolBarOnce()
 {
-	ToolBox* bar = new ToolBox(Horizontal);
+	ToolBox* bar = new ToolBox(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());

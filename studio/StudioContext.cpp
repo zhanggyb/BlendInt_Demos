@@ -5,7 +5,6 @@
 #include "StudioContext.hpp"
 
 #include <gui/frame.hpp>
-#include <gui/decoration.hpp>
 #include <gui/menu-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>
@@ -86,7 +85,7 @@ Panel* StudioContext::CreateButtonsForWidgets()
 	group4->AddWidget(btn);
 
 	btn = Manage(new Button("Decoration"));
-	events()->connect(btn->clicked(), this, &StudioContext::OnOpenDialogForDecoration);
+	//events()->connect(btn->clicked(), this, &StudioContext::OnOpenDialogForDecoration);
 	group4->AddWidget(btn);
 
 	btn = Manage(new Button("Modal Dialog"));
@@ -197,19 +196,6 @@ void StudioContext::OnResize(Window* window, const BI::Size& size)
 
 	sidebar_->MoveTo(0, (size.height() - sidebar_->size().height()) / 2);
 	//sidebar_->Resize(size.width(), menubar_size.height());
-}
-
-void StudioContext::OnOpenDialogForDecoration()
-{
-	Dialog * dialog = Manage(new Dialog("Hello World"));
-	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
-
-	Decoration* dec = Manage(new Decoration);
-	dec->MoveTo(50, 50);
-	dec->Resize(500, 24);
-	dialog->AddWidget(dec);
-
-	AddFrame(dialog);
 }
 
 void StudioContext::OnOpenDialogForScrollView()

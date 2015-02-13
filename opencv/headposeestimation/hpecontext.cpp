@@ -57,7 +57,7 @@ HPEContext::~HPEContext ()
 
 ToolBox* HPEContext::CreateToolBarOnce()
 {
-	ToolBox* bar = new ToolBox(Horizontal);
+	ToolBox* bar = new ToolBox(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());
@@ -80,7 +80,7 @@ Workspace* HPEContext::CreateWorkspaceOnce()
 {
 	Workspace* workspace = new Workspace;
 	
-	ToolBox* header = new ToolBox(Horizontal);
+	ToolBox* header = new ToolBox(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 
@@ -107,7 +107,7 @@ Workspace* HPEContext::CreateToolsOnce()
 
 	ToolBox* header = CreateRadios();
 
-	ToolBox* tools = new ToolBox(Vertical);
+	ToolBox* tools = new ToolBox(new LinearLayout(Vertical));
 
 	Expander* expander = new Expander("Resolution");
 
@@ -134,7 +134,7 @@ Workspace* HPEContext::CreateToolsOnce()
 
 ToolBox* HPEContext::CreateRadios()
 {
-	ToolBox* radio_tool = new ToolBox(Horizontal);
+	ToolBox* radio_tool = new ToolBox(new LinearLayout(Horizontal));
 
 //	radio_group_.reset(new ButtonGroup);
 

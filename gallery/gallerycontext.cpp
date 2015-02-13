@@ -53,7 +53,7 @@ void InitializeGLFWDemoContext ()
 
 BI::ToolBox* CreateMenuBarArea ()
 {
-	ToolBox* toolbox = new ToolBox(Horizontal);
+	ToolBox* toolbox = new ToolBox(new LinearLayout(Horizontal));
 
 	LinearLayout* l1 = new LinearLayout;
 
@@ -74,7 +74,7 @@ BI::ToolBox* CreateMenuBarArea ()
 
 BI::ToolBox* CreateWidgetsArea ()
 {
-	ToolBox* toolbox = new ToolBox(Vertical);
+	ToolBox* toolbox = new ToolBox(new LinearLayout(Vertical));
 
 	LinearLayout* l2 = new LinearLayout;
 
@@ -100,7 +100,7 @@ BI::ToolBox* CreateWidgetsArea ()
 
 BI::ToolBox* CreateButtons ()
 {
-	ToolBox* toolbox = new ToolBox(Vertical);
+	ToolBox* toolbox = new ToolBox(new LinearLayout(Vertical));
 
 	LinearLayout* l1 = new LinearLayout;
 

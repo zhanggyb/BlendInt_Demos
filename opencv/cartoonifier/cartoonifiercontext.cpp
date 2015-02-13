@@ -46,7 +46,7 @@ CartoonifierContext::~CartoonifierContext ()
 
 ToolBox* CartoonifierContext::CreateToolBoxOnce()
 {
-	ToolBox* tools = new ToolBox(Vertical);
+	ToolBox* tools = new ToolBox(new LinearLayout(Vertical));
 
 	Expander* expander = new Expander("Light");
 

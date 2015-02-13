@@ -5,7 +5,6 @@
 #include "FontViewerContext.hpp"
 
 #include <gui/frame.hpp>
-#include <gui/decoration.hpp>
 #include <gui/menu-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>
@@ -47,7 +46,7 @@ BI::ToolBox* FontViewerContext::CreateMenuBar()
 {
 	MenuButton* menubtn1 = new MenuButton("Open");
 
-	ToolBox* menubar = new ToolBox(size().width(), 24, Horizontal);
+	ToolBox* menubar = new ToolBox(size().width(), 24, new LinearLayout(Horizontal));
 	menubar->MoveTo(0, size().height() - menubar->size().height());
 
 	menubar->AddWidget(menubtn1);
