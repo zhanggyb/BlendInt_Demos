@@ -12,7 +12,7 @@
 #include <gui/expander.hpp>
 #include <gui/numerical-slider.hpp>
 #include <gui/block.hpp>
-#include <gui/combobox.hpp>
+#include <gui/combo-box.hpp>
 
 #include <gui/toolbox.hpp>
 #include <gui/linear-layout.hpp>

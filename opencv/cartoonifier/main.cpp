@@ -5,7 +5,7 @@
 #include <gui/window.hpp>
 #include <gui/frame-splitter.hpp>
 #include <gui/viewport.hpp>
-#include "cartoonifiercontext.hpp"
+#include "cartoonifier-window.hpp"
 
 using namespace BlendInt;
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		CartoonifierContext win(1280, 800, "Cartoonifier");
+		CartoonifierWindow win(640, 700, "Cartoonifier");
 
 		win.Exec();
 		Window::Terminate();

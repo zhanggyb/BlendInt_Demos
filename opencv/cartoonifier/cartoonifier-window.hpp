@@ -13,12 +13,12 @@
 
 namespace BI=BlendInt;
 
-class CartoonifierContext: public BI::Window
+class CartoonifierWindow: public BI::Window
 {
 public:
-	CartoonifierContext (int width, int height, const char* name);
+	CartoonifierWindow (int width, int height, const char* name);
 
-	virtual ~CartoonifierContext ();
+	virtual ~CartoonifierWindow ();
 
 private:
 
