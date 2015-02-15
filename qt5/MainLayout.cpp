@@ -2,7 +2,7 @@
  * Main Layout
  */
 
-#include <gui/widget.hpp>
+#include <gui/abstract-round-widget.hpp>
 #include <core/string.hpp>
 #include <gui/menu.hpp>
 #include <stock/icons.hpp>

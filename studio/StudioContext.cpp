@@ -4,7 +4,7 @@
 
 #include "StudioContext.hpp"
 
-#include <gui/frame.hpp>
+#include <gui/abstract-round-frame.hpp>
 #include <gui/menu-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>

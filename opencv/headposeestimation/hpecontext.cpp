@@ -6,7 +6,7 @@
 
 #include "hpecontext.hpp"
 
-#include <gui/frame.hpp>
+#include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/button.hpp>
 #include <gui/expander.hpp>

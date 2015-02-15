@@ -6,7 +6,7 @@
 
 #include "markerbasedarcontext.hpp"
 
-#include <gui/frame.hpp>
+#include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/linear-layout.hpp>
 #include <gui/button.hpp>
