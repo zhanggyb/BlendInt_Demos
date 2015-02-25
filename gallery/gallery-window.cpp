@@ -34,6 +34,7 @@
 
 #include <gui/node.hpp>
 #include <gui/abstract-window.hpp>
+#include <gui/cv-image-view.hpp>
 
 using namespace BI;
 

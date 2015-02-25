@@ -50,23 +50,25 @@
 
 namespace BI=BlendInt;
 
-class FontViewerContext: public BI::Window
+class FontViewerWindow: public BI::Window
 {
 public:
 
-	FontViewerContext (int width, int height, const char* name);
+	FontViewerWindow (int width, int height, const char* name);
 
-	virtual ~FontViewerContext ();
+	virtual ~FontViewerWindow ();
 
 private:
 
-	void InitializeFontViewerContext ();
-
-	void OnResize(const BI::Size& size);
+	void OnResize(BI::Window* window, const BI::Size& size);
 
 	BI::ToolBox* CreateMenuBar ();
 
 	void OnOpen (BI::AbstractButton* sender);
+
+#ifdef __USE_OPENCV__
+	void OnOpenCVImageView (BI::AbstractButton* sender);
+#endif
 
 	BI::ToolBox* menubar_;
 };
