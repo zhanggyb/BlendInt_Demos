@@ -2,14 +2,13 @@
  * BlendInt demo
  */
 
-#include "gallerycontext.hpp"
+#include "gallery-window.hpp"
 
 #include <core/types.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <gui/window.hpp>
-#include <gui/linear-adjustment.hpp>
 
 void GenerateCrossIconVertices (float min = 0.12f, float max = 0.9f)
 {
@@ -66,22 +65,9 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		Window win(960, 1000, "UI Editor");
-
-		ToolBox* t1 = CreateMenuBarArea();
-		win.AddFrame(t1);
-		ToolBox* t2 = CreateButtons();
-		win.AddFrame(t2);
-		ToolBox* t3 = CreateWidgetsArea();
-		win.AddFrame(t3);
-		Viewport* viewport = new Viewport;
-		win.AddFrame(viewport);
-
-		LinearAdjustment vertical_layout(&win, Vertical, AlignCenter, 1);
-		vertical_layout.Adjust(0, 0, win.size().width(), win.size().height());
+		GalleryWindow win(1280, 800, "UI Editor");
 
 		win.Exec();
-
 		Window::Terminate();
 	}
 

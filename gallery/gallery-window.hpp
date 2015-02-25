@@ -47,15 +47,35 @@
 #include <gui/list-view.hpp>
 
 #include <gui/viewport.hpp>
+#include <gui/window.hpp>
+#include <gui/dialog.hpp>
 
 namespace BI=BlendInt;
 
-extern void InitializeGLFWDemoContext ();
+class GalleryWindow: public BI::Window
+{
+public:
 
-extern BI::ToolBox* CreateMenuBarArea ();
+	GalleryWindow(int width, int height, const char* name);
 
-extern BI::ToolBox* CreateWidgetsArea ();
+	virtual ~GalleryWindow();
 
-extern BI::ToolBox* CreateButtons ();
+private:
+
+	BI::Dialog* CreateMenuBarArea ();
+
+	BI::Dialog* CreateWidgetsArea ();
+
+	BI::Dialog* CreateButtons ();
+
+	BI::ToolBox* CreateTools ();
+
+	void OnResize (BI::Window* window, const BI::Size& size);
+
+	BI::Viewport* viewport_;
+
+	BI::ToolBox* tools_;
+};
+
 
 #endif /* GLFWCONTEXT_HPP_ */
