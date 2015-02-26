@@ -17,19 +17,23 @@
 #include <gui/frame.hpp>
 #include <gui/frame-splitter.hpp>
 #include <gui/separator.hpp>
+#include <gui/cv-image-view.hpp>
 
 using namespace BlendInt;
 
 CartoonifierWindow::CartoonifierWindow(int width, int height, const char* name)
 : BI::Window(width, height, name),
-  video_(0)
+  cv_view_(0)
 {
 	main_frame_ = new FrameSplitter(Vertical);
 
 	Frame* tools = CreateToolBoxOnce();
-	video_ = new CVVideoViewport;
+	Frame* video_frame = new Frame(new LinearLayout(Vertical));
+	cv_view_ = new CVImageView;
+	video_frame->AddWidget(cv_view_);
 
-	main_frame_->AddFrame(video_);
+
+	main_frame_->AddFrame(video_frame);
 	main_frame_->AddFrame(tools, PreferredHeight);
 
 	AddFrame(main_frame_);
@@ -78,20 +82,20 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 void CartoonifierWindow::OnPlay(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Start Play");
-	video_->OpenCamera(0, Size(800, 600));
-	video_->Play();
+	cv_view_->OpenCamera(0, Size(800, 600));
+	cv_view_->Play();
 }
 
 void CartoonifierWindow::OnPause (AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Pause");
-	video_->Pause();
+	cv_view_->Pause();
 }
 
 void CartoonifierWindow::OnStop(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Stop Play");
-	video_->Stop();
+	cv_view_->Stop();
 }
 
 void CartoonifierWindow::OnResize(Window* window, const Size& size)

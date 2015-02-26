@@ -8,8 +8,9 @@
 #include <gui/window.hpp>
 #include <gui/frame.hpp>
 
-#include <gui/cvvideoviewport.hpp>
+#include <gui/frame.hpp>
 #include <gui/button.hpp>
+#include <gui/cv-image-view.hpp>
 
 namespace BI=BlendInt;
 
@@ -32,7 +33,7 @@ private:
 
 	void OnStop(BI::AbstractButton* sender);
 
-	BI::CVVideoViewport* video_;
+	BI::CVImageView* cv_view_;
 
 	BI::FrameSplitter* main_frame_;
 };
