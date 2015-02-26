@@ -39,12 +39,12 @@ void FontViewerWindow::OnResize(BI::Window* window, const BI::Size& size)
 	menubar_->Resize(size.width(), menubar_size.height());
 }
 
-BI::ToolBox* FontViewerWindow::CreateMenuBar()
+BI::Frame* FontViewerWindow::CreateMenuBar()
 {
 	LinearLayout* layout = new LinearLayout(Horizontal);
 	layout->SetMargin(Margin(0, 0, 0, 0));
 
-	ToolBox* menubar = new ToolBox(layout);
+	Frame* menubar = new Frame(layout);
 	menubar->MoveTo(0, size().height() - menubar->size().height());
 
 	MenuButton* menubtn1 = new MenuButton("Open");

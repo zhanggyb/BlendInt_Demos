@@ -26,7 +26,7 @@
 #include <gui/tool-button.hpp>
 #include <gui/separator.hpp>
 #include <gui/colorselector.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/tab.hpp>
 #include <gui/tab-button.hpp>
 #include <gui/tabheader.hpp>
@@ -44,7 +44,7 @@
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
 #include <gui/texture-view.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 
 #include <gui/window.hpp>
 
@@ -62,7 +62,7 @@ private:
 
 	void OnResize(BI::Window* window, const BI::Size& size);
 
-	BI::ToolBox* CreateMenuBar ();
+	BI::Frame* CreateMenuBar ();
 
 	void OnOpen (BI::AbstractButton* sender);
 
@@ -70,7 +70,7 @@ private:
 	void OnOpenCVImageView (BI::AbstractButton* sender);
 #endif
 
-	BI::ToolBox* menubar_;
+	BI::Frame* menubar_;
 };
 
 #endif /* _FONTVIEWERCONTEXT_HPP_ */

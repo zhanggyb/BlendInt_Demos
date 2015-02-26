@@ -11,7 +11,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include <gui/window.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 
 #include <gui/cvvideoviewport.hpp>
 #include <core/timer.hpp>
@@ -34,9 +34,9 @@ protected:
 
 private:
 
-	BI::ToolBox* CreateToolBoxOnce ();
+	BI::Frame* CreateToolBoxOnce ();
 
-	BI::ToolBox* CreateToolBarOnce ();
+	BI::Frame* CreateToolBarOnce ();
 
 	void OnResize(Window* window, const BI::Size& size);
 

@@ -6,7 +6,7 @@
 #define _CARTOONIFIERCONTEXT_HPP_
 
 #include <gui/window.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 
 #include <gui/cvvideoviewport.hpp>
 #include <gui/button.hpp>
@@ -22,7 +22,7 @@ public:
 
 private:
 
-	BI::ToolBox* CreateToolBoxOnce ();
+	BI::Frame* CreateToolBoxOnce ();
 
 	void OnResize (BI::Window* window, const BI::Size& size);
 

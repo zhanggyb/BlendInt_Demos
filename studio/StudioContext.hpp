@@ -26,7 +26,7 @@
 #include <gui/tool-button.hpp>
 #include <gui/separator.hpp>
 #include <gui/colorselector.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/tab.hpp>
 #include <gui/tab-button.hpp>
 #include <gui/tabheader.hpp>
@@ -44,7 +44,7 @@
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
 #include <gui/texture-view.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/dialog.hpp>
 
 #include <gui/window.hpp>

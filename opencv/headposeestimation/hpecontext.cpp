@@ -14,7 +14,7 @@
 #include <gui/block.hpp>
 #include <gui/combo-box.hpp>
 
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/linear-layout.hpp>
 #include <gui/menu-button.hpp>
 #include <gui/toggle-button.hpp>
@@ -37,7 +37,7 @@ HPEContext::HPEContext(int width, int height, const char* name)
 	splitter->AddFrame(workspace);
 	splitter->AddFrame(tools, PreferredWidth);
 
-	ToolBox* bar = CreateToolBarOnce();
+	Frame* bar = CreateToolBarOnce();
 
 	main_frame_->AddFrame(bar);
 	main_frame_->AddFrame(splitter, ExpandY);
@@ -55,9 +55,9 @@ HPEContext::~HPEContext ()
 
 }
 
-ToolBox* HPEContext::CreateToolBarOnce()
+Frame* HPEContext::CreateToolBarOnce()
 {
-	ToolBox* bar = new ToolBox(new LinearLayout(Horizontal));
+	Frame* bar = new Frame(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());
@@ -80,7 +80,7 @@ Workspace* HPEContext::CreateWorkspaceOnce()
 {
 	Workspace* workspace = new Workspace;
 	
-	ToolBox* header = new ToolBox(new LinearLayout(Horizontal));
+	Frame* header = new Frame(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 
@@ -105,9 +105,9 @@ Workspace* HPEContext::CreateToolsOnce()
 {
 	Workspace* workspace = new Workspace;
 
-	ToolBox* header = CreateRadios();
+	Frame* header = CreateRadios();
 
-	ToolBox* tools = new ToolBox(new LinearLayout(Vertical));
+	Frame* tools = new Frame(new LinearLayout(Vertical));
 
 	Expander* expander = new Expander("Resolution");
 
@@ -132,9 +132,9 @@ Workspace* HPEContext::CreateToolsOnce()
 	return workspace;
 }
 
-ToolBox* HPEContext::CreateRadios()
+Frame* HPEContext::CreateRadios()
 {
-	ToolBox* radio_tool = new ToolBox(new LinearLayout(Horizontal));
+	Frame* radio_tool = new Frame(new LinearLayout(Horizontal));
 
 //	radio_group_.reset(new ButtonGroup);
 

@@ -24,7 +24,7 @@
 #include <gui/dialog.hpp>
 
 #include <gui/abstract-round-frame.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/block.hpp>
 #include <gui/close-button.hpp>
 #include <gui/folder-list.hpp>
@@ -176,11 +176,11 @@ BI::Dialog* GalleryWindow::CreateButtons ()
 	return dlg;
 }
 
-ToolBox* GalleryWindow::CreateTools()
+Frame* GalleryWindow::CreateTools()
 {
 	LinearLayout* layout = new LinearLayout(Vertical);
 
-	ToolBox* tools = new ToolBox(layout);
+	Frame* tools = new Frame(layout);
 
 	Button* b1 = new Button;
 	b1->SetIcon(icons->icon_16x16(Icons::ACTION));

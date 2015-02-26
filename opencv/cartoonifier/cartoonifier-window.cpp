@@ -14,7 +14,7 @@
 #include <gui/numerical-slider.hpp>
 #include <gui/block.hpp>
 
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/frame-splitter.hpp>
 #include <gui/separator.hpp>
 
@@ -26,7 +26,7 @@ CartoonifierWindow::CartoonifierWindow(int width, int height, const char* name)
 {
 	main_frame_ = new FrameSplitter(Vertical);
 
-	ToolBox* tools = CreateToolBoxOnce();
+	Frame* tools = CreateToolBoxOnce();
 	video_ = new CVVideoViewport;
 
 	main_frame_->AddFrame(video_);
@@ -45,13 +45,13 @@ CartoonifierWindow::~CartoonifierWindow ()
 
 }
 
-ToolBox* CartoonifierWindow::CreateToolBoxOnce()
+Frame* CartoonifierWindow::CreateToolBoxOnce()
 {
 	LinearLayout* layout = new LinearLayout(Horizontal);
 	layout->SetMargin(Margin(2, 2, 2, 2));
 	layout->SetSpace(2);
 
-	ToolBox* tools = new ToolBox(layout);
+	Frame* tools = new Frame(layout);
 
 	Button* pause = new Button(CartoonifierWindow::icons->icon_32x32(Icons::PAUSE));
 	Button* play = new Button(CartoonifierWindow::icons->icon_32x32(Icons::PLAY));

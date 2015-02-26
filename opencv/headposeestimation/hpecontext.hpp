@@ -9,7 +9,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include <gui/window.hpp>
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 
 #include <gui/image-viewport.hpp>
 #include <core/timer.hpp>
@@ -40,7 +40,7 @@ private:
 		VideoStop
 	};
 
-	BI::ToolBox* CreateToolBarOnce ();
+	BI::Frame* CreateToolBarOnce ();
 
 	BI::Panel* CreateButtons ();
 
@@ -48,7 +48,7 @@ private:
 
 	BI::Workspace* CreateToolsOnce ();
 
-	BI::ToolBox* CreateRadios ();
+	BI::Frame* CreateRadios ();
 
 	bool OpenCamera (int n, const BI::Size& resolution = BI::Size(640, 480));
 

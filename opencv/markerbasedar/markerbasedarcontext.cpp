@@ -15,7 +15,7 @@
 #include <gui/block.hpp>
 #include <gui/combo-box.hpp>
 
-#include <gui/toolbox.hpp>
+#include <gui/frame.hpp>
 #include <gui/frame-splitter.hpp>
 #include <gui/menu-button.hpp>
 #include <gui/toggle-button.hpp>
@@ -32,13 +32,13 @@ MarkerBasedARContext::MarkerBasedARContext(int width, int height, const char* na
 
 	FrameSplitter* splitter = new FrameSplitter;
 
-	ToolBox* tools = CreateToolBoxOnce();
+	Frame* tools = CreateToolBoxOnce();
 	viewport_ = new MBARViewport;
 
 	splitter->AddFrame(viewport_);
 	splitter->AddFrame(tools, PreferredWidth);
 
-	ToolBox* bar = CreateToolBarOnce();
+	Frame* bar = CreateToolBarOnce();
 
 	main_frame_->AddFrame(bar);
 	main_frame_->AddFrame(splitter, ExpandY);
@@ -56,9 +56,9 @@ MarkerBasedARContext::~MarkerBasedARContext ()
 
 }
 
-ToolBox* MarkerBasedARContext::CreateToolBoxOnce()
+Frame* MarkerBasedARContext::CreateToolBoxOnce()
 {
-	ToolBox* tools = new ToolBox(new LinearLayout(Vertical));
+	Frame* tools = new Frame(new LinearLayout(Vertical));
 
 	Expander* expander = new Expander("Resolution");
 
@@ -101,9 +101,9 @@ ToolBox* MarkerBasedARContext::CreateToolBoxOnce()
 	return tools;
 }
 
-ToolBox* MarkerBasedARContext::CreateToolBarOnce()
+Frame* MarkerBasedARContext::CreateToolBarOnce()
 {
-	ToolBox* bar = new ToolBox(new LinearLayout(Horizontal));
+	Frame* bar = new Frame(new LinearLayout(Horizontal));
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());
