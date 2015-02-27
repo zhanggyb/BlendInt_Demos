@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		GalleryWindow win(1280, 800, "UI Editor");
+		GalleryWindow win(1280, 800, "Gallery");
 
 		win.Exec();
 		Window::Terminate();

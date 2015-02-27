@@ -70,6 +70,8 @@ private:
 	void OnOpenCVImageView (BI::AbstractButton* sender);
 #endif
 
+	void OnOpenClock (BI::AbstractButton* sender);
+
 	BI::Frame* menubar_;
 };
 

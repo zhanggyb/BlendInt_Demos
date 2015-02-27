@@ -82,7 +82,7 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 void CartoonifierWindow::OnPlay(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Start Play");
-	cv_view_->OpenCamera(0, Size(800, 600));
+	cv_view_->OpenCamera(0, Size(640, 480));
 	cv_view_->Play();
 }
 

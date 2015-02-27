@@ -58,6 +58,11 @@ BI::Frame* FontViewerWindow::CreateMenuBar()
 	events()->connect(menubtn2->clicked(), this, &FontViewerWindow::OnOpenCVImageView);
 #endif
 
+	MenuButton* menubtn3 = new MenuButton("Test RequestDraw");
+	menubar->AddWidget(menubtn3);
+
+	events()->connect(menubtn3->clicked(), this, &FontViewerWindow::OnOpenClock);
+
 	return menubar;
 }
 
@@ -109,3 +114,17 @@ void FontViewerWindow::OnOpenCVImageView(AbstractButton* sender)
 }
 
 #endif
+
+void FontViewerWindow::OnOpenClock(AbstractButton* sender)
+{
+	Dialog* dlg = new Dialog("Clock1", new LinearLayout(Vertical));
+
+	Clock* view = new Clock;
+	dlg->AddWidget(view);
+	dlg->Resize(dlg->GetPreferredSize());
+	dlg->MoveTo(200, 200);
+
+	AddFrame(dlg);
+
+	view->Start();
+}
