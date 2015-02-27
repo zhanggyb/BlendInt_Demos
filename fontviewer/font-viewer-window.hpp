@@ -72,6 +72,8 @@ private:
 
 	void OnOpenClock (BI::AbstractButton* sender);
 
+	void OnOpenComboBox (BI::AbstractButton* sender);
+
 	BI::Frame* menubar_;
 };
 

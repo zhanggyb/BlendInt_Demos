@@ -11,6 +11,7 @@
 #include <gui/tabheader.hpp>
 #include <gui/dialog.hpp>
 #include <gui/cv-image-view.hpp>
+#include <gui/string-list-model.hpp>
 
 using namespace BI;
 
@@ -62,6 +63,11 @@ BI::Frame* FontViewerWindow::CreateMenuBar()
 	menubar->AddWidget(menubtn3);
 
 	events()->connect(menubtn3->clicked(), this, &FontViewerWindow::OnOpenClock);
+
+	MenuButton* menubtn4 = new MenuButton("Test ComboBox");
+	menubar->AddWidget(menubtn4);
+
+	events()->connect(menubtn4->clicked(), this, &FontViewerWindow::OnOpenComboBox);
 
 	return menubar;
 }
@@ -127,4 +133,26 @@ void FontViewerWindow::OnOpenClock(AbstractButton* sender)
 	AddFrame(dlg);
 
 	view->Start();
+}
+
+void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
+{
+	Frame* frame = new Frame(new LinearLayout(Vertical));
+
+	RefPtr<StringListModel> model(new StringListModel);
+	model->AddString("Row 0");
+	model->AddString("Row 1");
+	model->AddString("Row 2");
+
+	model->Print();
+
+	ComboBox* widget = new ComboBox;
+	widget->SetModel(model);
+
+	frame->AddWidget(widget);
+	frame->Resize(frame->GetPreferredSize());
+	frame->MoveTo((size().width() - frame->size().width()) / 2,
+			(size().height() - frame->size().height()) / 2);
+
+	AddFrame(frame);
 }
