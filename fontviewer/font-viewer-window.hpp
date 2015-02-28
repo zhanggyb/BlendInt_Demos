@@ -74,6 +74,10 @@ private:
 
 	void OnOpenComboBox (BI::AbstractButton* sender);
 
+	void OnOpenListView (BI::AbstractButton* sender);
+
+	void OnOpenNodeView (BI::AbstractButton* sender);
+
 	BI::Frame* menubar_;
 };
 

@@ -12,6 +12,7 @@
 #include <gui/dialog.hpp>
 #include <gui/cv-image-view.hpp>
 #include <gui/string-list-model.hpp>
+#include <gui/node.hpp>
 
 using namespace BI;
 
@@ -68,6 +69,16 @@ BI::Frame* FontViewerWindow::CreateMenuBar()
 	menubar->AddWidget(menubtn4);
 
 	events()->connect(menubtn4->clicked(), this, &FontViewerWindow::OnOpenComboBox);
+
+	MenuButton* menubtn5 = new MenuButton("Test ListView");
+	menubar->AddWidget(menubtn5);
+
+	events()->connect(menubtn5->clicked(), this, &FontViewerWindow::OnOpenListView);
+
+	MenuButton* menubtn6 = new MenuButton("Test NodeView");
+	menubar->AddWidget(menubtn6);
+
+	events()->connect(menubtn6->clicked(), this, &FontViewerWindow::OnOpenNodeView);
 
 	return menubar;
 }
@@ -137,7 +148,7 @@ void FontViewerWindow::OnOpenClock(AbstractButton* sender)
 
 void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
 {
-	Frame* frame = new Frame(new LinearLayout(Vertical));
+	Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
 	RefPtr<StringListModel> model(new StringListModel);
 	model->AddString("Row 0");
@@ -148,6 +159,44 @@ void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
 
 	ComboBox* widget = new ComboBox;
 	widget->SetModel(model);
+
+	frame->AddWidget(widget);
+	frame->Resize(frame->GetPreferredSize());
+	frame->MoveTo((size().width() - frame->size().width()) / 2,
+			(size().height() - frame->size().height()) / 2);
+
+	AddFrame(frame);
+}
+
+void FontViewerWindow::OnOpenListView(AbstractButton* sender)
+{
+	Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
+
+	RefPtr<StringListModel> model(new StringListModel);
+	model->AddString("Row 0");
+	model->AddString("Row 1");
+	model->AddString("Row 2");
+
+	model->Print();
+
+	ListView* widget = new ListView;
+	widget->SetModel(model);
+
+	frame->AddWidget(widget);
+	frame->Resize(frame->GetPreferredSize());
+	frame->MoveTo((size().width() - frame->size().width()) / 2,
+			(size().height() - frame->size().height()) / 2);
+
+	AddFrame(frame);
+}
+
+void FontViewerWindow::OnOpenNodeView(AbstractButton* sender)
+{
+	Dialog* frame = new Dialog("NodeView test", new LinearLayout(Vertical));
+
+	NodeView* widget = new NodeView;
+
+	widget->AddNode(new Node);
 
 	frame->AddWidget(widget);
 	frame->Resize(frame->GetPreferredSize());
