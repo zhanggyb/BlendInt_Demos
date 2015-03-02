@@ -12,6 +12,8 @@
 #include <gui/button.hpp>
 #include <gui/cv-image-view.hpp>
 
+#include "cartoon-image-view.hpp"
+
 namespace BI=BlendInt;
 
 class CartoonifierWindow: public BI::Window
@@ -33,7 +35,7 @@ private:
 
 	void OnStop(BI::AbstractButton* sender);
 
-	BI::CVImageView* cv_view_;
+	CartoonImageView* cv_view_;
 
 	BI::FrameSplitter* main_frame_;
 };
