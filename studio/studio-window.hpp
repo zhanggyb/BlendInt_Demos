@@ -51,17 +51,21 @@
 
 namespace BI=BlendInt;
 
-class StudioContext: public BI::Window
+class StudioWindow: public BI::Window
 {
 public:
 
-	StudioContext (int width, int height, const char* name);
+	StudioWindow (int width, int height, const char* name);
 
-	virtual ~StudioContext ();
+	virtual ~StudioWindow ();
 
 private:
 
+	BI::Frame* CreateToolBar ();
+
 	void OnResize(Window* window, const BI::Size& size);
+
+	void OnTakeScreenshot (BI::AbstractButton* sender);
 
 	BI::Panel* CreateButtonsForWidgets ();
 
@@ -97,13 +101,11 @@ private:
 
 	void OnOpenDialogForTabHeader ();
 
-	BI::Dialog* CreateSideBar ();
-
 	BI::Button* button_;
 
 	//BI::PopupFrame* pop_;
 
-	BI::Dialog* sidebar_;
+	BI::Frame* toolbar_;
 };
 
 #endif /* STUDIOCONTEXT_HPP_ */

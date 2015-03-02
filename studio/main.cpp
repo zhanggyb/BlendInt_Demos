@@ -4,19 +4,19 @@
 
 #include <core/types.hpp>
 
-#include "StudioContext.hpp"
+#include "studio-window.hpp"
 
 int main(int argc, char* argv[])
 {
 	using namespace BlendInt;
 	BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
 
-	if(StudioContext::Initialize()) {
+	if(StudioWindow::Initialize()) {
 
-		StudioContext win(1280, 800, "Studio");
+		StudioWindow win(1280, 800, "Studio");
 
 		win.Exec();
-		StudioContext::Terminate();
+		StudioWindow::Terminate();
 	}
 
 	return 0;

@@ -56,6 +56,7 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 	layout->SetSpace(2);
 
 	Frame* tools = new Frame(layout);
+	tools->EnableViewBuffer();
 
 	Button* pause = new Button(CartoonifierWindow::icons->icon_32x32(Icons::PAUSE));
 	Button* play = new Button(CartoonifierWindow::icons->icon_32x32(Icons::PLAY));
