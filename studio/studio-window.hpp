@@ -67,12 +67,6 @@ private:
 
 	void OnTakeScreenshot (BI::AbstractButton* sender);
 
-	BI::Panel* CreateButtonsForWidgets ();
-
-	BI::Panel* CreateButtonsForMenuTest ();
-
-	void OnSaveTextureToFile ();
-
 	void OnOpenDialogForButtons ();
 
 	void OnOpenDialogForTextureView ();
@@ -91,9 +85,7 @@ private:
 
 	void OnOpenMenu1 ();
 
-	void OnOpenPanel1 (BI::AbstractButton* btn);
-
-	void OnOpenPanel2 (BI::AbstractButton* btn);
+	void OnOpenPanel (BI::AbstractButton* btn);
 
 	void OnOpenDialogForTab ();
 

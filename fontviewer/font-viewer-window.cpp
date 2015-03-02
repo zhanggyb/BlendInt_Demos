@@ -126,7 +126,7 @@ void FontViewerWindow::OnOpenCVImageView(AbstractButton* sender)
 	AddFrame(dlg);
 
 //	view->OpenFile("test.jpg");
-	view->OpenCamera(0);
+	view->OpenCamera(0, 15);
 	view->Play();
 }
 

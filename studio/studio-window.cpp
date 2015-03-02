@@ -60,6 +60,7 @@ BI::Frame* StudioWindow::CreateToolBar()
 	tools->Resize(tools->GetPreferredSize());
 
 	events()->connect(b1->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
+	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenPanel);
 	events()->connect(b4->clicked(), this, &StudioWindow::OnTakeScreenshot);
 
 	return tools;
@@ -68,116 +69,6 @@ BI::Frame* StudioWindow::CreateToolBar()
 void StudioWindow::OnTakeScreenshot (BI::AbstractButton* sender)
 {
 	DBG_PRINT_MSG("TODO: %s", "check the focused frame and save the view buffer to a image file");
-}
-
-Panel* StudioWindow::CreateButtonsForWidgets()
-{
-	Panel* panel = Manage(new Panel);
-
-	LinearLayout* vlayout = Manage(new LinearLayout(Vertical));
-
-	Block * group1 = Manage(new Block(Horizontal));
-
-	Button* btn = nullptr;
-
-	btn = Manage(new Button("Buttons"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
-	group1->AddWidget(btn);
-
-	vlayout->AddWidget(group1);
-
-	Block * group2 = Manage(new Block(Horizontal));
-
-	btn = Manage(new Button("TextEntry"));
-	group2->AddWidget(btn);
-
-	btn = Manage(new Button("Tab"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForTab);
-	group2->AddWidget(btn);
-
-	btn = Manage(new Button("NumericalSlider"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForNumericalSlider);
-	group2->AddWidget(btn);
-
-	vlayout->AddWidget(group2);
-
-	Block * group3 = Manage(new Block(Horizontal));
-
-	btn = Manage(new Button("TextureView"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForTextureView);
-	group3->AddWidget(btn);
-
-	btn = Manage(new Button("ScrollArea"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForScrollArea);
-	group3->AddWidget(btn);
-
-	btn = Manage(new Button("FileSelector"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenFileSelector);
-	group3->AddWidget(btn);
-
-	vlayout->AddWidget(group3);
-
-	Block * group4 = Manage(new Block(Horizontal));
-
-	btn = Manage(new Button("TabHeader"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForTabHeader);
-	group4->AddWidget(btn);
-
-	btn = Manage(new Button("Decoration"));
-	//events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForDecoration);
-	group4->AddWidget(btn);
-
-	btn = Manage(new Button("Modal Dialog"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenModalDialog);
-	group4->AddWidget(btn);
-
-	vlayout->AddWidget(group4);
-
-	Block * group5 = Manage(new Block(Horizontal));
-
-	btn = Manage(new Button("ScrollView"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForScrollView);
-	group5->AddWidget(btn);
-
-	btn = Manage(new Button("Blocks"));
-	events()->connect(btn->clicked(), this, &StudioWindow::OnOpenDialogForBlocks);
-	group5->AddWidget(btn);
-
-	vlayout->AddWidget(group5);
-
-	panel->SetLayout(vlayout);
-
-	return panel;
-}
-
-Panel* StudioWindow::CreateButtonsForMenuTest()
-{
-	Panel* panel = Manage(new Panel);
-
-	LinearLayout* vlayout = Manage(new LinearLayout(Vertical));
-
-	Block * group1 = Manage(new Block(Horizontal));
-
-	Button* btn1 = Manage(new Button("Menu1"));
-	Button* btn2 = Manage(new Button("Clock"));
-	Button* btn3 = Manage(new Button("Menu3"));
-
-	events()->connect(btn1->clicked(), this, &StudioWindow::OnOpenMenu1);
-	events()->connect(btn2->clicked(), this, &StudioWindow::OnOpenDialogForClock);
-
-	group1->AddWidget(btn1);
-	group1->AddWidget(btn2);
-	group1->AddWidget(btn3);
-
-	vlayout->AddWidget(group1);
-
-	panel->SetLayout(vlayout);
-
-	return panel;
-}
-
-void StudioWindow::OnSaveTextureToFile()
-{
 }
 
 void StudioWindow::OnOpenDialogForButtons()
@@ -280,21 +171,28 @@ void StudioWindow::OnOpenDialogForNumericalSlider()
 	AddFrame(dialog);
 }
 
-void StudioWindow::OnOpenPanel1 (AbstractButton* btn)
+void StudioWindow::OnOpenPanel (AbstractButton* btn)
 {
-	Panel* panel1 = CreateButtonsForWidgets();
-	panel1->Resize(240, 320);
-	panel1->MoveTo(20, 20);
+	FrameSplitter* splitter = new FrameSplitter;
 
-	/*
-	pop_ = Manage(new PopupFrame);
-	pop_->Resize(280, 360);
-	pop_->MoveTo(size().width() - pop_->size().width(), 400);
+	Button* btn1 = new Button("Button1");
+	Button* btn2 = new Button("Button2");
 
-	pop_->AddWidget(panel1);
+	Frame* f1 = new Frame(new LinearLayout(Vertical, AlignCenter));
+//	f1->EnableViewBuffer();
+	Frame* f2 = new Frame(new LinearLayout(Vertical, AlignCenter));
+//	f2->EnableViewBuffer();
 
-	AddFrame(pop_);
-	*/
+	f1->AddWidget(btn1);
+	f2->AddWidget(btn2);
+
+	splitter->AddFrame(f1);
+	splitter->AddFrame(f2);
+
+	splitter->Resize(600, 200);
+
+	AddFrame(splitter);
+
 }
 
 void StudioWindow::OnOpenDialogForBlocks()
@@ -361,23 +259,6 @@ void StudioWindow::OnOpenMenu1()
 	menu1->AddButton(Manage(new Button("Test")));
 
 	AddFrame(menu1);
-}
-
-void StudioWindow::OnOpenPanel2(BI::AbstractButton* btn)
-{
-	Panel* panel = CreateButtonsForMenuTest();
-	panel->Resize(240, 320);
-	panel->MoveTo(20, 20);
-
-	/*
-	pop_ = Manage(new PopupFrame);
-	pop_->Resize(280, 360);
-	pop_->MoveTo(size().width() - pop_->size().width(), 400);
-
-	pop_->AddWidget(panel);
-
-	AddFrame(pop_);
-	*/
 }
 
 void StudioWindow::OnOpenDialogForTab()
