@@ -13,22 +13,21 @@
 #include <gui/window.hpp>
 #include <gui/frame.hpp>
 
-#include <gui/cvvideoviewport.hpp>
 #include <core/timer.hpp>
 #include <gui/button.hpp>
 #include <gui/toggle-button.hpp>
 
-#include "mbarviewport.hpp"
+#include "mbar-image-view.hpp"
 
 namespace BI=BlendInt;
 
-class MarkerBasedARContext: public BI::Window
+class MBARWindow: public BI::Window
 {
 public:
 
-	explicit MarkerBasedARContext (int width, int height, const char* name);
+	explicit MBARWindow (int width, int height, const char* name);
 
-	virtual ~MarkerBasedARContext ();
+	virtual ~MBARWindow ();
 
 protected:
 
@@ -48,10 +47,9 @@ private:
 
 	void OnStop(BI::AbstractButton* sender);
 
-	MBARViewport* viewport_;
+	MBARView* image_view_;
 
 	BI::FrameSplitter* main_frame_;
-
 
 };
 

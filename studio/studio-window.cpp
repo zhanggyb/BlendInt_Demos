@@ -60,7 +60,7 @@ BI::Frame* StudioWindow::CreateToolBar()
 	tools->Resize(tools->GetPreferredSize());
 
 	events()->connect(b1->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
-	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenPanel);
+	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenDialogForNumericalSlider);
 	events()->connect(b4->clicked(), this, &StudioWindow::OnTakeScreenshot);
 
 	return tools;
@@ -151,22 +151,16 @@ void StudioWindow::OnOpenDialogForNumericalSlider()
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	Panel* panel1 = Manage(new Panel);
-	panel1->MoveTo(20, 20);
-
-	Panel* panel2 = Manage(new Panel);
-	panel2->MoveTo(20, 20);
-	panel2->Resize(250, 250);
-
 	NumericalSlider* ns = Manage(new NumericalSlider("X:"));
 	ns->Resize(150, ns->size().height());
 	ns->MoveTo(50, 50);
 	ns->SetValue(50.0);
+	ns->SetEmboss(true);
 
-	panel2->AddWidget(ns);
-	panel1->AddWidget(panel2);
+	dialog->AddWidget(ns);
 
-	dialog->AddWidget(panel1);
+	Slider* sl = new Slider(Horizontal);
+	dialog->AddWidget(sl);
 
 	AddFrame(dialog);
 }

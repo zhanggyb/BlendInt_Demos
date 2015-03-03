@@ -8,15 +8,15 @@
 #ifndef _MARKERBASEDAR_MBARVIEWPORT_HPP_
 #define _MARKERBASEDAR_MBARVIEWPORT_HPP_
 
-#include <gui/cvvideoviewport.hpp>
+#include <gui/cv-image-view.hpp>
 
-class MBARViewport: public BlendInt::CVVideoViewport
+class MBARView: public BlendInt::CVImageView
 {
 public:
 
-	MBARViewport();
+	MBARView();
 
-	virtual ~MBARViewport();
+	virtual ~MBARView();
 
 protected:
 

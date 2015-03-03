@@ -181,6 +181,7 @@ Frame* GalleryWindow::CreateTools()
 	LinearLayout* layout = new LinearLayout(Vertical);
 
 	Frame* tools = new Frame(layout);
+	tools->EnableViewBuffer();
 
 	Button* b1 = new Button;
 	b1->SetIcon(icons->icon_16x16(Icons::ACTION));

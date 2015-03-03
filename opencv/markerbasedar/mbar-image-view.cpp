@@ -5,22 +5,22 @@
  *      Author: zhanggyb
  */
 
-#include "mbarviewport.hpp"
+#include "mbar-image-view.hpp"
 
 #include <opencv2/imgproc/imgproc.hpp>
 
-MBARViewport::MBARViewport()
-: BlendInt::CVVideoViewport()
+MBARView::MBARView()
+: BlendInt::CVImageView()
 {
 
 }
 
-MBARViewport::~MBARViewport()
+MBARView::~MBARView()
 {
 
 }
 
-void MBARViewport::ProcessImage(cv::Mat& image)
+void MBARView::ProcessImage(cv::Mat& image)
 {
 //	cv::Mat grey;
 //	cv::cvtColor(image, grey, CV_BGR2GRAY);

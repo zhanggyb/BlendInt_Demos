@@ -5,7 +5,7 @@
 #include <Cpp/Events.hpp>
 #include <core/types.hpp>
 
-#include "hpecontext.hpp"
+#include "hpe-window.hpp"
 
 using namespace BlendInt;
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		HPEContext win(1280, 800, "HeadPoseEstimation");
+		HPEWindow win(1280, 800, "HeadPoseEstimation");
 
 		win.Exec();
 		Window::Terminate();

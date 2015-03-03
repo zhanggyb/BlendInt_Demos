@@ -4,8 +4,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include "hpecontext.hpp"
-
 #include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/button.hpp>
@@ -20,9 +18,11 @@
 #include <gui/toggle-button.hpp>
 #include <gui/radio-button.hpp>
 
+#include "hpe-window.hpp"
+
 using namespace BlendInt;
 
-HPEContext::HPEContext(int width, int height, const char* name)
+HPEWindow::HPEWindow(int width, int height, const char* name)
 : BI::Window(width, height, name),
   viewport_3d_(0),
   main_frame_(0)
@@ -45,19 +45,23 @@ HPEContext::HPEContext(int width, int height, const char* name)
 	AddFrame(main_frame_);
 	main_frame_->Resize(size());
 
-	events()->connect(resized(), this, &HPEContext::OnResize);
+	events()->connect(resized(), this, &HPEWindow::OnResize);
 
 	//events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
 
-HPEContext::~HPEContext ()
+HPEWindow::~HPEWindow ()
 {
 
 }
 
-Frame* HPEContext::CreateToolBarOnce()
+Frame* HPEWindow::CreateToolBarOnce()
 {
-	Frame* bar = new Frame(new LinearLayout(Horizontal));
+	LinearLayout* layout = new LinearLayout(Horizontal);
+	layout->SetMargin(Margin(2, 2, 2, 2));
+
+	Frame* bar = new Frame(layout);
+	bar->EnableViewBuffer();
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());
@@ -76,11 +80,15 @@ Frame* HPEContext::CreateToolBarOnce()
 	return bar;
 }
 
-Workspace* HPEContext::CreateWorkspaceOnce()
+Workspace* HPEWindow::CreateWorkspaceOnce()
 {
 	Workspace* workspace = new Workspace;
 	
-	Frame* header = new Frame(new LinearLayout(Horizontal));
+	LinearLayout* layout = new LinearLayout(Horizontal);
+	layout->SetMargin(Margin(2, 2, 2, 2));
+
+	Frame* header = new Frame(layout);
+	header->EnableViewBuffer();
 
 	ComboBox* combo = new ComboBox;
 
@@ -98,16 +106,21 @@ Workspace* HPEContext::CreateWorkspaceOnce()
 	header->Resize(header->GetPreferredSize());
 
 	workspace->SetHeader(header);
+	workspace->SetViewport(new Viewport);
 	return workspace;
 }
 
-Workspace* HPEContext::CreateToolsOnce()
+Workspace* HPEWindow::CreateToolsOnce()
 {
 	Workspace* workspace = new Workspace;
 
 	Frame* header = CreateRadios();
 
-	Frame* tools = new Frame(new LinearLayout(Vertical));
+	LinearLayout* layout = new LinearLayout(Vertical);
+	layout->SetMargin(Margin(2, 2, 2, 2));
+
+	Frame* tools = new Frame(layout);
+	tools->EnableViewBuffer();
 
 	Expander* expander = new Expander("Resolution");
 
@@ -132,9 +145,13 @@ Workspace* HPEContext::CreateToolsOnce()
 	return workspace;
 }
 
-Frame* HPEContext::CreateRadios()
+Frame* HPEWindow::CreateRadios()
 {
-	Frame* radio_tool = new Frame(new LinearLayout(Horizontal));
+	LinearLayout* layout = new LinearLayout(Horizontal);
+	layout->SetMargin(Margin(2, 2, 2, 2));
+
+	Frame* radio_tool = new Frame(layout);
+	radio_tool->EnableViewBuffer();
 
 //	radio_group_.reset(new ButtonGroup);
 
@@ -170,7 +187,7 @@ Frame* HPEContext::CreateRadios()
 	return radio_tool;
 }
 
-Panel* HPEContext::CreateButtons()
+Panel* HPEWindow::CreateButtons()
 {
 	Panel* panel = new Panel;
 	panel->SetRoundType(RoundAll);
@@ -204,7 +221,7 @@ Panel* HPEContext::CreateButtons()
 	return panel;
 }
 
-void HPEContext::OnResize(Window* window, const Size& size)
+void HPEWindow::OnResize(Window* window, const Size& size)
 {
 	main_frame_->Resize(size);
 }

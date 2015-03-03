@@ -28,7 +28,10 @@ CartoonifierWindow::CartoonifierWindow(int width, int height, const char* name)
 	main_frame_ = new FrameSplitter(Vertical);
 
 	Frame* tools = CreateToolBoxOnce();
-	Frame* video_frame = new Frame(new LinearLayout(Vertical));
+
+	LinearLayout* image_layout = new LinearLayout(Vertical);
+	image_layout->SetMargin(Margin(0, 0, 0, 0));
+	Frame* video_frame = new Frame(image_layout);
 	cv_view_ = new CartoonImageView;
 	video_frame->AddWidget(cv_view_);
 

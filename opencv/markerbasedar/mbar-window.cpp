@@ -4,8 +4,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include "markerbasedarcontext.hpp"
-
 #include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/linear-layout.hpp>
@@ -20,12 +18,16 @@
 #include <gui/menu-button.hpp>
 #include <gui/toggle-button.hpp>
 #include <gui/separator.hpp>
+#include <gui/scroll-bar.hpp>
+#include <gui/table-layout.hpp>
+
+#include "mbar-window.hpp"
 
 using namespace BlendInt;
 
-MarkerBasedARContext::MarkerBasedARContext(int width, int height, const char* name)
+MBARWindow::MBARWindow(int width, int height, const char* name)
 : BI::Window(width, height, name),
-  viewport_(0),
+  image_view_(0),
   main_frame_(0)
 {
 	main_frame_ = new FrameSplitter(Vertical);
@@ -33,9 +35,14 @@ MarkerBasedARContext::MarkerBasedARContext(int width, int height, const char* na
 	FrameSplitter* splitter = new FrameSplitter;
 
 	Frame* tools = CreateToolBoxOnce();
-	viewport_ = new MBARViewport;
 
-	splitter->AddFrame(viewport_);
+	image_view_ = new MBARView;
+	LinearLayout* image_layout = new LinearLayout(Vertical);
+	image_layout->SetMargin(Margin(0, 0, 0, 0));
+	Frame* image_frame = new Frame(image_layout);
+	image_frame->AddWidget(image_view_);
+
+	splitter->AddFrame(image_frame);
 	splitter->AddFrame(tools, PreferredWidth);
 
 	Frame* bar = CreateToolBarOnce();
@@ -46,19 +53,20 @@ MarkerBasedARContext::MarkerBasedARContext(int width, int height, const char* na
 	AddFrame(main_frame_);
 	main_frame_->Resize(size());
 
-	events()->connect(resized(), this, &MarkerBasedARContext::OnResize);
+	events()->connect(resized(), this, &MBARWindow::OnResize);
 
 	//events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
 
-MarkerBasedARContext::~MarkerBasedARContext ()
+MBARWindow::~MBARWindow ()
 {
 
 }
 
-Frame* MarkerBasedARContext::CreateToolBoxOnce()
+Frame* MBARWindow::CreateToolBoxOnce()
 {
 	Frame* tools = new Frame(new LinearLayout(Vertical));
+	tools->EnableViewBuffer();
 
 	Expander* expander = new Expander("Resolution");
 
@@ -93,17 +101,21 @@ Frame* MarkerBasedARContext::CreateToolBoxOnce()
 	tools->AddWidget(separator2);
 	tools->AddWidget(vblock1);
 
-	events()->connect(open->toggled(), this, &MarkerBasedARContext::OnToggleCamera);
-	events()->connect(play->clicked(), this, &MarkerBasedARContext::OnPlay);
-	events()->connect(pause->clicked(), this, &MarkerBasedARContext::OnPause);
-	events()->connect(stop->clicked(), this, &MarkerBasedARContext::OnStop);
+	events()->connect(open->toggled(), this, &MBARWindow::OnToggleCamera);
+	events()->connect(play->clicked(), this, &MBARWindow::OnPlay);
+	events()->connect(pause->clicked(), this, &MBARWindow::OnPause);
+	events()->connect(stop->clicked(), this, &MBARWindow::OnStop);
 
 	return tools;
 }
 
-Frame* MarkerBasedARContext::CreateToolBarOnce()
+Frame* MBARWindow::CreateToolBarOnce()
 {
-	Frame* bar = new Frame(new LinearLayout(Horizontal));
+	LinearLayout* layout = new LinearLayout(Horizontal);
+	layout->SetMargin(Margin(2, 2, 2, 2));
+
+	Frame* bar = new Frame(layout);
+	bar->EnableViewBuffer();
 
 	ComboBox* combo = new ComboBox;
 	combo->Resize(48, combo->size().height());
@@ -122,38 +134,38 @@ Frame* MarkerBasedARContext::CreateToolBarOnce()
 	return bar;
 }
 
-void MarkerBasedARContext::OnResize(Window* window, const Size& size)
+void MBARWindow::OnResize(Window* window, const Size& size)
 {
 	main_frame_->Resize(size);
 }
 
-void MarkerBasedARContext::OnToggleCamera(AbstractButton* sender, bool toggled)
+void MBARWindow::OnToggleCamera(AbstractButton* sender, bool toggled)
 {
 	if(toggled) {
 #ifdef __APPLE__
-		viewport_->OpenCamera(0, Size(1080, 720));
+		image_view_->OpenCamera(0, 15, Size(1080, 720));
 #else
-        viewport_->OpenCamera(0, Size(640, 480));
+        image_view_->OpenCamera(0, 15, Size(640, 480));
 #endif
 	} else {
-		viewport_->Release();
+		image_view_->Release();
 	}
 }
 
-void MarkerBasedARContext::OnPlay(AbstractButton* sender)
+void MBARWindow::OnPlay(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Start Play");
-	viewport_->Play();
+	image_view_->Play();
 }
 
-void MarkerBasedARContext::OnPause (AbstractButton* sender)
+void MBARWindow::OnPause (AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Pause");
-	viewport_->Pause();
+	image_view_->Pause();
 }
 
-void MarkerBasedARContext::OnStop(AbstractButton* sender)
+void MBARWindow::OnStop(AbstractButton* sender)
 {
 	DBG_PRINT_MSG("%s", "Stop Play");
-	viewport_->Stop();
+	image_view_->Stop();
 }

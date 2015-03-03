@@ -5,7 +5,7 @@
 #include <Cpp/Events.hpp>
 #include <core/types.hpp>
 
-#include "markerbasedarcontext.hpp"
+#include "mbar-window.hpp"
 
 using namespace BlendInt;
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
 	if(Window::Initialize()) {
 
-		MarkerBasedARContext win(1280, 800, "MarkerBasedAR");
+		MBARWindow win(1280, 800, "MarkerBasedAR");
 
 		win.Exec();
 		Window::Terminate();

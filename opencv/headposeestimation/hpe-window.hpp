@@ -24,13 +24,13 @@
 
 namespace BI=BlendInt;
 
-class HPEContext: public BI::Window
+class HPEWindow: public BI::Window
 {
 public:
 
-	HPEContext (int width, int height, const char* name);
+	HPEWindow (int width, int height, const char* name);
 
-	virtual ~HPEContext ();
+	virtual ~HPEWindow ();
 
 private:
 
