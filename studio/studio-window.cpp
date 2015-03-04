@@ -147,20 +147,26 @@ void StudioWindow::OnOpenDialogForScrollView()
 
 void StudioWindow::OnOpenDialogForNumericalSlider()
 {
-	Dialog * dialog = Manage(new Dialog("NumericalSlider"));
+	Dialog * dialog = Manage(new Dialog("NumericalSlider", new LinearLayout(Vertical)));
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	NumericalSlider* ns = Manage(new NumericalSlider("X:"));
-	ns->Resize(150, ns->size().height());
-	ns->MoveTo(50, 50);
-	ns->SetValue(50.0);
-	ns->SetEmboss(true);
+	Block* block = new Block(Vertical);
 
-	dialog->AddWidget(ns);
+	NumericalSlider* ns1 = Manage(new NumericalSlider);
+  NumericalSlider* ns2 = Manage(new NumericalSlider);
+  NumericalSlider* ns3 = Manage(new NumericalSlider);
 
-	Slider* sl = new Slider(Horizontal);
-	dialog->AddWidget(sl);
+  block->AddWidget(ns1);
+  block->AddWidget(ns2);
+  block->AddWidget(ns3);
+
+	dialog->AddWidget(block);
+
+	TextEntry* text = new TextEntry;
+
+	//ScrollBar* sb = new ScrollBar(Horizontal);
+	dialog->AddWidget(text);
 
 	AddFrame(dialog);
 }

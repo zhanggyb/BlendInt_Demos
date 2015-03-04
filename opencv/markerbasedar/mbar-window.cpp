@@ -141,14 +141,14 @@ void MBARWindow::OnResize(Window* window, const Size& size)
 
 void MBARWindow::OnToggleCamera(AbstractButton* sender, bool toggled)
 {
-	if(toggled) {
+  if(toggled) {
 #ifdef __APPLE__
-		image_view_->OpenCamera(0, 15, Size(1080, 720));
+    image_view_->OpenCamera(0, 15, Size(1080, 720));
 #else
-        image_view_->OpenCamera(0, 15, Size(640, 480));
+    image_view_->OpenCamera(0, 15, Size(640, 480));
 #endif
 	} else {
-		image_view_->Release();
+	  image_view_->Release();
 	}
 }
 
