@@ -61,6 +61,7 @@ BI::Frame* StudioWindow::CreateToolBar()
 
 	events()->connect(b1->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
 	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenDialogForNumericalSlider);
+  events()->connect(b3->clicked(), this, &StudioWindow::OnOpenMenu1);
 	events()->connect(b4->clicked(), this, &StudioWindow::OnTakeScreenshot);
 
 	return tools;
@@ -252,11 +253,12 @@ void StudioWindow::OnOpenDialogForClock()
 void StudioWindow::OnOpenMenu1()
 {
 	Menu* menu1 = Manage(new Menu);
-	menu1->Resize(menu1->GetPreferredSize());
-	menu1->MoveTo((size().width() - menu1->size().width()) / 2, (size().height() - menu1->size().height()) / 2);
 
 	menu1->AddAction("MenuItem1");
-	menu1->AddButton(Manage(new Button("Test")));
+	menu1->AddWidget(Manage(new Button("Test")));
+
+  menu1->Resize(menu1->GetPreferredSize());
+  menu1->MoveTo((size().width() - menu1->size().width()) / 2, (size().height() - menu1->size().height()) / 2);
 
 	AddFrame(menu1);
 }

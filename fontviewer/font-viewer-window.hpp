@@ -78,6 +78,8 @@ private:
 
 	void OnOpenNodeView (BI::AbstractButton* sender);
 
+	void OnTestMenu (BI::AbstractButton* sender);
+
 	BI::Frame* menubar_;
 };
 

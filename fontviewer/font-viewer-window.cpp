@@ -80,6 +80,11 @@ BI::Frame* FontViewerWindow::CreateMenuBar()
 
 	events()->connect(menubtn6->clicked(), this, &FontViewerWindow::OnOpenNodeView);
 
+  MenuButton* menubtn7 = new MenuButton("Test Menu");
+  menubar->AddWidget(menubtn7);
+
+  events()->connect(menubtn7->clicked(), this, &FontViewerWindow::OnTestMenu);
+
 	return menubar;
 }
 
@@ -204,4 +209,17 @@ void FontViewerWindow::OnOpenNodeView(AbstractButton* sender)
 			(size().height() - frame->size().height()) / 2);
 
 	AddFrame(frame);
+}
+
+void FontViewerWindow::OnTestMenu(AbstractButton* sender)
+{
+  Menu* frame = new Menu;
+  frame->AddAction(icons->icon_16x16(Icons::IMAGE_ALPHA), "Hello!", "Ctrl + A");
+  frame->AddAction(icons->icon_16x16(Icons::IMAGE_DATA), "Wooo", "Ctrl + B");
+
+  frame->Resize(frame->GetPreferredSize());
+  frame->MoveTo((size().width() - frame->size().width()) / 2,
+      (size().height() - frame->size().height()) / 2);
+
+  AddFrame(frame);
 }
