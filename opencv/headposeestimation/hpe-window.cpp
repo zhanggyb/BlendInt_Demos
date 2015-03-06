@@ -148,7 +148,7 @@ Workspace* HPEWindow::CreateToolsOnce()
 
 Frame* HPEWindow::CreateRadios()
 {
-	LinearLayout* layout = new LinearLayout(Horizontal);
+	AdaptiveLayout* layout = new AdaptiveLayout(Horizontal);
 	layout->SetMargin(Margin(2, 2, 2, 2));
 
 	Frame* radio_tool = new Frame(layout);

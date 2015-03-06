@@ -25,7 +25,7 @@
 #include <gui/scroll-area.hpp>
 #include <gui/tool-button.hpp>
 #include <gui/separator.hpp>
-#include <gui/colorselector.hpp>
+#include <gui/color-selector.hpp>
 #include <gui/frame.hpp>
 #include <gui/tab.hpp>
 #include <gui/tab-button.hpp>
