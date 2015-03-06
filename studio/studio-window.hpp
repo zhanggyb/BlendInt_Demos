@@ -93,6 +93,8 @@ private:
 
 	void OnOpenDialogForTabHeader ();
 
+	void OnTestAdaptiveLayout (BI::AbstractButton* sender);
+
 	BI::Button* button_;
 
 	//BI::PopupFrame* pop_;

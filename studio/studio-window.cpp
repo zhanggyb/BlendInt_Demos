@@ -9,6 +9,7 @@
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>
 #include <gui/tabheader.hpp>
+#include <gui/adaptive-layout.hpp>
 
 using namespace BI;
 
@@ -61,7 +62,7 @@ BI::Frame* StudioWindow::CreateToolBar()
 
 	events()->connect(b1->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
 	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenDialogForNumericalSlider);
-  events()->connect(b3->clicked(), this, &StudioWindow::OnOpenMenu1);
+  events()->connect(b3->clicked(), this, &StudioWindow::OnTestAdaptiveLayout);
 	events()->connect(b4->clicked(), this, &StudioWindow::OnTakeScreenshot);
 
 	return tools;
@@ -311,4 +312,64 @@ void StudioWindow::OnOpenDialogForTabHeader()
 	dialog->AddWidget(header);
 
 	AddFrame(dialog);
+}
+
+void StudioWindow::OnTestAdaptiveLayout (BI::AbstractButton* sender)
+{
+  Dialog * dialog1 = Manage(
+      new Dialog("Horizontal AdaptiveLayout", new AdaptiveLayout(Horizontal)));
+  dialog1->Resize(500, 400);
+  dialog1->MoveTo(100, (size().height() - dialog1->size().height()) / 2);
+
+  NumericalSlider* ns1 = Manage(new NumericalSlider);
+  NumericalSlider* ns2 = Manage(new NumericalSlider);
+  NumericalSlider* ns3 = Manage(new NumericalSlider);
+
+  dialog1->AddWidget(ns1);
+  dialog1->AddWidget(ns2);
+  dialog1->AddWidget(ns3);
+
+  TextEntry* text = new TextEntry;
+
+  //ScrollBar* sb = new ScrollBar(Horizontal);
+  dialog1->AddWidget(text);
+
+  AddFrame(dialog1);
+
+  Dialog * dialog2 = Manage(
+      new Dialog("Vertical AdaptiveLayout", new AdaptiveLayout(Vertical, AlignLeft)));
+  dialog2->Resize(500, 400);
+  dialog2->MoveTo(100 + dialog1->size().width() + 50,
+                  (size().height() - dialog2->size().height()) / 2);
+
+  NumericalSlider* ns4 = Manage(new NumericalSlider);
+  NumericalSlider* ns5 = Manage(new NumericalSlider);
+  NumericalSlider* ns6 = Manage(new NumericalSlider);
+
+  dialog2->AddWidget(ns4);
+  dialog2->AddWidget(ns5);
+  dialog2->AddWidget(ns6);
+
+  Button* btn = new Button;
+
+  //ScrollBar* sb = new ScrollBar(Horizontal);
+  dialog2->AddWidget(btn);
+
+  AddFrame(dialog2);
+
+  Dialog * dialog3 = Manage(
+      new Dialog("Test Expander", new LinearLayout(Vertical)));
+  dialog3->Resize(500, 400);
+  dialog3->MoveTo((size().width() - dialog1->size().width()) / 2,
+                  (size().height() - dialog2->size().height()) / 2);
+
+  Expander* exp = new Expander("Test Expander");
+  Button* btn2 = new Button("Hello World!");
+  exp->AddWidget(btn2);
+
+  //ScrollBar* sb = new ScrollBar(Horizontal);
+  dialog3->AddWidget(exp);
+
+  AddFrame(dialog3);
+
 }

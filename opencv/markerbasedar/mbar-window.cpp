@@ -20,6 +20,7 @@
 #include <gui/separator.hpp>
 #include <gui/scroll-bar.hpp>
 #include <gui/table-layout.hpp>
+#include <gui/adaptive-layout.hpp>
 
 #include "mbar-window.hpp"
 
@@ -65,7 +66,7 @@ MBARWindow::~MBARWindow ()
 
 Frame* MBARWindow::CreateToolBoxOnce()
 {
-	Frame* tools = new Frame(new LinearLayout(Vertical));
+	Frame* tools = new Frame(new AdaptiveLayout(Vertical));
 	tools->EnableViewBuffer();
 
 	Expander* expander = new Expander("Resolution");
@@ -83,7 +84,7 @@ Frame* MBARWindow::CreateToolBoxOnce()
 	vblock->AddWidget(ns1);
 	vblock->AddWidget(ns2);
 
-	expander->Setup(vblock);
+	expander->AddWidget(vblock);
 	expander->Resize(expander->GetPreferredSize());
 
 	Button* play = new Button("Play");

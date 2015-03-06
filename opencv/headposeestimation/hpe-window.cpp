@@ -17,6 +17,7 @@
 #include <gui/menu-button.hpp>
 #include <gui/toggle-button.hpp>
 #include <gui/radio-button.hpp>
+#include <gui/adaptive-layout.hpp>
 
 #include "hpe-window.hpp"
 
@@ -116,7 +117,7 @@ Workspace* HPEWindow::CreateToolsOnce()
 
 	Frame* header = CreateRadios();
 
-	LinearLayout* layout = new LinearLayout(Vertical);
+	AdaptiveLayout* layout = new AdaptiveLayout(Vertical);
 	layout->SetMargin(Margin(2, 2, 2, 2));
 
 	Frame* tools = new Frame(layout);
@@ -131,7 +132,7 @@ Workspace* HPEWindow::CreateToolsOnce()
 	vblock->AddWidget(ns1);
 	vblock->AddWidget(ns2);
 
-	expander->Setup(vblock);
+	expander->AddWidget(vblock);
 	expander->Resize(expander->GetPreferredSize());
 
 	Panel* btn_panel = CreateButtons();
