@@ -214,8 +214,8 @@ void FontViewerWindow::OnOpenNodeView(AbstractButton* sender)
 void FontViewerWindow::OnTestMenu(AbstractButton* sender)
 {
   Menu* frame = new Menu;
-  frame->AddAction(icons->icon_16x16(Icons::IMAGE_ALPHA), "Hello!", "Ctrl + A");
-  frame->AddAction(icons->icon_16x16(Icons::IMAGE_DATA), "Wooo", "Ctrl + B");
+  frame->AddAction(icons()->icon_16x16(Icons::IMAGE_ALPHA), "Hello!", "Ctrl + A");
+  frame->AddAction(icons()->icon_16x16(Icons::IMAGE_DATA), "Wooo", "Ctrl + B");
 
   frame->Resize(frame->GetPreferredSize());
   frame->MoveTo((size().width() - frame->size().width()) / 2,

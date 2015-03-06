@@ -143,11 +143,11 @@ BI::Dialog* GalleryWindow::CreateButtons ()
 	ToggleButton* b2 = new ToggleButton("Toggle Button");
 
 	Block* block1 = new Block(Horizontal);
-	RadioButton* radio1 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE));
-	RadioButton* radio2 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SCENE_DATA));
-	RadioButton* radio3 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NSURFACE));
-	RadioButton* radio4 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCIRCLE));
-	RadioButton* radio5 = new RadioButton(AbstractWindow::icons->icon_16x16(Icons::SURFACE_NCURVE));
+	RadioButton* radio1 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE));
+	RadioButton* radio2 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
+	RadioButton* radio3 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+	RadioButton* radio4 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+	RadioButton* radio5 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
 
 	block1->AddWidget(radio1);
 	block1->AddWidget(radio2);
@@ -184,16 +184,16 @@ Frame* GalleryWindow::CreateTools()
 	tools->EnableViewBuffer();
 
 	Button* b1 = new Button;
-	b1->SetIcon(icons->icon_16x16(Icons::ACTION));
+	b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
 
 	Button* b2 = new Button;
-	b2->SetIcon(icons->icon_16x16(Icons::ALIASED));
+	b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
 
 	Button* b3 = new Button;
-	b3->SetIcon(icons->icon_16x16(Icons::AUTO));
+	b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
 
 	Button* b4 = new Button;
-	b4->SetIcon(icons->icon_16x16(Icons::CAMERA_DATA));
+	b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
 
 	tools->AddWidget(b1);
 	tools->AddWidget(b2);
