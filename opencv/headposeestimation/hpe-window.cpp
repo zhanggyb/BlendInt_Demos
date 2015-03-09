@@ -190,9 +190,6 @@ Frame* HPEWindow::CreateRadios()
 
 Panel* HPEWindow::CreateButtons()
 {
-	Panel* panel = new Panel;
-	panel->SetRoundType(RoundAll);
-
 	Block* hblock1 = new Block(Horizontal);
 
 	ComboBox* camera_no = new ComboBox;
@@ -216,7 +213,8 @@ Panel* HPEWindow::CreateButtons()
 	layout->AddWidget(hblock1);
 	layout->AddWidget(hblock2);
 
-	panel->SetLayout(layout);
+  Panel* panel = new Panel(layout);
+  panel->SetRoundType(RoundAll);
 	panel->Resize(layout->GetPreferredSize());
 
 	return panel;
