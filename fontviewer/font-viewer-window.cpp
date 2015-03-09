@@ -201,7 +201,7 @@ void FontViewerWindow::OnOpenNodeView(AbstractButton* sender)
 
 	NodeView* widget = new NodeView;
 
-	widget->AddNode(new Node);
+	widget->AddNode(new Node(new LinearLayout(Vertical)));
 
 	frame->AddWidget(widget);
 	frame->Resize(frame->GetPreferredSize());
