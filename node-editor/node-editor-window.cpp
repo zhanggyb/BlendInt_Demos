@@ -160,8 +160,8 @@ void NodeEditorWindow::OnAddNode (BI::AbstractButton* sender)
   Node* node = new Node(new LinearLayout(Vertical));
 
   node->AddWidget(new Label("New Node"));
-  node->AddWidget(new Button("Button1"));
-  node->AddWidget(new Button("Button1"));
+  node->AddWidget(new MenuButton("Button1"));
+  node->AddWidget(new MenuButton("Button1"));
 
   node->Resize(node->GetPreferredSize());
 
