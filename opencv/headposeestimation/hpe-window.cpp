@@ -23,32 +23,30 @@
 
 using namespace BlendInt;
 
-HPEWindow::HPEWindow(int width, int height, const char* name)
-: BI::Window(width, height, name),
-  viewport_3d_(0),
-  main_frame_(0)
+HPEWindow::HPEWindow (int width, int height, const char* name)
+: BI::Window(width, height, name), viewport_3d_(0), main_frame_(0)
 {
-	main_frame_ = new FrameSplitter(Vertical);
+  main_frame_ = new FrameSplitter(Vertical);
 
-	FrameSplitter* splitter = new FrameSplitter;
+  FrameSplitter* splitter = new FrameSplitter;
 
-	Workspace* tools = CreateToolsOnce();
-	Workspace* workspace = CreateWorkspaceOnce();
+  Workspace* tools = CreateToolsOnce();
+  Workspace* workspace = CreateWorkspaceOnce();
 
-	splitter->AddFrame(workspace);
-	splitter->AddFrame(tools, PreferredWidth);
+  splitter->AddFrame(workspace);
+  splitter->AddFrame(tools, PreferredWidth);
 
-	Frame* bar = CreateToolBarOnce();
+  Frame* bar = CreateToolBarOnce();
 
-	main_frame_->AddFrame(bar);
-	main_frame_->AddFrame(splitter, ExpandY);
+  main_frame_->AddFrame(bar);
+  main_frame_->AddFrame(splitter, ExpandY);
 
-	AddFrame(main_frame_);
-	main_frame_->Resize(size());
+  AddFrame(main_frame_);
+  main_frame_->Resize(size());
 
-	events()->connect(resized(), this, &HPEWindow::OnResize);
+  events()->connect(resized(), this, &HPEWindow::OnResize);
 
-	//events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
+  //events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
 
 HPEWindow::~HPEWindow ()
@@ -56,115 +54,120 @@ HPEWindow::~HPEWindow ()
 
 }
 
-Frame* HPEWindow::CreateToolBarOnce()
+Frame* HPEWindow::CreateToolBarOnce ()
 {
-	LinearLayout* layout = new LinearLayout(Horizontal);
-	layout->SetMargin(Margin(2, 2, 2, 2));
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
 
-	Frame* bar = new Frame(layout);
-	bar->EnableViewBuffer();
+  Frame* bar = new Frame(layout);
+  bar->EnableViewBuffer();
 
-	ComboBox* combo = new ComboBox;
-	combo->Resize(48, combo->size().height());
+  ComboBox* combo = new ComboBox;
+  combo->Resize(48, combo->size().height());
 
-	MenuButton* btn1 = new MenuButton("File");
-	MenuButton* btn2 = new MenuButton("Edit");
-	MenuButton* btn3 = new MenuButton("View");
+  MenuButton* btn1 = new MenuButton("File");
+  MenuButton* btn2 = new MenuButton("Edit");
+  MenuButton* btn3 = new MenuButton("View");
 
-	bar->AddWidget(combo);
-	bar->AddWidget(btn1);
-	bar->AddWidget(btn2);
-	bar->AddWidget(btn3);
+  bar->AddWidget(combo);
+  bar->AddWidget(btn1);
+  bar->AddWidget(btn2);
+  bar->AddWidget(btn3);
 
-	bar->Resize(bar->GetPreferredSize());
+  bar->Resize(bar->GetPreferredSize());
 
-	return bar;
+  return bar;
 }
 
-Workspace* HPEWindow::CreateWorkspaceOnce()
+Workspace* HPEWindow::CreateWorkspaceOnce ()
 {
-	Workspace* workspace = new Workspace;
-	
-	LinearLayout* layout = new LinearLayout(Horizontal);
-	layout->SetMargin(Margin(2, 2, 2, 2));
+  Workspace* workspace = new Workspace;
 
-	Frame* header = new Frame(layout);
-	header->EnableViewBuffer();
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
 
-	ComboBox* combo = new ComboBox;
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
 
-	Block* block1 = new Block(Horizontal);
+  ComboBox* combo = new ComboBox;
 
-	Button* btn = new Button("Button1");
-	block1->AddWidget(btn);
+  Block* block1 = new Block(Horizontal);
 
-	btn = new Button("Button2");
-	block1->AddWidget(btn);
+  Button* btn = new Button("Button1");
+  block1->AddWidget(btn);
 
-	header->AddWidget(combo);
-	header->AddWidget(block1);
+  btn = new Button("Button2");
+  block1->AddWidget(btn);
 
-	header->Resize(header->GetPreferredSize());
+  header->AddWidget(combo);
+  header->AddWidget(block1);
 
-	workspace->SetHeader(header);
-	workspace->SetViewport(new Viewport);
-	return workspace;
+  header->Resize(header->GetPreferredSize());
+
+  workspace->SetHeader(header);
+  workspace->SetViewport(new Viewport);
+  return workspace;
 }
 
-Workspace* HPEWindow::CreateToolsOnce()
+Workspace* HPEWindow::CreateToolsOnce ()
 {
-	Workspace* workspace = new Workspace;
+  Workspace* workspace = new Workspace;
 
-	Frame* header = CreateRadios();
+  Frame* header = CreateRadios();
 
-	AdaptiveLayout* layout = new AdaptiveLayout(Vertical);
-	layout->SetMargin(Margin(2, 2, 2, 2));
+  AdaptiveLayout* layout = new AdaptiveLayout(Vertical);
+  layout->SetMargin(Margin(2, 2, 2, 2));
 
-	Frame* tools = new Frame(layout);
-	tools->EnableViewBuffer();
+  Frame* tools = new Frame(layout);
+  tools->EnableViewBuffer();
 
-	Expander* expander = new Expander("Resolution");
+  Expander* expander = new Expander("Resolution");
 
-	NumericalSlider* ns1 = new NumericalSlider;
-	NumericalSlider* ns2 = new NumericalSlider;
+  NumericalSlider* ns1 = new NumericalSlider;
+  NumericalSlider* ns2 = new NumericalSlider;
 
-	Block* vblock = new Block(Vertical);
-	vblock->AddWidget(ns1);
-	vblock->AddWidget(ns2);
+  Block* vblock = new Block(Vertical);
+  vblock->AddWidget(ns1);
+  vblock->AddWidget(ns2);
 
-	expander->AddWidget(vblock);
-	expander->Resize(expander->GetPreferredSize());
+  expander->AddWidget(vblock);
+  expander->Resize(expander->GetPreferredSize());
 
-	Panel* btn_panel = CreateButtons();
+  Panel* btn_panel = CreateButtons();
 
-	tools->AddWidget(expander);
-	tools->AddWidget(btn_panel);
+  tools->AddWidget(expander);
+  tools->AddWidget(btn_panel);
 
-	workspace->SetHeader(header, false);
-	workspace->SetViewport(tools);
+  workspace->SetHeader(header, false);
+  workspace->SetViewport(tools);
 
-	return workspace;
+  return workspace;
 }
 
-Frame* HPEWindow::CreateRadios()
+Frame* HPEWindow::CreateRadios ()
 {
-	AdaptiveLayout* layout = new AdaptiveLayout(Horizontal);
-	layout->SetMargin(Margin(2, 2, 2, 2));
+  AdaptiveLayout* layout = new AdaptiveLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
 
-	Frame* radio_tool = new Frame(layout);
-	radio_tool->EnableViewBuffer();
+  Frame* radio_tool = new Frame(layout);
+  radio_tool->EnableViewBuffer();
 
 //	radio_group_.reset(new ButtonGroup);
 
-	ComboBox* combo = new ComboBox;
+  ComboBox* combo = new ComboBox;
 
-	Block* hblock = new Block(Horizontal);
+  Block* hblock = new Block(Horizontal);
 
-	RadioButton* radio1 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE));
-	RadioButton* radio2 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
-	RadioButton* radio3 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
-	RadioButton* radio4 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
-	RadioButton* radio5 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
+  RadioButton* radio1 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SCENE));
+  RadioButton* radio2 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
+  RadioButton* radio3 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+  RadioButton* radio4 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+  RadioButton* radio5 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
 
 //	radio_group_->AddButton(radio1);
 //	radio_group_->AddButton(radio2);
@@ -172,55 +175,55 @@ Frame* HPEWindow::CreateRadios()
 //	radio_group_->AddButton(radio4);
 //	radio_group_->AddButton(radio5);
 
-	radio1->SetChecked(true);
+  radio1->SetChecked(true);
 
-	hblock->AddWidget(radio1);
-	hblock->AddWidget(radio2);
-	hblock->AddWidget(radio3);
-	hblock->AddWidget(radio4);
-	hblock->AddWidget(radio5);
+  hblock->AddWidget(radio1);
+  hblock->AddWidget(radio2);
+  hblock->AddWidget(radio3);
+  hblock->AddWidget(radio4);
+  hblock->AddWidget(radio5);
 
-	radio_tool->AddWidget(combo);
-	radio_tool->AddWidget(hblock);
+  radio_tool->AddWidget(combo);
+  radio_tool->AddWidget(hblock);
 
-	radio_tool->Resize(radio_tool->GetPreferredSize());
+  radio_tool->Resize(radio_tool->GetPreferredSize());
 
-	return radio_tool;
+  return radio_tool;
 }
 
-Panel* HPEWindow::CreateButtons()
+Panel* HPEWindow::CreateButtons ()
 {
-	Block* hblock1 = new Block(Horizontal);
+  Block* hblock1 = new Block(Horizontal);
 
-	ComboBox* camera_no = new ComboBox;
-	ToggleButton* btn1 = new ToggleButton("Open Camera");
+  ComboBox* camera_no = new ComboBox;
+  ToggleButton* btn1 = new ToggleButton("Open Camera");
 
-	hblock1->AddWidget(camera_no);
-	hblock1->AddWidget(btn1);
+  hblock1->AddWidget(camera_no);
+  hblock1->AddWidget(btn1);
 
-	LinearLayout* layout = new LinearLayout(Vertical);
+  LinearLayout* layout = new LinearLayout(Vertical);
 
-	Block* hblock2 = new Block(Horizontal);
+  Block* hblock2 = new Block(Horizontal);
 
-	Button* play = new Button("Play");
-	Button* pause = new Button("Pause");
-	Button* stop = new Button("Stop");
+  Button* play = new Button("Play");
+  Button* pause = new Button("Pause");
+  Button* stop = new Button("Stop");
 
-	hblock2->AddWidget(play);
-	hblock2->AddWidget(pause);
-	hblock2->AddWidget(stop);
+  hblock2->AddWidget(play);
+  hblock2->AddWidget(pause);
+  hblock2->AddWidget(stop);
 
-	layout->AddWidget(hblock1);
-	layout->AddWidget(hblock2);
+  layout->AddWidget(hblock1);
+  layout->AddWidget(hblock2);
 
   Panel* panel = new Panel(layout);
   panel->SetRoundType(RoundAll);
-	panel->Resize(layout->GetPreferredSize());
+  panel->Resize(layout->GetPreferredSize());
 
-	return panel;
+  return panel;
 }
 
-void HPEWindow::OnResize(Window* window, const Size& size)
+void HPEWindow::OnResize (Window* window, const Size& size)
 {
-	main_frame_->Resize(size);
+  main_frame_->Resize(size);
 }

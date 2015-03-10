@@ -6,20 +6,20 @@
 
 #include "font-viewer-window.hpp"
 
-int main(int argc, char* argv[])
+int main (int argc, char* argv[])
 {
-	using namespace BlendInt;
+  using namespace BlendInt;
 
-	BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
+  BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
 
-	if(Window::Initialize()) {
+  if (Window::Initialize()) {
 
-		FontViewerWindow win(1280, 800, "Font Viewer");
+    FontViewerWindow win(1280, 800, "Font Viewer");
 
-		win.Exec();
-		Window::Terminate();
-	}
+    win.Exec();
+    Window::Terminate();
+  }
 
-	return 0;
+  return 0;
 }
 

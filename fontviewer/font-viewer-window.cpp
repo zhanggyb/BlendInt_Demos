@@ -16,16 +16,15 @@
 
 using namespace BI;
 
-FontViewerWindow::FontViewerWindow(int width, int height, const char* name)
-: BI::Window(width, height, name),
-  menubar_(nullptr)
+FontViewerWindow::FontViewerWindow (int width, int height, const char* name)
+: BI::Window(width, height, name), menubar_(nullptr)
 {
-	menubar_ = CreateMenuBar();
-	AddFrame(menubar_);
+  menubar_ = CreateMenuBar();
+  AddFrame(menubar_);
 
-	OnResize(this, size());
+  OnResize(this, size());
 
-	events()->connect(resized(), this, &FontViewerWindow::OnResize);
+  events()->connect(resized(), this, &FontViewerWindow::OnResize);
 }
 
 FontViewerWindow::~FontViewerWindow ()
@@ -33,193 +32,218 @@ FontViewerWindow::~FontViewerWindow ()
 
 }
 
-void FontViewerWindow::OnResize(BI::Window* window, const BI::Size& size)
+void FontViewerWindow::OnResize (BI::Window* window, const BI::Size& size)
 {
-	Size menubar_size = menubar_->GetPreferredSize();
+  Size menubar_size = menubar_->GetPreferredSize();
 
-	menubar_->MoveTo(0, size.height() - menubar_size.height());
-	menubar_->Resize(size.width(), menubar_size.height());
+  menubar_->MoveTo(0, size.height() - menubar_size.height());
+  menubar_->Resize(size.width(), menubar_size.height());
 }
 
-BI::Frame* FontViewerWindow::CreateMenuBar()
+BI::Frame* FontViewerWindow::CreateMenuBar ()
 {
-	LinearLayout* layout = new LinearLayout(Horizontal);
-	layout->SetMargin(Margin(0, 0, 0, 0));
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(0, 0, 0, 0));
 
-	Frame* menubar = new Frame(layout);
-	menubar->MoveTo(0, size().height() - menubar->size().height());
+  Frame* menubar = new Frame(layout);
+  menubar->MoveTo(0, size().height() - menubar->size().height());
 
-	MenuButton* menubtn1 = new MenuButton("Open");
-	menubar->AddWidget(menubtn1);
-	events()->connect(menubtn1->clicked(), this, &FontViewerWindow::OnOpen);
+  MenuButton* menubtn1 = new MenuButton("Open");
+  menubar->AddWidget(menubtn1);
+  events()->connect(menubtn1->clicked(), this, &FontViewerWindow::OnOpen);
 
-	MenuButton* menubtn2 = new MenuButton("Test CVImageView");
-	menubar->AddWidget(menubtn2);
+  MenuButton* menubtn2 = new MenuButton("Test CVImageView");
+  menubar->AddWidget(menubtn2);
 
 #ifdef __USE_OPENCV__
-	events()->connect(menubtn2->clicked(), this, &FontViewerWindow::OnOpenCVImageView);
+  events()->connect(menubtn2->clicked(), this,
+                    &FontViewerWindow::OnOpenCVImageView);
 #endif
 
-	MenuButton* menubtn3 = new MenuButton("Test RequestDraw");
-	menubar->AddWidget(menubtn3);
+  MenuButton* menubtn3 = new MenuButton("Test RequestDraw");
+  menubar->AddWidget(menubtn3);
 
-	events()->connect(menubtn3->clicked(), this, &FontViewerWindow::OnOpenClock);
+  events()->connect(menubtn3->clicked(), this, &FontViewerWindow::OnOpenClock);
 
-	MenuButton* menubtn4 = new MenuButton("Test ComboBox");
-	menubar->AddWidget(menubtn4);
+  MenuButton* menubtn4 = new MenuButton("Test ComboBox");
+  menubar->AddWidget(menubtn4);
 
-	events()->connect(menubtn4->clicked(), this, &FontViewerWindow::OnOpenComboBox);
+  events()->connect(menubtn4->clicked(), this,
+                    &FontViewerWindow::OnOpenComboBox);
 
-	MenuButton* menubtn5 = new MenuButton("Test ListView");
-	menubar->AddWidget(menubtn5);
+  MenuButton* menubtn5 = new MenuButton("Test ListView");
+  menubar->AddWidget(menubtn5);
 
-	events()->connect(menubtn5->clicked(), this, &FontViewerWindow::OnOpenListView);
+  events()->connect(menubtn5->clicked(), this,
+                    &FontViewerWindow::OnOpenListView);
 
-	MenuButton* menubtn6 = new MenuButton("Test NodeView");
-	menubar->AddWidget(menubtn6);
+  MenuButton* menubtn6 = new MenuButton("Test NodeView");
+  menubar->AddWidget(menubtn6);
 
-	events()->connect(menubtn6->clicked(), this, &FontViewerWindow::OnOpenNodeView);
+  events()->connect(menubtn6->clicked(), this,
+                    &FontViewerWindow::OnTestNodeView);
 
   MenuButton* menubtn7 = new MenuButton("Test Menu");
   menubar->AddWidget(menubtn7);
 
   events()->connect(menubtn7->clicked(), this, &FontViewerWindow::OnTestMenu);
 
-	return menubar;
+  return menubar;
 }
 
-void FontViewerWindow::OnOpen(AbstractButton* sender)
+void FontViewerWindow::OnOpen (AbstractButton* sender)
 {
-	Dialog* dialog = new Dialog("Font Viewer");
+  Dialog* dialog = new Dialog("Font Viewer");
 
-	TextureView* textureview = new TextureView;
-	textureview->MoveTo(50, 50);
+  TextureView* textureview = new TextureView;
+  textureview->MoveTo(50, 50);
 
-	Font font;
+  Font font;
 
-	// textureview->SetTexture(font.GetTexture(L'A'));
+  // textureview->SetTexture(font.GetTexture(L'A'));
 
-	LinearLayout* layout = new LinearLayout(Vertical);
-	layout->AddWidget(textureview);
+  LinearLayout* layout = new LinearLayout(Vertical);
+  layout->AddWidget(textureview);
 
-	// dialog->SetLayout(layout);
+  // dialog->SetLayout(layout);
 
-	dialog->Resize(textureview->size().width() + 100, textureview->size().height() + 100);
-	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
+  dialog->Resize(textureview->size().width() + 100,
+                 textureview->size().height() + 100);
+  dialog->MoveTo((size().width() - dialog->size().width()) / 2,
+                 (size().height() - dialog->size().height()) / 2);
 //	dialog->AddWidget(textureview);
 
-	dialog->Resize(520, 520);
+  dialog->Resize(520, 520);
 
-	AddFrame(dialog);
+  AddFrame(dialog);
 
-	AbstractWindow* off_screen = CreateSharedContext(size().width(), size().height(), false);
+  AbstractWindow* off_screen = CreateSharedContext(size().width(),
+                                                   size().height(), false);
 
-	assert(off_screen);
+  assert(off_screen);
 
-	delete off_screen;
+  delete off_screen;
 }
 
 #ifdef __USE_OPENCV__
 
-void FontViewerWindow::OnOpenCVImageView(AbstractButton* sender)
+void FontViewerWindow::OnOpenCVImageView (AbstractButton* sender)
 {
-	Dialog* dlg = new Dialog("CV Image", new LinearLayout(Vertical));
+  Dialog* dlg = new Dialog("CV Image", new LinearLayout(Vertical));
 
-	CVImageView* view = new CVImageView;
-	dlg->AddWidget(view);
+  CVImageView* view = new CVImageView;
+  dlg->AddWidget(view);
 
-	AddFrame(dlg);
+  AddFrame(dlg);
 
 //	view->OpenFile("test.jpg");
-	view->OpenCamera(0, 15);
-	view->Play();
+  view->OpenCamera(0, 15);
+  view->Play();
 }
 
 #endif
 
-void FontViewerWindow::OnOpenClock(AbstractButton* sender)
+void FontViewerWindow::OnOpenClock (AbstractButton* sender)
 {
-	Dialog* dlg = new Dialog("Clock1", new LinearLayout(Vertical));
+  Dialog* dlg = new Dialog("Clock1", new LinearLayout(Vertical));
 
-	Clock* view = new Clock;
-	dlg->AddWidget(view);
-	dlg->Resize(dlg->GetPreferredSize());
-	dlg->MoveTo(200, 200);
+  Clock* view = new Clock;
+  dlg->AddWidget(view);
+  dlg->Resize(dlg->GetPreferredSize());
+  dlg->MoveTo(200, 200);
 
-	AddFrame(dlg);
+  AddFrame(dlg);
 
-	view->Start();
+  view->Start();
 }
 
 void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
 {
-	Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
+  Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
-	RefPtr<StringListModel> model(new StringListModel);
-	model->AddString("Row 0");
-	model->AddString("Row 1");
-	model->AddString("Row 2");
+  RefPtr<StringListModel> model(new StringListModel);
+  model->AddString("Row 0");
+  model->AddString("Row 1");
+  model->AddString("Row 2");
 
-	model->Print();
+  model->Print();
 
-	ComboBox* widget = new ComboBox;
-	widget->SetModel(model);
+  ComboBox* widget = new ComboBox;
+  widget->SetModel(model);
 
-	frame->AddWidget(widget);
-	frame->Resize(frame->GetPreferredSize());
-	frame->MoveTo((size().width() - frame->size().width()) / 2,
-			(size().height() - frame->size().height()) / 2);
+  frame->AddWidget(widget);
+  frame->Resize(frame->GetPreferredSize());
+  frame->MoveTo((size().width() - frame->size().width()) / 2,
+                (size().height() - frame->size().height()) / 2);
 
-	AddFrame(frame);
+  AddFrame(frame);
 }
 
-void FontViewerWindow::OnOpenListView(AbstractButton* sender)
+void FontViewerWindow::OnOpenListView (AbstractButton* sender)
 {
-	Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
+  Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
-	RefPtr<StringListModel> model(new StringListModel);
-	model->AddString("Row 0");
-	model->AddString("Row 1");
-	model->AddString("Row 2");
+  RefPtr<StringListModel> model(new StringListModel);
+  model->AddString("Row 0");
+  model->AddString("Row 1");
+  model->AddString("Row 2");
 
-	model->Print();
+  model->Print();
 
-	ListView* widget = new ListView;
-	widget->SetModel(model);
+  ListView* widget = new ListView;
+  widget->SetModel(model);
 
-	frame->AddWidget(widget);
-	frame->Resize(frame->GetPreferredSize());
-	frame->MoveTo((size().width() - frame->size().width()) / 2,
-			(size().height() - frame->size().height()) / 2);
+  frame->AddWidget(widget);
+  frame->Resize(frame->GetPreferredSize());
+  frame->MoveTo((size().width() - frame->size().width()) / 2,
+                (size().height() - frame->size().height()) / 2);
 
-	AddFrame(frame);
+  AddFrame(frame);
 }
 
-void FontViewerWindow::OnOpenNodeView(AbstractButton* sender)
+void FontViewerWindow::OnTestNodeView (AbstractButton* sender)
 {
-	Dialog* frame = new Dialog("NodeView test", new LinearLayout(Vertical));
+  Frame* f1 = new Frame(new LinearLayout(Vertical));
+  Frame* f2 = new Frame(new LinearLayout(Vertical));
 
-	NodeView* widget = new NodeView;
+  NodeView* widget = new NodeView;
 
-	widget->AddNode(new Node(new LinearLayout(Vertical)));
+  f1->AddWidget(widget);
 
-	frame->AddWidget(widget);
-	frame->Resize(frame->GetPreferredSize());
-	frame->MoveTo((size().width() - frame->size().width()) / 2,
-			(size().height() - frame->size().height()) / 2);
+  Label* label = new Label("Example Node");
+  NumericalSlider* ns1 = new NumericalSlider;
+  NumericalSlider* ns2 = new NumericalSlider;
+  NumericalSlider* ns3 = new NumericalSlider;
 
-	AddFrame(frame);
+  Node* node = new Node(new LinearLayout(Vertical));
+  node->AddWidget(label);
+  node->AddWidget(ns1);
+  node->AddWidget(ns2);
+  node->AddWidget(ns3);
+
+  node->Resize(node->GetPreferredSize());
+
+  widget->AddNode(node);
+
+  f1->Resize(800, 600);
+  f1->MoveTo(20, 60);
+
+  f2->MoveTo(size().width() - f2->size().width() - 20, 300);
+
+  AddFrame(f1);
+  AddFrame(f2);
 }
 
-void FontViewerWindow::OnTestMenu(AbstractButton* sender)
+void FontViewerWindow::OnTestMenu (AbstractButton* sender)
 {
   Menu* frame = new Menu;
-  frame->AddAction(icons()->icon_16x16(Icons::IMAGE_ALPHA), "Hello!", "Ctrl + A");
+  frame->AddAction(icons()->icon_16x16(Icons::IMAGE_ALPHA), "Hello!",
+                   "Ctrl + A");
   frame->AddAction(icons()->icon_16x16(Icons::IMAGE_DATA), "Wooo", "Ctrl + B");
 
   frame->Resize(frame->GetPreferredSize());
   frame->MoveTo((size().width() - frame->size().width()) / 2,
-      (size().height() - frame->size().height()) / 2);
+                (size().height() - frame->size().height()) / 2);
 
   AddFrame(frame);
 }

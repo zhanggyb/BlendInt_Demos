@@ -22,43 +22,37 @@
 #include <gui/linear-layout.hpp>
 #include <gui/button-group.hpp>
 
-namespace BI=BlendInt;
+namespace BI = BlendInt;
 
 class HPEWindow: public BI::Window
 {
 public:
 
-	HPEWindow (int width, int height, const char* name);
+  HPEWindow (int width, int height, const char* name);
 
-	virtual ~HPEWindow ();
+  virtual ~HPEWindow ();
 
 private:
 
-	enum Status {
-		VideoPlay,
-		VideoPause,
-		VideoStop
-	};
+  BI::Frame* CreateToolBarOnce ();
 
-	BI::Frame* CreateToolBarOnce ();
+  BI::Panel* CreateButtons ();
 
-	BI::Panel* CreateButtons ();
+  BI::Workspace* CreateWorkspaceOnce ();
 
-	BI::Workspace* CreateWorkspaceOnce ();
+  BI::Workspace* CreateToolsOnce ();
 
-	BI::Workspace* CreateToolsOnce ();
+  BI::Frame* CreateRadios ();
 
-	BI::Frame* CreateRadios ();
+  bool OpenCamera (int n, const BI::Size& resolution = BI::Size(640, 480));
 
-	bool OpenCamera (int n, const BI::Size& resolution = BI::Size(640, 480));
+  void OnResize (Window* window, const BI::Size& size);
 
-	void OnResize(Window* window, const BI::Size& size);
+  BI::Viewport* viewport_3d_;
 
-	BI::Viewport* viewport_3d_;
+  BI::RefPtr<BI::ButtonGroup> radio_group_;
 
-	BI::RefPtr<BI::ButtonGroup> radio_group_;
-
-	BI::FrameSplitter* main_frame_;
+  BI::FrameSplitter* main_frame_;
 
 };
 

@@ -2,10 +2,12 @@
  * A context works in GLFW
  */
 
-#ifndef _FONTVIEWERCONTEXT_HPP_
-#define _FONTVIEWERCONTEXT_HPP_
+#ifndef GLFWCONTEXT_HPP_
+#define GLFWCONTEXT_HPP_
 
 #include <GLFW/glfw3.h>
+
+#include <vector>
 
 #include <gui/button.hpp>
 #include <gui/clock.hpp>
@@ -19,6 +21,7 @@
 #include <gui/scroll-bar.hpp>
 #include <gui/scroll-view.hpp>
 #include <gui/menu.hpp>
+#include <gui/texture-view.hpp>
 #include <gui/textentry.hpp>
 #include <gui/viewport3d.hpp>
 #include <gui/numerical-slider.hpp>
@@ -36,51 +39,45 @@
 #include <stock/icons.hpp>
 #include <gui/file-selector.hpp>
 #include <gui/block.hpp>
-#include <gui/panel.hpp>
 
 #include <gui/panel.hpp>
 #include <gui/node-view.hpp>
 #include <gui/progress-bar.hpp>
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
-#include <gui/texture-view.hpp>
-#include <gui/frame.hpp>
 
+#include <gui/viewport.hpp>
 #include <gui/window.hpp>
+#include <gui/dialog.hpp>
 
-namespace BI = BlendInt;
+namespace BI=BlendInt;
 
-class FontViewerWindow: public BI::Window
+class NodeEditorWindow: public BI::Window
 {
 public:
 
-  FontViewerWindow (int width, int height, const char* name);
+  NodeEditorWindow (int width, int height, const char* name);
 
-  virtual ~FontViewerWindow ();
+  virtual ~NodeEditorWindow ();
 
 private:
 
+  BI::Frame* CreateLeftTools ();
+
+  BI::Frame* CreateRightTools ();
+
+  BI::Frame* CreateNodeArea ();
+
+  BI::Frame* CreateHeaderArea ();
+
   void OnResize (BI::Window* window, const BI::Size& size);
 
-  BI::Frame* CreateMenuBar ();
+  void OnAddNode (BI::AbstractButton* sender);
 
-  void OnOpen (BI::AbstractButton* sender);
+  BI::Workspace* workspace_;
 
-#ifdef __USE_OPENCV__
-  void OnOpenCVImageView (BI::AbstractButton* sender);
-#endif
+  BI::NodeView* node_view_;
 
-  void OnOpenClock (BI::AbstractButton* sender);
-
-  void OnOpenComboBox (BI::AbstractButton* sender);
-
-  void OnOpenListView (BI::AbstractButton* sender);
-
-  void OnTestNodeView (BI::AbstractButton* sender);
-
-  void OnTestMenu (BI::AbstractButton* sender);
-
-  BI::Frame* menubar_;
 };
 
-#endif /* _FONTVIEWERCONTEXT_HPP_ */
+#endif /* GLFWCONTEXT_HPP_ */
