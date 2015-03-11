@@ -36,6 +36,7 @@
 #include <gui/node.hpp>
 #include <gui/abstract-window.hpp>
 #include <gui/cv-image-view.hpp>
+#include <core/timer.hpp>
 
 using namespace BI;
 
@@ -157,11 +158,15 @@ void NodeEditorWindow::OnResize (BI::Window* window, const BI::Size& size)
 
 void NodeEditorWindow::OnAddNode (BI::AbstractButton* sender)
 {
-  Node* node = new Node(new LinearLayout(Vertical));
+  uint64_t seed = Timer::GetMicroSeconds();
+  srand(seed);
+  int color = rand ();
+
+  Node* node = new Node(new LinearLayout(Vertical), color);
 
   node->AddWidget(new Label("New Node"));
-  node->AddWidget(new MenuButton("Button1"));
-  node->AddWidget(new MenuButton("Button1"));
+  node->AddWidget(new NumericalSlider);
+  node->AddWidget(new NumericalSlider);
 
   node->Resize(node->GetPreferredSize());
 

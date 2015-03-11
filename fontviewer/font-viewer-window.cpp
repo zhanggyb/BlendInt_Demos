@@ -215,7 +215,7 @@ void FontViewerWindow::OnTestNodeView (AbstractButton* sender)
   NumericalSlider* ns2 = new NumericalSlider;
   NumericalSlider* ns3 = new NumericalSlider;
 
-  Node* node = new Node(new LinearLayout(Vertical));
+  Node* node = new Node(new LinearLayout(Vertical), 0x9F9F9F9F);
   node->AddWidget(label);
   node->AddWidget(ns1);
   node->AddWidget(ns2);
