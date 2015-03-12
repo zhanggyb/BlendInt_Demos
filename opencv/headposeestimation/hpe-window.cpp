@@ -18,6 +18,8 @@
 #include <gui/toggle-button.hpp>
 #include <gui/radio-button.hpp>
 #include <gui/adaptive-layout.hpp>
+#include <gui/cube.hpp>
+#include <gui/mesh.hpp>
 
 #include "hpe-window.hpp"
 
@@ -104,8 +106,10 @@ Workspace* HPEWindow::CreateWorkspaceOnce ()
 
   header->Resize(header->GetPreferredSize());
 
+  ModelViewport* model_view = new ModelViewport;
+
   workspace->SetHeader(header);
-  workspace->SetViewport(new ModelViewport);
+  workspace->SetViewport(model_view);
   return workspace;
 }
 
