@@ -17,7 +17,7 @@
 #include <gui/filebutton.hpp>
 #include <gui/color-wheel.hpp>
 #include <gui/viewport2d.hpp>
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include <gui/color-selector.hpp>
 
 #include <stock/shaders.hpp>
@@ -43,7 +43,7 @@ GalleryWindow::GalleryWindow (int width, int height, const char* name)
   viewport_(nullptr),
   tools_(nullptr)
 {
-	viewport_ = new Viewport;
+	viewport_ = new ModelViewport;
 	AddFrame(viewport_);
 	viewport_->Resize(size());
 

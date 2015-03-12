@@ -105,7 +105,7 @@ Workspace* HPEWindow::CreateWorkspaceOnce ()
   header->Resize(header->GetPreferredSize());
 
   workspace->SetHeader(header);
-  workspace->SetViewport(new Viewport);
+  workspace->SetViewport(new ModelViewport);
   return workspace;
 }
 

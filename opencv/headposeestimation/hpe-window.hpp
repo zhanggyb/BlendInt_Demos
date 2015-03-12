@@ -13,7 +13,7 @@
 
 #include <gui/image-viewport.hpp>
 #include <core/timer.hpp>
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include <gui/panel.hpp>
 #include <gui/frame-splitter.hpp>
 
@@ -48,7 +48,7 @@ private:
 
   void OnResize (Window* window, const BI::Size& size);
 
-  BI::Viewport* viewport_3d_;
+  BI::ModelViewport* viewport_3d_;
 
   BI::RefPtr<BI::ButtonGroup> radio_group_;
 

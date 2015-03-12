@@ -17,7 +17,7 @@
 #include <gui/filebutton.hpp>
 #include <gui/color-wheel.hpp>
 #include <gui/viewport2d.hpp>
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include <gui/color-selector.hpp>
 
 #include <stock/shaders.hpp>

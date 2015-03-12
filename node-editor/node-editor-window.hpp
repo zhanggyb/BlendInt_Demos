@@ -46,7 +46,7 @@
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
 
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include <gui/window.hpp>
 #include <gui/dialog.hpp>
 

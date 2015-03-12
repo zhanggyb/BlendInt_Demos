@@ -4,7 +4,7 @@
 
 #include <gui/window.hpp>
 #include <gui/frame-splitter.hpp>
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include "cartoonifier-window.hpp"
 
 using namespace BlendInt;

@@ -46,7 +46,7 @@
 #include <gui/workspace.hpp>
 #include <gui/list-view.hpp>
 
-#include <gui/viewport.hpp>
+#include <gui/model-viewport.hpp>
 #include <gui/window.hpp>
 #include <gui/dialog.hpp>
 
@@ -72,7 +72,7 @@ private:
 
 	void OnResize (BI::Window* window, const BI::Size& size);
 
-	BI::Viewport* viewport_;
+	BI::ModelViewport* viewport_;
 
 	BI::Frame* tools_;
 };
