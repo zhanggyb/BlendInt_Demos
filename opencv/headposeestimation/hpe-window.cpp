@@ -108,8 +108,8 @@ Workspace* HPEWindow::CreateWorkspaceOnce ()
 
   ModelViewport* model_view = new ModelViewport;
 
-  workspace->SetHeader(header);
-  workspace->SetViewport(model_view);
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(model_view);
   return workspace;
 }
 
@@ -142,8 +142,8 @@ Workspace* HPEWindow::CreateToolsOnce ()
   tools->AddWidget(expander);
   tools->AddWidget(btn_panel);
 
-  workspace->SetHeader(header, false);
-  workspace->SetViewport(tools);
+  workspace->SetHeaderFrame(header, false);
+  workspace->SetMainFrame(tools);
 
   return workspace;
 }

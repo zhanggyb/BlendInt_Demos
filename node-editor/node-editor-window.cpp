@@ -52,10 +52,10 @@ NodeEditorWindow::NodeEditorWindow (int width, int height, const char* name)
 
   workspace_ = new Workspace;
 
-  workspace_->SetLeftSideBar(left_tools);
-  workspace_->SetViewport(node_area);
-  workspace_->SetRightSideBar(right_tools);
-  workspace_->SetHeader(header);
+  workspace_->SetLeftFrame(left_tools);
+  workspace_->SetMainFrame(node_area);
+  workspace_->SetRightFrame(right_tools);
+  workspace_->SetHeaderFrame(header);
 
   AddFrame(workspace_);
 
