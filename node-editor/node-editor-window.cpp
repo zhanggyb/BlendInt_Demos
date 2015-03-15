@@ -61,7 +61,7 @@ NodeEditorWindow::NodeEditorWindow (int width, int height, const char* name)
 
   events()->connect(resized(), this, &NodeEditorWindow::OnResize);
 
-  OnResize(this, size());
+  OnResize(size());
 }
 
 NodeEditorWindow::~NodeEditorWindow ()
@@ -151,12 +151,12 @@ BI::Frame* NodeEditorWindow::CreateHeaderArea ()
   return frame;
 }
 
-void NodeEditorWindow::OnResize (BI::Window* window, const BI::Size& size)
+void NodeEditorWindow::OnResize (const BI::Size& size)
 {
   workspace_->Resize(size);
 }
 
-void NodeEditorWindow::OnAddNode (BI::AbstractButton* sender)
+void NodeEditorWindow::OnAddNode ()
 {
   uint64_t seed = Timer::GetMicroSeconds();
   srand(seed);

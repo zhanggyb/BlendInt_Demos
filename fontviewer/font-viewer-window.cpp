@@ -22,7 +22,7 @@ FontViewerWindow::FontViewerWindow (int width, int height, const char* name)
   menubar_ = CreateMenuBar();
   AddFrame(menubar_);
 
-  OnResize(this, size());
+  OnResize(size());
 
   events()->connect(resized(), this, &FontViewerWindow::OnResize);
 }
@@ -32,7 +32,7 @@ FontViewerWindow::~FontViewerWindow ()
 
 }
 
-void FontViewerWindow::OnResize (BI::Window* window, const BI::Size& size)
+void FontViewerWindow::OnResize (const BI::Size& size)
 {
   Size menubar_size = menubar_->GetPreferredSize();
 
@@ -91,7 +91,7 @@ BI::Frame* FontViewerWindow::CreateMenuBar ()
   return menubar;
 }
 
-void FontViewerWindow::OnOpen (AbstractButton* sender)
+void FontViewerWindow::OnOpen ()
 {
   Dialog* dialog = new Dialog("Font Viewer");
 
@@ -127,7 +127,7 @@ void FontViewerWindow::OnOpen (AbstractButton* sender)
 
 #ifdef __USE_OPENCV__
 
-void FontViewerWindow::OnOpenCVImageView (AbstractButton* sender)
+void FontViewerWindow::OnOpenCVImageView ()
 {
   Dialog* dlg = new Dialog("CV Image", new LinearLayout(Vertical));
 
@@ -143,7 +143,7 @@ void FontViewerWindow::OnOpenCVImageView (AbstractButton* sender)
 
 #endif
 
-void FontViewerWindow::OnOpenClock (AbstractButton* sender)
+void FontViewerWindow::OnOpenClock ()
 {
   Dialog* dlg = new Dialog("Clock1", new LinearLayout(Vertical));
 
@@ -157,7 +157,7 @@ void FontViewerWindow::OnOpenClock (AbstractButton* sender)
   view->Start();
 }
 
-void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
+void FontViewerWindow::OnOpenComboBox ()
 {
   Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
@@ -179,7 +179,7 @@ void FontViewerWindow::OnOpenComboBox (AbstractButton* sender)
   AddFrame(frame);
 }
 
-void FontViewerWindow::OnOpenListView (AbstractButton* sender)
+void FontViewerWindow::OnOpenListView ()
 {
   Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
@@ -201,7 +201,7 @@ void FontViewerWindow::OnOpenListView (AbstractButton* sender)
   AddFrame(frame);
 }
 
-void FontViewerWindow::OnTestNodeView (AbstractButton* sender)
+void FontViewerWindow::OnTestNodeView ()
 {
   Frame* f1 = new Frame(new LinearLayout(Vertical));
   Frame* f2 = new Frame(new LinearLayout(Vertical));
@@ -234,7 +234,7 @@ void FontViewerWindow::OnTestNodeView (AbstractButton* sender)
   AddFrame(f2);
 }
 
-void FontViewerWindow::OnTestMenu (AbstractButton* sender)
+void FontViewerWindow::OnTestMenu ()
 {
   Menu* frame = new Menu;
   frame->AddAction(icons()->icon_16x16(Icons::IMAGE_ALPHA), "Hello!",

@@ -73,7 +73,7 @@ GalleryWindow::~GalleryWindow ()
 {
 }
 
-void GalleryWindow::OnResize (BI::Window* window, const BI::Size& size)
+void GalleryWindow::OnResize (const BI::Size& size)
 {
 	viewport_->Resize(size);
 	tools_->MoveTo(0, (size.height() - tools_->size().height()) / 2);

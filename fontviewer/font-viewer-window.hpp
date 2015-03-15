@@ -60,25 +60,25 @@ public:
 
 private:
 
-  void OnResize (BI::Window* window, const BI::Size& size);
+  void OnResize (const BI::Size& size);
 
   BI::Frame* CreateMenuBar ();
 
-  void OnOpen (BI::AbstractButton* sender);
+  void OnOpen ();
 
 #ifdef __USE_OPENCV__
-  void OnOpenCVImageView (BI::AbstractButton* sender);
+  void OnOpenCVImageView ();
 #endif
 
-  void OnOpenClock (BI::AbstractButton* sender);
+  void OnOpenClock ();
 
-  void OnOpenComboBox (BI::AbstractButton* sender);
+  void OnOpenComboBox ();
 
-  void OnOpenListView (BI::AbstractButton* sender);
+  void OnOpenListView ();
 
-  void OnTestNodeView (BI::AbstractButton* sender);
+  void OnTestNodeView ();
 
-  void OnTestMenu (BI::AbstractButton* sender);
+  void OnTestMenu ();
 
   BI::Frame* menubar_;
 };

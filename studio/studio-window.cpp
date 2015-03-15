@@ -22,7 +22,7 @@ StudioWindow::StudioWindow(int width, int height, const char* name)
 	toolbar_ = CreateToolBar();
 	AddFrame(toolbar_);
 
-	OnResize(this, size());
+	OnResize(size());
 	events()->connect(resized(), this, &StudioWindow::OnResize);
 }
 
@@ -68,7 +68,7 @@ BI::Frame* StudioWindow::CreateToolBar()
 	return tools;
 }
 
-void StudioWindow::OnTakeScreenshot (BI::AbstractButton* sender)
+void StudioWindow::OnTakeScreenshot ()
 {
 	DBG_PRINT_MSG("TODO: %s", "check the focused frame and save the view buffer to a image file");
 }
@@ -123,7 +123,7 @@ void StudioWindow::OnOpenFileSelector()
 	AddFrame(fs);
 }
 
-void StudioWindow::OnResize(Window* window, const BI::Size& size)
+void StudioWindow::OnResize(const BI::Size& size)
 {
 	toolbar_->MoveTo((size.width() - toolbar_->size().width()) / 2,
 			size.height() - toolbar_->size().height());
@@ -314,7 +314,7 @@ void StudioWindow::OnOpenDialogForTabHeader()
 	AddFrame(dialog);
 }
 
-void StudioWindow::OnTestAdaptiveLayout (BI::AbstractButton* sender)
+void StudioWindow::OnTestAdaptiveLayout ()
 {
   Dialog * dialog1 = Manage(
       new Dialog("Horizontal AdaptiveLayout", new AdaptiveLayout(Horizontal)));

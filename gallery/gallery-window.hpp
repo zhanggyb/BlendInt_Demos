@@ -70,7 +70,7 @@ private:
 
 	BI::Frame* CreateTools ();
 
-	void OnResize (BI::Window* window, const BI::Size& size);
+	void OnResize (const BI::Size& size);
 
 	BI::ModelViewport* viewport_;
 

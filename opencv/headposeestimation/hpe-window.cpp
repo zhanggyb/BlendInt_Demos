@@ -227,7 +227,7 @@ Panel* HPEWindow::CreateButtons ()
   return panel;
 }
 
-void HPEWindow::OnResize (Window* window, const Size& size)
+void HPEWindow::OnResize (const Size& size)
 {
   main_frame_->Resize(size);
 }

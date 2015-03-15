@@ -63,9 +63,9 @@ private:
 
 	BI::Frame* CreateToolBar ();
 
-	void OnResize(Window* window, const BI::Size& size);
+	void OnResize(const BI::Size& size);
 
-	void OnTakeScreenshot (BI::AbstractButton* sender);
+	void OnTakeScreenshot ();
 
 	void OnOpenDialogForButtons ();
 
@@ -93,7 +93,7 @@ private:
 
 	void OnOpenDialogForTabHeader ();
 
-	void OnTestAdaptiveLayout (BI::AbstractButton* sender);
+	void OnTestAdaptiveLayout ();
 
 	BI::Button* button_;
 

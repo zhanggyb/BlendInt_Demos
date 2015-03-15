@@ -70,9 +70,9 @@ private:
 
   BI::Frame* CreateHeaderArea ();
 
-  void OnResize (BI::Window* window, const BI::Size& size);
+  void OnResize (const BI::Size& size);
 
-  void OnAddNode (BI::AbstractButton* sender);
+  void OnAddNode ();
 
   BI::Workspace* workspace_;
 

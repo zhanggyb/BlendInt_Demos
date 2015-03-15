@@ -14,30 +14,30 @@
 
 #include "cartoon-image-view.hpp"
 
-namespace BI=BlendInt;
+namespace BI = BlendInt;
 
 class CartoonifierWindow: public BI::Window
 {
 public:
-	CartoonifierWindow (int width, int height, const char* name);
+  CartoonifierWindow (int width, int height, const char* name);
 
-	virtual ~CartoonifierWindow ();
+  virtual ~CartoonifierWindow ();
 
 private:
 
-	BI::Frame* CreateToolBoxOnce ();
+  BI::Frame* CreateToolBoxOnce ();
 
-	void OnResize (BI::Window* window, const BI::Size& size);
+  void OnResize (const BI::Size& size);
 
-	void OnPlay (BI::AbstractButton* sender);
+  void OnPlay ();
 
-	void OnPause (BI::AbstractButton* sender);
+  void OnPause ();
 
-	void OnStop(BI::AbstractButton* sender);
+  void OnStop ();
 
-	CartoonImageView* cv_view_;
+  CartoonImageView* cv_view_;
 
-	BI::FrameSplitter* main_frame_;
+  BI::FrameSplitter* main_frame_;
 };
 
 #endif /* _CARTOONIFIERCONTEXT_HPP_ */

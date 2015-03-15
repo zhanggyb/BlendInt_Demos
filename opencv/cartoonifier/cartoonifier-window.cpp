@@ -83,26 +83,26 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 	return tools;
 }
 
-void CartoonifierWindow::OnPlay(AbstractButton* sender)
+void CartoonifierWindow::OnPlay()
 {
 	DBG_PRINT_MSG("%s", "Start Play");
 	cv_view_->OpenCamera(0, 15, Size(640, 480));
 	cv_view_->Play();
 }
 
-void CartoonifierWindow::OnPause (AbstractButton* sender)
+void CartoonifierWindow::OnPause ()
 {
 	DBG_PRINT_MSG("%s", "Pause");
 	cv_view_->Pause();
 }
 
-void CartoonifierWindow::OnStop(AbstractButton* sender)
+void CartoonifierWindow::OnStop()
 {
 	DBG_PRINT_MSG("%s", "Stop Play");
 	cv_view_->Stop();
 }
 
-void CartoonifierWindow::OnResize(Window* window, const Size& size)
+void CartoonifierWindow::OnResize(const Size& size)
 {
 	main_frame_->Resize(size);
 }

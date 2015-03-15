@@ -46,7 +46,7 @@ private:
 
   bool OpenCamera (int n, const BI::Size& resolution = BI::Size(640, 480));
 
-  void OnResize (Window* window, const BI::Size& size);
+  void OnResize (const BI::Size& size);
 
   BI::ModelViewport* viewport_3d_;
 
