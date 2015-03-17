@@ -108,6 +108,7 @@ BI::Dialog* GalleryWindow::CreateWidgetsArea ()
 
 	tab->AddWidget("Texture View", new TextureView);
 	tab->AddWidget("Node View", new NodeView);
+	tab->AddWidget("Scroll View", new ScrollView);
 
 	toolbox->AddWidget(tab);
 
