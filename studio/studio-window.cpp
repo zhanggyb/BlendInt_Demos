@@ -8,7 +8,7 @@
 #include <gui/menu-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>
-#include <gui/tabheader.hpp>
+#include <gui/tab-header.hpp>
 #include <gui/adaptive-layout.hpp>
 
 using namespace BI;

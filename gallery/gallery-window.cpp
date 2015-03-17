@@ -155,7 +155,7 @@ BI::Dialog* GalleryWindow::CreateButtons ()
 	block1->AddWidget(radio4);
 	block1->AddWidget(radio5);
 
-	CheckButton* b4 = new CheckButton;
+	CheckButton* b4 = new CheckButton("Check Button");
 	ColorButton* b5 = new ColorButton;
 	FileButton* b6 = new FileButton;
 

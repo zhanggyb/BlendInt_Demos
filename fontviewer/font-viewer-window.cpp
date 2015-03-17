@@ -8,7 +8,7 @@
 #include <gui/menu-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/scroll-area.hpp>
-#include <gui/tabheader.hpp>
+#include <gui/tab-header.hpp>
 #include <gui/dialog.hpp>
 #include <gui/cv-image-view.hpp>
 #include <gui/string-list-model.hpp>

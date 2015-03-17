@@ -32,7 +32,7 @@
 #include <gui/frame.hpp>
 #include <gui/tab.hpp>
 #include <gui/tab-button.hpp>
-#include <gui/tabheader.hpp>
+#include <gui/tab-header.hpp>
 #include <gui/expander.hpp>
 #include <gui/color-button.hpp>
 
