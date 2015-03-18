@@ -39,34 +39,35 @@
 using namespace BI;
 
 GalleryWindow::GalleryWindow (int width, int height, const char* name)
-: Window(width, height, name),
-  viewport_(nullptr),
-  tools_(nullptr),
-  splitter_(0),
-  widgets_dialog_(0)
+    :
+      Window(width, height, name),
+      viewport_(nullptr),
+      tools_(nullptr),
+      splitter_(0),
+      widgets_dialog_(0)
 {
   splitter_ = new FrameSplitter(Vertical);
 
   Workspace* viewport_space = CreateViewportSpace();
-	Workspace* node_space = CreateNodeSpace();
+  Workspace* node_space = CreateNodeSpace();
 
-	splitter_->AddFrame(viewport_space);
-	splitter_->AddFrame(node_space);
+  splitter_->AddFrame(viewport_space);
+  splitter_->AddFrame(node_space);
 
   AddFrame(splitter_);
 
-	tools_ = CreateTools();
-	AddFrame(tools_);
+  tools_ = CreateTools();
+  AddFrame(tools_);
 
   Dialog* dlg = CreateWidgetsDialog();
   AddFrame(dlg);
   dlg->Resize(460, dlg->GetPreferredSize().height());
   dlg->MoveTo(size().width() - dlg->size().width() - 50,
-               size().height() - dlg->size().height() - 50);
+              size().height() - dlg->size().height() - 50);
 
-	events()->connect(resized(), this, &GalleryWindow::OnResize);
+  events()->connect(resized(), this, &GalleryWindow::OnResize);
 
-	OnResize(size());
+  OnResize(size());
 }
 
 GalleryWindow::~GalleryWindow ()
@@ -93,11 +94,16 @@ BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
 
   Label* l3 = new Label("Radio Button: ", AlignRight);
   Block* block1 = new Block(Horizontal);
-  RadioButton* radio1 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE));
-  RadioButton* radio2 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
-  RadioButton* radio3 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
-  RadioButton* radio4 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
-  RadioButton* radio5 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
+  RadioButton* radio1 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SCENE));
+  RadioButton* radio2 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
+  RadioButton* radio3 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+  RadioButton* radio4 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+  RadioButton* radio5 = new RadioButton(
+      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
 
   block1->AddWidget(radio1);
   block1->AddWidget(radio2);
@@ -113,12 +119,12 @@ BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
   table_layout->InsertWidget(3, 0, l4);
   table_layout->InsertWidget(3, 1, b4);
 
-  Label* l5 = new Label("Radio Button: ", AlignRight);
+  Label* l5 = new Label("Color Button: ", AlignRight);
   ColorButton* b5 = new ColorButton;
   table_layout->InsertWidget(4, 0, l5);
   table_layout->InsertWidget(4, 1, b5);
 
-  Label* l6 = new Label("Radio Button: ", AlignRight);
+  Label* l6 = new Label("File Button: ", AlignRight);
   FileButton* b6 = new FileButton;
   table_layout->InsertWidget(5, 0, l6);
   table_layout->InsertWidget(5, 1, b6);
@@ -140,42 +146,42 @@ BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
 
 void GalleryWindow::OnResize (const BI::Size& size)
 {
-	tools_->Resize(tools_->GetPreferredSize().width(), size.height());
+  tools_->Resize(tools_->GetPreferredSize().width(), size.height());
 
-	splitter_->MoveTo(tools_->size().width(), 0);
-	splitter_->Resize(size.width() - tools_->size().width(), size.height());
+  splitter_->MoveTo(tools_->size().width(), 0);
+  splitter_->Resize(size.width() - tools_->size().width(), size.height());
 }
 
-Frame* GalleryWindow::CreateTools()
+Frame* GalleryWindow::CreateTools ()
 {
-	LinearLayout* layout = new LinearLayout(Vertical);
+  LinearLayout* layout = new LinearLayout(Vertical);
 
-	Frame* tools = new Frame(layout);
-	tools->EnableViewBuffer();
+  Frame* tools = new Frame(layout);
+  tools->EnableViewBuffer();
 
-	Button* b1 = new Button;
-	b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
+  Button* b1 = new Button;
+  b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
 
-	Button* b2 = new Button;
-	b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
+  Button* b2 = new Button;
+  b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
 
-	Button* b3 = new Button;
-	b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
+  Button* b3 = new Button;
+  b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
 
-	Button* b4 = new Button;
-	b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
+  Button* b4 = new Button;
+  b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
 
-	tools->AddWidget(b1);
-	tools->AddWidget(b2);
-	tools->AddWidget(b3);
-	tools->AddWidget(b4);
+  tools->AddWidget(b1);
+  tools->AddWidget(b2);
+  tools->AddWidget(b3);
+  tools->AddWidget(b4);
 
-	// tools->Resize(tools->GetPreferredSize());
+  // tools->Resize(tools->GetPreferredSize());
 
-	return tools;
+  return tools;
 }
 
-Workspace* GalleryWindow::CreateNodeSpace()
+Workspace* GalleryWindow::CreateNodeSpace ()
 {
   Workspace* workspace = new Workspace;
 
@@ -236,7 +242,7 @@ Workspace* GalleryWindow::CreateNodeSpace()
   return workspace;
 }
 
-Workspace* GalleryWindow::CreateViewportSpace()
+Workspace* GalleryWindow::CreateViewportSpace ()
 {
   Workspace* workspace = new Workspace;
 
