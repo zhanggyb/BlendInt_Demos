@@ -204,7 +204,6 @@ void FontViewerWindow::OnOpenListView ()
 void FontViewerWindow::OnTestNodeView ()
 {
   Frame* f1 = new Frame(new LinearLayout(Vertical));
-  Frame* f2 = new Frame(new LinearLayout(Vertical));
 
   NodeView* widget = new NodeView;
 
@@ -228,6 +227,10 @@ void FontViewerWindow::OnTestNodeView ()
   f1->Resize(800, 600);
   f1->MoveTo(20, 60);
 
+  Dialog* f2 = new Dialog("Dialog", new LinearLayout(Vertical));
+  f2->AddWidget(new Button("Button"));
+
+  f2->Resize(f2->GetPreferredSize());
   f2->MoveTo(size().width() - f2->size().width() - 20, 300);
 
   AddFrame(f1);
