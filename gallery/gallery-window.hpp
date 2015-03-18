@@ -62,19 +62,23 @@ public:
 
 private:
 
-	BI::Dialog* CreateMenuBarArea ();
-
-	BI::Dialog* CreateWidgetsArea ();
-
-	BI::Dialog* CreateButtons ();
-
 	BI::Frame* CreateTools ();
+
+	BI::Workspace* CreateNodeSpace ();
+
+	BI::Workspace* CreateViewportSpace ();
+
+	BI::Dialog* CreateWidgetsDialog ();
 
 	void OnResize (const BI::Size& size);
 
 	BI::ModelViewport* viewport_;
 
 	BI::Frame* tools_;
+
+	BI::FrameSplitter* splitter_;
+
+	BI::Dialog* widgets_dialog_;
 };
 
 

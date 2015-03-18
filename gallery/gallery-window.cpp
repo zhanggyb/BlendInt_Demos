@@ -41,140 +41,109 @@ using namespace BI;
 GalleryWindow::GalleryWindow (int width, int height, const char* name)
 : Window(width, height, name),
   viewport_(nullptr),
-  tools_(nullptr)
+  tools_(nullptr),
+  splitter_(0),
+  widgets_dialog_(0)
 {
-	viewport_ = new ModelViewport;
-	AddFrame(viewport_);
-	viewport_->Resize(size());
+  splitter_ = new FrameSplitter(Vertical);
+
+  Workspace* viewport_space = CreateViewportSpace();
+	Workspace* node_space = CreateNodeSpace();
+
+	splitter_->AddFrame(viewport_space);
+	splitter_->AddFrame(node_space);
+
+  AddFrame(splitter_);
 
 	tools_ = CreateTools();
 	AddFrame(tools_);
-	tools_->MoveTo(0, (size().height() - tools_->size().height()) / 2);
 
-	Dialog* dlg1 = CreateMenuBarArea();
-	AddFrame(dlg1);
-	dlg1->Resize(dlg1->GetPreferredSize());
-	dlg1->MoveTo(100, 100);
-
-	Dialog* dlg2 = CreateButtons();
-	AddFrame(dlg2);
-	dlg2->Resize(dlg2->GetPreferredSize());
-	dlg2->MoveTo(100, 700);
-
-	Dialog* dlg3 = CreateWidgetsArea();
-	AddFrame(dlg3);
-	dlg3->Resize(dlg3->GetPreferredSize());
-	dlg3->MoveTo(240, 240);
+  Dialog* dlg = CreateWidgetsDialog();
+  AddFrame(dlg);
+  dlg->Resize(460, dlg->GetPreferredSize().height());
+  dlg->MoveTo(size().width() - dlg->size().width() - 50,
+               size().height() - dlg->size().height() - 50);
 
 	events()->connect(resized(), this, &GalleryWindow::OnResize);
+
+	OnResize(size());
 }
 
 GalleryWindow::~GalleryWindow ()
 {
 }
 
+BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
+{
+  Dialog* dialog = new Dialog("More Widgets", new LinearLayout(Vertical));
+
+  // ---- buttons
+
+  TableLayout* table_layout = new TableLayout(6, 2);
+
+  Label* l1 = new Label("Regular Button: ", AlignRight);
+  Button* b1 = new Button("Button");
+  table_layout->InsertWidget(0, 0, l1);
+  table_layout->InsertWidget(0, 1, b1);
+
+  Label* l2 = new Label("Toggle Button: ", AlignRight);
+  ToggleButton* b2 = new ToggleButton("Toggle Button");
+  table_layout->InsertWidget(1, 0, l2);
+  table_layout->InsertWidget(1, 1, b2);
+
+  Label* l3 = new Label("Radio Button: ", AlignRight);
+  Block* block1 = new Block(Horizontal);
+  RadioButton* radio1 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE));
+  RadioButton* radio2 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
+  RadioButton* radio3 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+  RadioButton* radio4 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+  RadioButton* radio5 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
+
+  block1->AddWidget(radio1);
+  block1->AddWidget(radio2);
+  block1->AddWidget(radio3);
+  block1->AddWidget(radio4);
+  block1->AddWidget(radio5);
+
+  table_layout->InsertWidget(2, 0, l3);
+  table_layout->InsertWidget(2, 1, block1);
+
+  Label* l4 = new Label("Check Button: ", AlignRight);
+  CheckButton* b4 = new CheckButton("Check Button");
+  table_layout->InsertWidget(3, 0, l4);
+  table_layout->InsertWidget(3, 1, b4);
+
+  Label* l5 = new Label("Radio Button: ", AlignRight);
+  ColorButton* b5 = new ColorButton;
+  table_layout->InsertWidget(4, 0, l5);
+  table_layout->InsertWidget(4, 1, b5);
+
+  Label* l6 = new Label("Radio Button: ", AlignRight);
+  FileButton* b6 = new FileButton;
+  table_layout->InsertWidget(5, 0, l6);
+  table_layout->InsertWidget(5, 1, b6);
+
+  dialog->AddWidget(table_layout);
+
+  // ---- tab
+
+  Tab* tab = new Tab;
+
+  tab->AddWidget("Texture View", new TextureView);
+  tab->AddWidget("Node View", new NodeView);
+  tab->AddWidget("Scroll View", new ScrollView);
+
+  dialog->AddWidget(tab);
+
+  return dialog;
+}
+
 void GalleryWindow::OnResize (const BI::Size& size)
 {
-	viewport_->Resize(size);
-	tools_->MoveTo(0, (size.height() - tools_->size().height()) / 2);
-}
+	tools_->Resize(tools_->GetPreferredSize().width(), size.height());
 
-BI::Dialog* GalleryWindow::CreateMenuBarArea ()
-{
-	Dialog* dlg = new Dialog("Menu Bar", new LinearLayout(Horizontal));
-
-	LinearLayout* l1 = new LinearLayout;
-
-	MenuButton* b1 = new MenuButton("Menu1");
-	MenuButton* b2 = new MenuButton("Menu2");
-	MenuButton* b3 = new MenuButton("Menu3");
-	Separator* sp = new Separator(true);
-
-	l1->AddWidget(b1);
-	l1->AddWidget(b2);
-	l1->AddWidget(b3);
-	l1->AddWidget(sp);
-
-	dlg->AddWidget(l1);
-
-	return dlg;
-}
-
-BI::Dialog* GalleryWindow::CreateWidgetsArea ()
-{
-	Dialog* toolbox = new Dialog("Widgets", new LinearLayout(Vertical));
-
-	Tab* tab = new Tab;
-
-	tab->AddWidget("Texture View", new TextureView);
-	tab->AddWidget("Node View", new NodeView);
-	tab->AddWidget("Scroll View", new ScrollView);
-
-	toolbox->AddWidget(tab);
-
-//	LinearLayout* l2 = new LinearLayout;
-//
-//	LinearLayout* l2_1 = new LinearLayout(Vertical, AlignCenter, 0);
-//	Label* tv_lbl = new Label("TextureView: ", AlignLeft);
-//	TextureView* tv = new TextureView;
-//	l2_1->AddWidget(tv_lbl);
-//	l2_1->AddWidget(tv);
-//
-//	LinearLayout* l2_2 = new LinearLayout(Vertical, AlignCenter, 0);
-//	Label* nv_lbl = new Label("NodeView: ", AlignLeft);
-//	NodeView* nv = new NodeView;
-//	l2_2->AddWidget(nv_lbl);
-//	l2_2->AddWidget(nv);
-//
-//	l2->AddWidget(l2_1);
-//	l2->AddWidget(l2_2);
-//
-//	toolbox->AddWidget(l2);
-
-	return toolbox;
-}
-
-BI::Dialog* GalleryWindow::CreateButtons ()
-{
-	Dialog* dlg = new Dialog("Buttons", new LinearLayout(Vertical));
-
-	LinearLayout* l1 = new LinearLayout;
-
-	Button* b1 = new Button("Button");
-	ToggleButton* b2 = new ToggleButton("Toggle Button");
-
-	Block* block1 = new Block(Horizontal);
-	RadioButton* radio1 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE));
-	RadioButton* radio2 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
-	RadioButton* radio3 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
-	RadioButton* radio4 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
-	RadioButton* radio5 = new RadioButton(AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
-
-	block1->AddWidget(radio1);
-	block1->AddWidget(radio2);
-	block1->AddWidget(radio3);
-	block1->AddWidget(radio4);
-	block1->AddWidget(radio5);
-
-	CheckButton* b4 = new CheckButton("Check Button");
-	ColorButton* b5 = new ColorButton;
-	FileButton* b6 = new FileButton;
-
-	Separator* sp1 = new Separator(true);
-
-	l1->AddWidget(b1);
-	l1->AddWidget(b2);
-	l1->AddWidget(block1);
-	l1->AddWidget(b4);
-	l1->AddWidget(b5);
-	l1->AddWidget(b6);
-	l1->AddWidget(sp1);
-
-	l1->Resize(l1->GetPreferredSize());
-	
-	dlg->AddWidget(l1);
-
-	return dlg;
+	splitter_->MoveTo(tools_->size().width(), 0);
+	splitter_->Resize(size.width() - tools_->size().width(), size.height());
 }
 
 Frame* GalleryWindow::CreateTools()
@@ -201,7 +170,100 @@ Frame* GalleryWindow::CreateTools()
 	tools->AddWidget(b3);
 	tools->AddWidget(b4);
 
-	tools->Resize(tools->GetPreferredSize());
+	// tools->Resize(tools->GetPreferredSize());
 
 	return tools;
+}
+
+Workspace* GalleryWindow::CreateNodeSpace()
+{
+  Workspace* workspace = new Workspace;
+
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
+
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
+
+  ComboBox* combo = new ComboBox;
+
+  MenuButton* btn1 = new MenuButton("File");
+  MenuButton* btn2 = new MenuButton("Edit");
+  MenuButton* btn3 = new MenuButton("View");
+
+  header->AddWidget(combo);
+  header->AddWidget(btn1);
+  header->AddWidget(btn2);
+  header->AddWidget(btn3);
+
+  header->Resize(header->GetPreferredSize());
+
+  LinearLayout* vlayout = new LinearLayout(Vertical);
+  vlayout->SetMargin(Margin(0, 0, 0, 0));
+  Frame* node_frame = new Frame(vlayout);
+
+  NodeView* node_view = new NodeView;
+  node_frame->AddWidget(node_view);
+
+  // +++++
+  // add some node
+
+  Node* node1 = new Node(new LinearLayout(Vertical), 0x9f9f9fff);
+
+  node1->AddWidget(new Label("Node 1"));
+  node1->AddWidget(new NumericalSlider);
+  node1->AddWidget(new NumericalSlider);
+
+  node1->Resize(node1->GetPreferredSize());
+
+  node_view->AddNode(node1);
+  node1->MoveTo(100, 20);
+
+  Node* node2 = new Node(new LinearLayout(Vertical), 0x9f9fefff);
+
+  node2->AddWidget(new Label("Node 2"));
+  node2->AddWidget(new ComboBox);
+  node2->AddWidget(new TextureView);
+
+  node2->Resize(120, 160);
+
+  node_view->AddNode(node2);
+  node2->MoveTo(400, 20);
+  // ------
+
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(node_frame);
+  return workspace;
+}
+
+Workspace* GalleryWindow::CreateViewportSpace()
+{
+  Workspace* workspace = new Workspace;
+
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
+
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
+
+  ComboBox* combo = new ComboBox;
+
+  Block* block1 = new Block(Horizontal);
+
+  Button* btn = new Button("Button1");
+  block1->AddWidget(btn);
+
+  btn = new Button("Button2");
+  block1->AddWidget(btn);
+
+  header->AddWidget(combo);
+  header->AddWidget(block1);
+
+  header->Resize(header->GetPreferredSize());
+
+  viewport_ = new ModelViewport;
+
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(viewport_);
+  return workspace;
 }
