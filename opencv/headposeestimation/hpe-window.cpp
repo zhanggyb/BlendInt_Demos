@@ -26,22 +26,37 @@
 using namespace BlendInt;
 
 HPEWindow::HPEWindow (int width, int height, const char* name)
-: BI::Window(width, height, name), viewport_3d_(0), main_frame_(0)
+: BI::Window(width, height, name),
+  viewport_3d_(0),
+  main_frame_(0),
+  cv_space_(0)
 {
   main_frame_ = new FrameSplitter(Vertical);
 
-  FrameSplitter* splitter = new FrameSplitter;
+  FrameSplitter* hsplitter1 = new FrameSplitter;
+  Workspace* workspace = CreateViewportSpace();
+  cv_space_ = new CVSpace;
 
-  Workspace* tools = CreateToolsOnce();
-  Workspace* workspace = CreateWorkspaceOnce();
+  hsplitter1->AddFrame(workspace);
+  hsplitter1->AddFrame(cv_space_);
 
-  splitter->AddFrame(workspace);
-  splitter->AddFrame(tools, PreferredWidth);
+  Workspace* node_space = CreateNodeSpace();
+
+  FrameSplitter* vsplitter = new FrameSplitter(Vertical);
+  vsplitter->AddFrame(hsplitter1);
+  vsplitter->AddFrame(node_space, PreferredWidth);
+
+  Workspace* tools = CreateToolSpace();
+
+  FrameSplitter* hsplitter2 = new FrameSplitter;
+
+  hsplitter2->AddFrame(vsplitter);
+  hsplitter2->AddFrame(tools, PreferredWidth);
 
   Frame* bar = CreateToolBarOnce();
 
   main_frame_->AddFrame(bar);
-  main_frame_->AddFrame(splitter, ExpandY);
+  main_frame_->AddFrame(hsplitter2, ExpandY);
 
   AddFrame(main_frame_);
   main_frame_->Resize(size());
@@ -81,7 +96,7 @@ Frame* HPEWindow::CreateToolBarOnce ()
   return bar;
 }
 
-Workspace* HPEWindow::CreateWorkspaceOnce ()
+Workspace* HPEWindow::CreateViewportSpace ()
 {
   Workspace* workspace = new Workspace;
 
@@ -113,7 +128,7 @@ Workspace* HPEWindow::CreateWorkspaceOnce ()
   return workspace;
 }
 
-Workspace* HPEWindow::CreateToolsOnce ()
+Workspace* HPEWindow::CreateToolSpace ()
 {
   Workspace* workspace = new Workspace;
 
@@ -225,6 +240,68 @@ Panel* HPEWindow::CreateButtons ()
   panel->Resize(layout->GetPreferredSize());
 
   return panel;
+}
+
+BI::Workspace* HPEWindow::CreateNodeSpace ()
+{
+  Workspace* workspace = new Workspace;
+
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
+
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
+
+  ComboBox* combo = new ComboBox;
+
+  MenuButton* btn1 = new MenuButton("File");
+  MenuButton* btn2 = new MenuButton("Edit");
+  MenuButton* btn3 = new MenuButton("View");
+
+  header->AddWidget(combo);
+  header->AddWidget(btn1);
+  header->AddWidget(btn2);
+  header->AddWidget(btn3);
+
+  header->Resize(header->GetPreferredSize());
+
+  LinearLayout* vlayout = new LinearLayout(Vertical);
+  vlayout->SetMargin(Margin(0, 0, 0, 0));
+  Frame* node_frame = new Frame(vlayout);
+  node_frame->EnableViewBuffer();
+
+  NodeView* node_view = new NodeView;
+  node_frame->AddWidget(node_view);
+
+  // +++++
+  // add some node
+
+  Node* node1 = new Node(new LinearLayout(Vertical), 0x9f9f9fff);
+
+  node1->AddWidget(new Label("Node 1"));
+  node1->AddWidget(new NumericalSlider);
+  node1->AddWidget(new NumericalSlider);
+
+  node1->Resize(node1->GetPreferredSize());
+
+  node_view->AddNode(node1);
+  node1->MoveTo(100, 20);
+
+  Node* node2 = new Node(new LinearLayout(Vertical), 0x9f9fefff);
+
+  node2->AddWidget(new Label("Node 2"));
+  node2->AddWidget(new ComboBox);
+  node2->AddWidget(new TextureView);
+
+  node2->Resize(120, 160);
+
+  node_view->AddNode(node2);
+  node2->MoveTo(400, 20);
+  // ------
+
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(node_frame);
+  return workspace;
 }
 
 void HPEWindow::OnResize (const Size& size)

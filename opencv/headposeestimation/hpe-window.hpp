@@ -5,22 +5,27 @@
 #ifndef _HPECONTEXT_HPP_
 #define _HPECONTEXT_HPP_
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <core/timer.hpp>
 
 #include <gui/window.hpp>
 #include <gui/frame.hpp>
 
 #include <gui/image-viewport.hpp>
-#include <core/timer.hpp>
 #include <gui/model-viewport.hpp>
 #include <gui/panel.hpp>
 #include <gui/frame-splitter.hpp>
+#include <gui/cv-image-view.hpp>
+#include <gui/node.hpp>
+#include <gui/node-view.hpp>
+#include <gui/label.hpp>
+#include <gui/texture-view.hpp>
 
 #include <gui/button.hpp>
 #include <gui/workspace.hpp>
 #include <gui/linear-layout.hpp>
 #include <gui/button-group.hpp>
+
+#include "cv-space.hpp"
 
 namespace BI = BlendInt;
 
@@ -38,9 +43,11 @@ private:
 
   BI::Panel* CreateButtons ();
 
-  BI::Workspace* CreateWorkspaceOnce ();
+  BI::Workspace* CreateViewportSpace ();
 
-  BI::Workspace* CreateToolsOnce ();
+  BI::Workspace* CreateToolSpace ();
+
+  BI::Workspace* CreateNodeSpace ();
 
   BI::Frame* CreateRadios ();
 
@@ -54,6 +61,7 @@ private:
 
   BI::FrameSplitter* main_frame_;
 
+  CVSpace* cv_space_;
 };
 
 #endif /* _HPECONTEXT_HPP_ */
