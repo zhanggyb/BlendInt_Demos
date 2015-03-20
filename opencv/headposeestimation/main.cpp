@@ -2,7 +2,7 @@
  * BlendInt demo
  */
 
-#include <Cpp/Events.hpp>
+#include <cppevents/Cpp/Events.hpp>
 #include <core/types.hpp>
 
 #include "hpe-window.hpp"

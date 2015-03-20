@@ -161,15 +161,33 @@ void FontViewerWindow::OnOpenComboBox ()
 {
   Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
-  RefPtr<StringListModel> model(new StringListModel);
-  model->AddString("Row 0");
-  model->AddString("Row 1");
-  model->AddString("Row 2");
+  RefPtr<ComboBoxModel> model(new ComboBoxModel);
+  ModelIndex root = model->GetRootIndex();
 
-  model->Print();
+  model->InsertColumns(0, 2, root);
+  model->InsertRows(1, 1, root);
+  model->InsertRows(2, 1, root);
 
-  ComboBox* widget = new ComboBox;
+  ModelIndex index = root.GetChildIndex(0, 0);
+  ModelIndex next;
+
+  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_RGB));
+  next = index.GetRightIndex();
+  model->SetText(next, RefPtr<Text>(new Text("Row 0")));
+
+  index = index.GetDownIndex();
+  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_RGB_ALPHA));
+  next = index.GetRightIndex();
+  model->SetText(next, RefPtr<Text>(new Text("Row 1")));
+
+  index = index.GetDownIndex();
+  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_DATA));
+  next = index.GetRightIndex();
+  model->SetText(next, RefPtr<Text>(new Text("Row 2")));
+
+  ComboBox* widget = new ComboBox(ComboBox::IconTextMode);
   widget->SetModel(model);
+  widget->SetCurrentIndex(2);
 
   frame->AddWidget(widget);
   frame->Resize(frame->GetPreferredSize());

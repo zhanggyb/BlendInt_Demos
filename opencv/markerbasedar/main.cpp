@@ -2,7 +2,6 @@
  * BlendInt demo
  */
 
-#include <Cpp/Events.hpp>
 #include <core/types.hpp>
 
 #include "mbar-window.hpp"
