@@ -9,7 +9,7 @@
 
 #include <BlendInt/Interface.hpp>
 #include <BlendInt/Label.hpp>
-#include <BlendInt/Button.hpp>
+#include <BlendInt/PushButton.hpp>
 #include <BlendInt/ScrollView.hpp>
 #include <BlendInt/HorizontalLayout.hpp>
 
@@ -27,7 +27,7 @@ int init_resources(void)
 	int max_x = 12;
 	int max_y = 20;
 	HorizontalLayout* layout[max_y];
-	Button* btn[max_x];
+	PushButton* btn[max_x];
 	int x_pos = 50;
 	int y_pos = 5;
 	for(int i = 0; i < max_y; i++)
@@ -37,7 +37,7 @@ int init_resources(void)
 
 		for(int j = 0; j < max_x; j++)
 		{
-			btn[j] = new Button;
+			btn[j] = new PushButton;
 			layout[i]->Add(btn[j]);
 		}
 

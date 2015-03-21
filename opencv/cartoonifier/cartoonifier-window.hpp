@@ -9,7 +9,7 @@
 #include <gui/frame.hpp>
 
 #include <gui/frame.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/cv-image-view.hpp>
 
 #include "cartoon-image-view.hpp"

@@ -9,7 +9,7 @@
 #include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/linear-layout.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/expander.hpp>
 #include <gui/numerical-slider.hpp>
 #include <gui/block.hpp>
@@ -61,9 +61,9 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 	Frame* tools = new Frame(layout);
 	tools->EnableViewBuffer();
 
-	Button* pause = new Button(CartoonifierWindow::icons()->icon_32x32(Icons::PAUSE));
-	Button* play = new Button(CartoonifierWindow::icons()->icon_32x32(Icons::PLAY));
-	Button* stop = new Button(CartoonifierWindow::icons()->icon_32x32(Icons::REC));
+	PushButton* pause = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::PAUSE));
+	PushButton* play = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::PLAY));
+	PushButton* stop = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::REC));
 
 	Separator* sp1 = new Separator(true);
 	Separator* sp2 = new Separator(true);

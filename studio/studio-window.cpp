@@ -38,18 +38,18 @@ BI::Frame* StudioWindow::CreateToolBar()
 	Frame* tools = new Frame(layout);
 	tools->EnableViewBuffer();
 
-	Button* b1 = new Button;
+	PushButton* b1 = new PushButton;
 	b1->SetIcon(icons()->icon_16x16(Icons::MESH_PLANE));
 
-	Button* b2 = new Button;
+	PushButton* b2 = new PushButton;
 	b2->SetIcon(icons()->icon_16x16(Icons::FULLSCREEN));
 
-	Button* b3 = new Button;
+	PushButton* b3 = new PushButton;
 	b3->SetIcon(icons()->icon_16x16(Icons::SPLITSCREEN));
 
 	Separator* sp1 = new Separator;
 
-	Button* b4 = new Button;
+	PushButton* b4 = new PushButton;
 	b4->SetIcon(icons()->icon_16x16(Icons::OUTLINER_DATA_CAMERA));
 
 	tools->AddWidget(b1);
@@ -77,7 +77,7 @@ void StudioWindow::OnOpenDialogForButtons()
 {
 	Dialog* dialog = Manage(new Dialog("Test", new LinearLayout(Horizontal)));
 
-	Button* btn = Manage(new Button("Button"));
+	PushButton* btn = Manage(new PushButton("PushButton"));
 	btn->MoveTo(100, 50);
 
 	ToggleButton* toggle_btn = Manage(new ToggleButton("ToggleButton"));
@@ -136,7 +136,7 @@ void StudioWindow::OnOpenDialogForScrollView()
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
 	ScrollView* scroll = Manage(new ScrollView);
-	Button* test_btn = Manage(new Button("Test test"));
+	PushButton* test_btn = Manage(new PushButton("Test test"));
 	scroll->Setup(test_btn);
 
 	scroll->MoveTo(50, 25);
@@ -177,8 +177,8 @@ void StudioWindow::OnOpenPanel (AbstractButton* btn)
 {
 	FrameSplitter* splitter = new FrameSplitter;
 
-	Button* btn1 = new Button("Button1");
-	Button* btn2 = new Button("Button2");
+	PushButton* btn1 = new PushButton("Button1");
+	PushButton* btn2 = new PushButton("Button2");
 
 	Frame* f1 = new Frame(new LinearLayout(Vertical, AlignCenter));
 //	f1->EnableViewBuffer();
@@ -208,18 +208,18 @@ void StudioWindow::OnOpenDialogForBlocks()
 
 	Block* block1 = Manage(new Block(Horizontal));
 	DBG_SET_NAME(block1, "Block1");
-	Button* btn1 = Manage(new Button("Button1"));
-	Button* btn2 = Manage(new Button("Button2"));
-	Button* btn3 = Manage(new Button("Button3"));
+	PushButton* btn1 = Manage(new PushButton("Button1"));
+	PushButton* btn2 = Manage(new PushButton("Button2"));
+	PushButton* btn3 = Manage(new PushButton("Button3"));
 	block1->AddWidget(btn1);
 	block1->AddWidget(btn2);
 	block1->AddWidget(btn3);
 
 	Block* block2 = Manage(new Block(Horizontal));
 	DBG_SET_NAME(block2, "Block2");
-	Button* btn4 = Manage(new Button("Button4"));
-	Button* btn5 = Manage(new Button("Button5"));
-	Button* btn6 = Manage(new Button("Button6"));
+	PushButton* btn4 = Manage(new PushButton("Button4"));
+	PushButton* btn5 = Manage(new PushButton("Button5"));
+	PushButton* btn6 = Manage(new PushButton("Button6"));
 	block2->AddWidget(btn4);
 	block2->AddWidget(btn5);
 	block2->AddWidget(btn6);
@@ -256,7 +256,7 @@ void StudioWindow::OnOpenMenu1()
 	Menu* menu1 = Manage(new Menu);
 
 	menu1->AddAction("MenuItem1");
-	menu1->AddWidget(Manage(new Button("Test")));
+	menu1->AddWidget(Manage(new PushButton("Test")));
 
   menu1->Resize(menu1->GetPreferredSize());
   menu1->MoveTo((size().width() - menu1->size().width()) / 2, (size().height() - menu1->size().height()) / 2);
@@ -267,8 +267,8 @@ void StudioWindow::OnOpenMenu1()
 void StudioWindow::OnOpenDialogForTab()
 {
 	Tab* tab = Manage(new Tab);
-	tab->AddWidget("test1", Manage(new Button("Button1")));
-	tab->AddWidget("test2", Manage(new Button("Button2")));
+	tab->AddWidget("test1", Manage(new PushButton("Button1")));
+	tab->AddWidget("test2", Manage(new PushButton("Button2")));
 
 	Dialog * dialog = Manage(new Dialog("Tab"));
 	dialog->Resize(500, 400);
@@ -350,7 +350,7 @@ void StudioWindow::OnTestAdaptiveLayout ()
   dialog2->AddWidget(ns5);
   dialog2->AddWidget(ns6);
 
-  Button* btn = new Button;
+  PushButton* btn = new PushButton;
 
   //ScrollBar* sb = new ScrollBar(Horizontal);
   dialog2->AddWidget(btn);
@@ -364,7 +364,7 @@ void StudioWindow::OnTestAdaptiveLayout ()
                   (size().height() - dialog2->size().height()) / 2);
 
   Expander* exp = new Expander("Test Expander");
-  Button* btn2 = new Button("Hello World!");
+  PushButton* btn2 = new PushButton("Hello World!");
   exp->AddWidget(btn2);
 
   //ScrollBar* sb = new ScrollBar(Horizontal);

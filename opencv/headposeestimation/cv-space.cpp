@@ -10,7 +10,7 @@
 #include <gui/menu-button.hpp>
 #include <gui/combo-box.hpp>
 #include <gui/frame.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 
 #include "cv-space.hpp"
 
@@ -64,7 +64,7 @@ Frame* CVSpace::CreateHeader ()
   header->AddWidget(btn2);
   header->AddWidget(btn3);
 
-  Button* open_button = new Button(AbstractWindow::icons()->icon_16x16(Icons::FILE_IMAGE), "Open");
+  PushButton* open_button = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::FILE_IMAGE), "Open");
   header->AddWidget(open_button);
 
   header->Resize(header->GetPreferredSize());

@@ -75,9 +75,9 @@ BI::Frame* NodeEditorWindow::CreateLeftTools ()
 
   Panel* p1 = new Panel(new LinearLayout(Vertical));
 
-  Button* b1 = new Button("Button1");
-  Button* b2 = new Button("Button2");
-  Button* b3 = new Button("Button3");
+  PushButton* b1 = new PushButton("Button1");
+  PushButton* b2 = new PushButton("Button2");
+  PushButton* b3 = new PushButton("Button3");
 
   p1->AddWidget(b1);
   p1->AddWidget(b2);
@@ -95,9 +95,9 @@ BI::Frame* NodeEditorWindow::CreateRightTools ()
 
   Expander* expander = new Expander("Resolution");
 
-  Button* b1 = new Button("Add Node");
-  Button* b2 = new Button("Button2");
-  Button* b3 = new Button("Button3");
+  PushButton* b1 = new PushButton("Add Node");
+  PushButton* b2 = new PushButton("Button2");
+  PushButton* b3 = new PushButton("Button3");
 
   Block* vblock = new Block(Vertical);
   vblock->AddWidget(b1);

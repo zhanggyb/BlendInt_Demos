@@ -20,7 +20,7 @@
 #include <gui/label.hpp>
 #include <gui/texture-view.hpp>
 
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/workspace.hpp>
 #include <gui/linear-layout.hpp>
 #include <gui/button-group.hpp>

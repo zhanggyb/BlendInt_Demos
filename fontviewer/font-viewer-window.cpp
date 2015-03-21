@@ -246,7 +246,7 @@ void FontViewerWindow::OnTestNodeView ()
   f1->MoveTo(20, 60);
 
   Dialog* f2 = new Dialog("Dialog", new LinearLayout(Vertical));
-  f2->AddWidget(new Button("Button"));
+  f2->AddWidget(new PushButton("PushButton"));
 
   f2->Resize(f2->GetPreferredSize());
   f2->MoveTo(size().width() - f2->size().width() - 20, 300);

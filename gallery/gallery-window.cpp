@@ -82,8 +82,8 @@ BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
 
   TableLayout* table_layout = new TableLayout(6, 2);
 
-  Label* l1 = new Label("Regular Button: ", AlignRight);
-  Button* b1 = new Button("Button");
+  Label* l1 = new Label("Push Button: ", AlignRight);
+  PushButton* b1 = new PushButton("Push Button");
   table_layout->InsertWidget(0, 0, l1);
   table_layout->InsertWidget(0, 1, b1);
 
@@ -159,16 +159,16 @@ Frame* GalleryWindow::CreateTools ()
   Frame* tools = new Frame(layout);
   tools->EnableViewBuffer();
 
-  Button* b1 = new Button;
+  PushButton* b1 = new PushButton;
   b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
 
-  Button* b2 = new Button;
+  PushButton* b2 = new PushButton;
   b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
 
-  Button* b3 = new Button;
+  PushButton* b3 = new PushButton;
   b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
 
-  Button* b4 = new Button;
+  PushButton* b4 = new PushButton;
   b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
 
   tools->AddWidget(b1);
@@ -256,10 +256,10 @@ Workspace* GalleryWindow::CreateViewportSpace ()
 
   Block* block1 = new Block(Horizontal);
 
-  Button* btn = new Button("Button1");
+  PushButton* btn = new PushButton("Button1");
   block1->AddWidget(btn);
 
-  btn = new Button("Button2");
+  btn = new PushButton("Button2");
   block1->AddWidget(btn);
 
   header->AddWidget(combo);

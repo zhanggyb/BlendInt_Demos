@@ -10,7 +10,7 @@
 #include <QtGui/QWindow>
 
 #include <gui/viewport3d.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 
 #include "MainLayout.hpp"
 

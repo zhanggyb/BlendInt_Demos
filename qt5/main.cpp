@@ -10,7 +10,7 @@
 #include <QtCore/qmath.h>
 
 #include <core/types.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/viewport3d.hpp>
 
 #include <BlendInt/HID/KeyEvent.hpp>

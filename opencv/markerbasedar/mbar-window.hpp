@@ -14,7 +14,7 @@
 #include <gui/frame.hpp>
 
 #include <core/timer.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/toggle-button.hpp>
 
 #include "mbar-image-view.hpp"

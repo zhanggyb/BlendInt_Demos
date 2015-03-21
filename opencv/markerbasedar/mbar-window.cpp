@@ -7,7 +7,7 @@
 #include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
 #include <gui/linear-layout.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/expander.hpp>
 #include <gui/numerical-slider.hpp>
 #include <gui/block.hpp>
@@ -85,9 +85,9 @@ Frame* MBARWindow::CreateToolBoxOnce ()
   expander->AddWidget(vblock);
   expander->Resize(expander->GetPreferredSize());
 
-  Button* play = new Button("Play");
-  Button* pause = new Button("Pause");
-  Button* stop = new Button("Stop");
+  PushButton* play = new PushButton("Play");
+  PushButton* pause = new PushButton("Pause");
+  PushButton* stop = new PushButton("Stop");
 
   Block* vblock1 = new Block(Vertical);
   vblock1->AddWidget(play);

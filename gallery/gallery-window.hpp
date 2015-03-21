@@ -9,7 +9,7 @@
 
 #include <vector>
 
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/clock.hpp>
 #include <gui/combo-box.hpp>
 #include <gui/toggle-button.hpp>

@@ -8,7 +8,7 @@
 #include <BlendInt/Gui/VLayout.hpp>
 
 #include <gui/viewport3d.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 
 namespace BI = BlendInt;
 
@@ -29,7 +29,7 @@ private:
 	void OnResize (AbstractWidget* context, int type);
 
 	BI::Viewport3D* m_view3d;
-	BI::Button* m_ok;
+	BI::PushButton* m_ok;
 };
 
 #endif

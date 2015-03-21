@@ -29,7 +29,7 @@ void MainLayout::InitOnce ()
 	m_view3d->Resize(630, 445);
 	m_view3d->SetPosition(5, 30);
 
-	m_ok = Manage(new BI::Button("OK"));
+	m_ok = Manage(new BI::PushButton("OK"));
 	DBG_SET_NAME(m_ok, "OK");
 
 	Append(m_view3d);

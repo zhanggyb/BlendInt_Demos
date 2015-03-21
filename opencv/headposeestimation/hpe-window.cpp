@@ -6,7 +6,7 @@
 
 #include <gui/abstract-round-frame.hpp>
 #include <gui/image-viewport.hpp>
-#include <gui/button.hpp>
+#include <gui/push-button.hpp>
 #include <gui/expander.hpp>
 #include <gui/numerical-slider.hpp>
 #include <gui/block.hpp>
@@ -110,10 +110,10 @@ Workspace* HPEWindow::CreateViewportSpace ()
 
   Block* block1 = new Block(Horizontal);
 
-  Button* btn = new Button("Button1");
+  PushButton* btn = new PushButton("Button1");
   block1->AddWidget(btn);
 
-  btn = new Button("Button2");
+  btn = new PushButton("Button2");
   block1->AddWidget(btn);
 
   header->AddWidget(combo);
@@ -224,9 +224,9 @@ Panel* HPEWindow::CreateButtons ()
 
   Block* hblock2 = new Block(Horizontal);
 
-  Button* play = new Button("Play");
-  Button* pause = new Button("Pause");
-  Button* stop = new Button("Stop");
+  PushButton* play = new PushButton("Play");
+  PushButton* pause = new PushButton("Pause");
+  PushButton* stop = new PushButton("Stop");
 
   hblock2->AddWidget(play);
   hblock2->AddWidget(pause);
