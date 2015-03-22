@@ -161,7 +161,7 @@ void FontViewerWindow::OnOpenComboBox ()
 {
   Dialog* frame = new Dialog("ComboBox test", new LinearLayout(Vertical));
 
-  RefPtr<ComboBoxModel> model(new ComboBoxModel);
+  RefPtr<ComboListModel> model(new ComboListModel);
   ModelIndex root = model->GetRootIndex();
 
   model->InsertColumns(0, 2, root);
