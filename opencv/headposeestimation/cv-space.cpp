@@ -11,6 +11,7 @@
 #include <gui/combo-box.hpp>
 #include <gui/frame.hpp>
 #include <gui/push-button.hpp>
+#include <gui/block.hpp>
 
 #include "cv-space.hpp"
 
@@ -64,8 +65,17 @@ Frame* CVSpace::CreateHeader ()
   header->AddWidget(btn2);
   header->AddWidget(btn3);
 
-  PushButton* open_button = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::FILE_IMAGE), "Open");
+  PushButton* open_button = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE), "Open Camera");
   header->AddWidget(open_button);
+
+  Block* block = new Block;
+  PushButton* b1 = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::PLAY));
+  PushButton* b2 = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::PAUSE));
+
+  block->AddWidget(b1);
+  block->AddWidget(b2);
+
+  header->AddWidget(block);
 
   header->Resize(header->GetPreferredSize());
 

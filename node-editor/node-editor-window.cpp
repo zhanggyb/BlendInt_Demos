@@ -158,11 +158,7 @@ void NodeEditorWindow::OnResize (const BI::Size& size)
 
 void NodeEditorWindow::OnAddNode ()
 {
-  uint64_t seed = Timer::GetMicroSeconds();
-  srand(seed);
-  int color = rand ();
-
-  Node* node = new Node(new LinearLayout(Vertical), color);
+  Node* node = new Node(new LinearLayout(Vertical));
 
   node->AddWidget(new Label("New Node"));
   node->AddWidget(new NumericalSlider);

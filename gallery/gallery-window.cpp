@@ -214,7 +214,7 @@ Workspace* GalleryWindow::CreateNodeSpace ()
   // +++++
   // add some node
 
-  Node* node1 = new Node(new LinearLayout(Vertical), 0x9f9f9fff);
+  Node* node1 = new Node(new LinearLayout(Vertical));
 
   node1->AddWidget(new Label("Node 1"));
   node1->AddWidget(new NumericalSlider);
@@ -225,7 +225,7 @@ Workspace* GalleryWindow::CreateNodeSpace ()
   node_view->AddNode(node1);
   node1->MoveTo(100, 20);
 
-  Node* node2 = new Node(new LinearLayout(Vertical), 0x9f9fefff);
+  Node* node2 = new Node(new LinearLayout(Vertical));
 
   node2->AddWidget(new Label("Node 2"));
   node2->AddWidget(new ComboBox);

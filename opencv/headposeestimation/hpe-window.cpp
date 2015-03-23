@@ -108,16 +108,10 @@ Workspace* HPEWindow::CreateViewportSpace ()
 
   ComboBox* combo = new ComboBox;
 
-  Block* block1 = new Block(Horizontal);
-
-  PushButton* btn = new PushButton("Button1");
-  block1->AddWidget(btn);
-
-  btn = new PushButton("Button2");
-  block1->AddWidget(btn);
+  PushButton* open_btn = new PushButton(icons()->icon_16x16(Icons::MESH_MONKEY), "Open Mesh");
 
   header->AddWidget(combo);
-  header->AddWidget(block1);
+  header->AddWidget(open_btn);
 
   header->Resize(header->GetPreferredSize());
 
@@ -276,7 +270,7 @@ BI::Workspace* HPEWindow::CreateNodeSpace ()
   // +++++
   // add some node
 
-  Node* node1 = new Node(new LinearLayout(Vertical), 0x9f9f9fff);
+  Node* node1 = new Node(new LinearLayout(Vertical));
 
   node1->AddWidget(new Label("Node 1"));
   node1->AddWidget(new NumericalSlider);
@@ -287,7 +281,7 @@ BI::Workspace* HPEWindow::CreateNodeSpace ()
   node_view->AddNode(node1);
   node1->MoveTo(100, 20);
 
-  Node* node2 = new Node(new LinearLayout(Vertical), 0x9f9fefff);
+  Node* node2 = new Node(new LinearLayout(Vertical));
 
   node2->AddWidget(new Label("Node 2"));
   node2->AddWidget(new ComboBox);

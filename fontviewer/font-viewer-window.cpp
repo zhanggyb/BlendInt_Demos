@@ -98,8 +98,6 @@ void FontViewerWindow::OnOpen ()
   TextureView* textureview = new TextureView;
   textureview->MoveTo(50, 50);
 
-  Font font;
-
   // textureview->SetTexture(font.GetTexture(L'A'));
 
   LinearLayout* layout = new LinearLayout(Vertical);
@@ -232,7 +230,7 @@ void FontViewerWindow::OnTestNodeView ()
   NumericalSlider* ns2 = new NumericalSlider;
   NumericalSlider* ns3 = new NumericalSlider;
 
-  Node* node = new Node(new LinearLayout(Vertical), 0x9F9F9F9F);
+  Node* node = new Node(new LinearLayout(Vertical));
   node->AddWidget(label);
   node->AddWidget(ns1);
   node->AddWidget(ns2);
