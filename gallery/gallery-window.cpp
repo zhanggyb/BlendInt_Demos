@@ -354,7 +354,7 @@ void GalleryWindow::OnCreateSliderDemo ()
   slider_dialog_->AddWidget(new Slider(Horizontal));
   slider_dialog_->AddWidget(new NumericalSlider);
 
-  slider_dialog_->Resize(slider_dialog_->GetPreferredSize());
+  slider_dialog_->Resize(320, 480);
   slider_dialog_->MoveTo(500, 200);
 
   AddFrame(slider_dialog_);
