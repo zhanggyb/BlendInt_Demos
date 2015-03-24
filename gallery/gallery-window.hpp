@@ -56,29 +56,47 @@ class GalleryWindow: public BI::Window
 {
 public:
 
-	GalleryWindow(int width, int height, const char* name);
+  GalleryWindow(int width, int height, const char* name);
 
-	virtual ~GalleryWindow();
+  virtual ~GalleryWindow();
 
 private:
 
-	BI::Frame* CreateTools ();
+  BI::Frame* CreateTools ();
 
-	BI::Workspace* CreateNodeSpace ();
+  BI::Workspace* CreateNodeSpace ();
 
-	BI::Workspace* CreateViewportSpace ();
+  BI::Workspace* CreateViewportSpace ();
 
-	BI::Dialog* CreateWidgetsDialog ();
+  BI::Dialog* CreateWidgetsDialog ();
 
-	void OnResize (const BI::Size& size);
+  void OnResize (const BI::Size& size);
 
-	BI::ModelViewport* viewport_;
+  void OnCreateButtonsDemo ();
 
-	BI::Frame* tools_;
+  void OnButtonsDialogDestroyed(BI::AbstractFrame* dlg);
 
-	BI::FrameSplitter* splitter_;
+  void OnCreateTabDemo ();
 
-	BI::Dialog* widgets_dialog_;
+  void OnTabDialogDestroyed (BI::AbstractFrame* dlg);
+
+  void OnCreateSliderDemo ();
+
+  void OnSliderDialogDestroyed (BI::AbstractFrame* dlg);
+
+  BI::ModelViewport* viewport_;
+
+  BI::Frame* tools_;
+
+  BI::FrameSplitter* splitter_;
+
+  BI::Dialog* widgets_dialog_;
+
+  BI::Dialog* buttons_dialog_;
+
+  BI::Dialog* tab_dialog_;
+
+  BI::Dialog* slider_dialog_;
 };
 
 

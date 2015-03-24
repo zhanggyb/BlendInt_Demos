@@ -270,9 +270,8 @@ BI::Workspace* HPEWindow::CreateNodeSpace ()
   // +++++
   // add some node
 
-  Node* node1 = new Node(new LinearLayout(Vertical));
+  Node* node1 = new Node("Node 1");
 
-  node1->AddWidget(new Label("Node 1"));
   node1->AddWidget(new NumericalSlider);
   node1->AddWidget(new NumericalSlider);
 
@@ -281,9 +280,8 @@ BI::Workspace* HPEWindow::CreateNodeSpace ()
   node_view->AddNode(node1);
   node1->MoveTo(100, 20);
 
-  Node* node2 = new Node(new LinearLayout(Vertical));
+  Node* node2 = new Node("Node 2");
 
-  node2->AddWidget(new Label("Node 2"));
   node2->AddWidget(new ComboBox);
   node2->AddWidget(new TextureView);
 

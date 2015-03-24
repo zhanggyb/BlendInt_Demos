@@ -158,9 +158,8 @@ void NodeEditorWindow::OnResize (const BI::Size& size)
 
 void NodeEditorWindow::OnAddNode ()
 {
-  Node* node = new Node(new LinearLayout(Vertical));
+  Node* node = new Node("New Node");
 
-  node->AddWidget(new Label("New Node"));
   node->AddWidget(new NumericalSlider);
   node->AddWidget(new NumericalSlider);
 

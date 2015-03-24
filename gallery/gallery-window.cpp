@@ -39,12 +39,14 @@
 using namespace BI;
 
 GalleryWindow::GalleryWindow (int width, int height, const char* name)
-    :
-      Window(width, height, name),
-      viewport_(nullptr),
-      tools_(nullptr),
-      splitter_(0),
-      widgets_dialog_(0)
+: Window(width, height, name),
+  viewport_(nullptr),
+  tools_(nullptr),
+  splitter_(0),
+  widgets_dialog_(0),
+  buttons_dialog_(0),
+  tab_dialog_(0),
+  slider_dialog_(0)
 {
   splitter_ = new FrameSplitter(Vertical);
 
@@ -77,6 +79,156 @@ GalleryWindow::~GalleryWindow ()
 BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
 {
   Dialog* dialog = new Dialog("More Widgets", new LinearLayout(Vertical));
+
+  // ---- tab
+
+  Tab* tab = new Tab;
+
+  tab->AddWidget("Texture View", new TextureView);
+  tab->AddWidget("Node View", new NodeView);
+  tab->AddWidget("Scroll View", new ScrollView);
+
+  dialog->AddWidget(tab);
+
+  return dialog;
+}
+
+void GalleryWindow::OnResize (const BI::Size& size)
+{
+  tools_->Resize(tools_->GetPreferredSize().width(), size.height());
+
+  splitter_->MoveTo(tools_->size().width(), 0);
+  splitter_->Resize(size.width() - tools_->size().width(), size.height());
+}
+
+Frame* GalleryWindow::CreateTools ()
+{
+  LinearLayout* layout = new LinearLayout(Vertical);
+
+  Frame* tools = new Frame(layout);
+  tools->EnableViewBuffer();
+
+  PushButton* b1 = new PushButton;
+  b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
+  events()->connect(b1->clicked(), this, &GalleryWindow::OnCreateButtonsDemo);
+
+  PushButton* b2 = new PushButton;
+  b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
+  events()->connect(b2->clicked(), this, &GalleryWindow::OnCreateTabDemo);
+
+  PushButton* b3 = new PushButton;
+  b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
+  events()->connect(b3->clicked(), this, &GalleryWindow::OnCreateSliderDemo);
+
+  PushButton* b4 = new PushButton;
+  b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
+
+  tools->AddWidget(b1);
+  tools->AddWidget(b2);
+  tools->AddWidget(b3);
+  tools->AddWidget(b4);
+
+  // tools->Resize(tools->GetPreferredSize());
+
+  return tools;
+}
+
+Workspace* GalleryWindow::CreateNodeSpace ()
+{
+  Workspace* workspace = new Workspace;
+
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
+
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
+
+  ComboBox* combo = new ComboBox;
+
+  MenuButton* btn1 = new MenuButton("File");
+  MenuButton* btn2 = new MenuButton("Edit");
+  MenuButton* btn3 = new MenuButton("View");
+
+  header->AddWidget(combo);
+  header->AddWidget(btn1);
+  header->AddWidget(btn2);
+  header->AddWidget(btn3);
+
+  header->Resize(header->GetPreferredSize());
+
+  LinearLayout* vlayout = new LinearLayout(Vertical);
+  vlayout->SetMargin(Margin(0, 0, 0, 0));
+  Frame* node_frame = new Frame(vlayout);
+
+  NodeView* node_view = new NodeView;
+  node_frame->AddWidget(node_view);
+
+  // +++++
+  // add some node
+
+  Node* node1 = new Node("Node 1");
+
+  node1->AddWidget(new NumericalSlider);
+  node1->AddWidget(new NumericalSlider);
+
+  node1->Resize(node1->GetPreferredSize());
+
+  node_view->AddNode(node1);
+  node1->MoveTo(100, 20);
+
+  Node* node2 = new Node("Node 2");
+
+  node2->AddWidget(new ComboBox);
+  node2->AddWidget(new TextureView);
+
+  node2->Resize(120, 160);
+
+  node_view->AddNode(node2);
+  node2->MoveTo(400, 20);
+  // ------
+
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(node_frame);
+  return workspace;
+}
+
+Workspace* GalleryWindow::CreateViewportSpace ()
+{
+  Workspace* workspace = new Workspace;
+
+  LinearLayout* layout = new LinearLayout(Horizontal);
+  layout->SetMargin(Margin(2, 2, 2, 2));
+
+  Frame* header = new Frame(layout);
+  header->EnableViewBuffer();
+
+  ComboBox* combo = new ComboBox;
+
+  Block* block1 = new Block(Horizontal);
+
+  PushButton* btn = new PushButton("Button1");
+  block1->AddWidget(btn);
+
+  btn = new PushButton("Button2");
+  block1->AddWidget(btn);
+
+  header->AddWidget(combo);
+  header->AddWidget(block1);
+
+  header->Resize(header->GetPreferredSize());
+
+  viewport_ = new ModelViewport;
+
+  workspace->SetHeaderFrame(header);
+  workspace->SetMainFrame(viewport_);
+  return workspace;
+}
+
+void GalleryWindow::OnCreateButtonsDemo ()
+{
+  if(buttons_dialog_) return;
+
+  buttons_dialog_ = new Dialog("Buttons", new LinearLayout(Vertical));
 
   // ---- buttons
 
@@ -129,147 +281,90 @@ BI::Dialog* GalleryWindow::CreateWidgetsDialog ()
   table_layout->InsertWidget(5, 0, l6);
   table_layout->InsertWidget(5, 1, b6);
 
-  dialog->AddWidget(table_layout);
+  buttons_dialog_->AddWidget(table_layout);
+
+  buttons_dialog_->Resize(buttons_dialog_->GetPreferredSize());
+  buttons_dialog_->MoveTo(200, 400);
+
+  AddFrame(buttons_dialog_);
+
+  events()->connect(buttons_dialog_->destroyed(), this,
+                    &GalleryWindow::OnButtonsDialogDestroyed);
+}
+
+void GalleryWindow::OnButtonsDialogDestroyed (BI::AbstractFrame* dlg)
+{
+  DBG_ASSERT(buttons_dialog_ == dlg);
+  buttons_dialog_ = 0;
+}
+
+void GalleryWindow::OnCreateTabDemo ()
+{
+  if (tab_dialog_) return;
+
+  tab_dialog_ = new Dialog("Tab", new LinearLayout(Vertical));
 
   // ---- tab
 
   Tab* tab = new Tab;
 
-  tab->AddWidget("Texture View", new TextureView);
-  tab->AddWidget("Node View", new NodeView);
-  tab->AddWidget("Scroll View", new ScrollView);
+  tab->AddWidget("Tab 1", new Label("Content in Tab 1", AlignCenter));
+  tab->AddWidget("Tab 2", new Label("Content in Tab 2", AlignCenter));
+  tab->AddWidget("Tab 3", new Label("Content in Tab 3", AlignCenter));
 
-  dialog->AddWidget(tab);
+  tab_dialog_->AddWidget(new Separator(false, true));
+  tab_dialog_->AddWidget(tab);
+  tab_dialog_->AddWidget(new Separator(false, true));
 
-  return dialog;
+  tab_dialog_->Resize(tab_dialog_->GetPreferredSize());
+  tab_dialog_->MoveTo(400, 300);
+
+  Size ts = tab->GetPreferredSize();
+  DBG_PRINT_MSG("tab size: %d, %d", ts.width(), ts.height());
+
+  TabButton* btn = new TabButton("Hello");
+  ts = btn->GetPreferredSize();
+  DBG_PRINT_MSG("tabbutton size: %d, %d", ts.width(), ts.height());
+  delete btn;
+
+  AddFrame(tab_dialog_);
+
+  events()->connect(tab_dialog_->destroyed(), this,
+                    &GalleryWindow::OnTabDialogDestroyed);
 }
 
-void GalleryWindow::OnResize (const BI::Size& size)
+void GalleryWindow::OnTabDialogDestroyed (BI::AbstractFrame* dlg)
 {
-  tools_->Resize(tools_->GetPreferredSize().width(), size.height());
-
-  splitter_->MoveTo(tools_->size().width(), 0);
-  splitter_->Resize(size.width() - tools_->size().width(), size.height());
+  DBG_ASSERT(tab_dialog_ == dlg);
+  tab_dialog_ = 0;
 }
 
-Frame* GalleryWindow::CreateTools ()
+void GalleryWindow::OnCreateSliderDemo ()
 {
-  LinearLayout* layout = new LinearLayout(Vertical);
+  if (slider_dialog_) return;
 
-  Frame* tools = new Frame(layout);
-  tools->EnableViewBuffer();
+  slider_dialog_ = new Dialog("Sliders", new LinearLayout(Vertical));
 
-  PushButton* b1 = new PushButton;
-  b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
+  // ---- tab
 
-  PushButton* b2 = new PushButton;
-  b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
+  ScrollArea* area = new ScrollArea;
 
-  PushButton* b3 = new PushButton;
-  b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
+  slider_dialog_->AddWidget(area);
+  slider_dialog_->AddWidget(new Slider(Vertical));
+  slider_dialog_->AddWidget(new Slider(Horizontal));
+  slider_dialog_->AddWidget(new NumericalSlider);
 
-  PushButton* b4 = new PushButton;
-  b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
+  slider_dialog_->Resize(slider_dialog_->GetPreferredSize());
+  slider_dialog_->MoveTo(500, 200);
 
-  tools->AddWidget(b1);
-  tools->AddWidget(b2);
-  tools->AddWidget(b3);
-  tools->AddWidget(b4);
+  AddFrame(slider_dialog_);
 
-  // tools->Resize(tools->GetPreferredSize());
-
-  return tools;
+  events()->connect(slider_dialog_->destroyed(), this,
+                    &GalleryWindow::OnSliderDialogDestroyed);
 }
 
-Workspace* GalleryWindow::CreateNodeSpace ()
+void GalleryWindow::OnSliderDialogDestroyed (BI::AbstractFrame* dlg)
 {
-  Workspace* workspace = new Workspace;
-
-  LinearLayout* layout = new LinearLayout(Horizontal);
-  layout->SetMargin(Margin(2, 2, 2, 2));
-
-  Frame* header = new Frame(layout);
-  header->EnableViewBuffer();
-
-  ComboBox* combo = new ComboBox;
-
-  MenuButton* btn1 = new MenuButton("File");
-  MenuButton* btn2 = new MenuButton("Edit");
-  MenuButton* btn3 = new MenuButton("View");
-
-  header->AddWidget(combo);
-  header->AddWidget(btn1);
-  header->AddWidget(btn2);
-  header->AddWidget(btn3);
-
-  header->Resize(header->GetPreferredSize());
-
-  LinearLayout* vlayout = new LinearLayout(Vertical);
-  vlayout->SetMargin(Margin(0, 0, 0, 0));
-  Frame* node_frame = new Frame(vlayout);
-
-  NodeView* node_view = new NodeView;
-  node_frame->AddWidget(node_view);
-
-  // +++++
-  // add some node
-
-  Node* node1 = new Node(new LinearLayout(Vertical));
-
-  node1->AddWidget(new Label("Node 1"));
-  node1->AddWidget(new NumericalSlider);
-  node1->AddWidget(new NumericalSlider);
-
-  node1->Resize(node1->GetPreferredSize());
-
-  node_view->AddNode(node1);
-  node1->MoveTo(100, 20);
-
-  Node* node2 = new Node(new LinearLayout(Vertical));
-
-  node2->AddWidget(new Label("Node 2"));
-  node2->AddWidget(new ComboBox);
-  node2->AddWidget(new TextureView);
-
-  node2->Resize(120, 160);
-
-  node_view->AddNode(node2);
-  node2->MoveTo(400, 20);
-  // ------
-
-  workspace->SetHeaderFrame(header);
-  workspace->SetMainFrame(node_frame);
-  return workspace;
-}
-
-Workspace* GalleryWindow::CreateViewportSpace ()
-{
-  Workspace* workspace = new Workspace;
-
-  LinearLayout* layout = new LinearLayout(Horizontal);
-  layout->SetMargin(Margin(2, 2, 2, 2));
-
-  Frame* header = new Frame(layout);
-  header->EnableViewBuffer();
-
-  ComboBox* combo = new ComboBox;
-
-  Block* block1 = new Block(Horizontal);
-
-  PushButton* btn = new PushButton("Button1");
-  block1->AddWidget(btn);
-
-  btn = new PushButton("Button2");
-  block1->AddWidget(btn);
-
-  header->AddWidget(combo);
-  header->AddWidget(block1);
-
-  header->Resize(header->GetPreferredSize());
-
-  viewport_ = new ModelViewport;
-
-  workspace->SetHeaderFrame(header);
-  workspace->SetMainFrame(viewport_);
-  return workspace;
+  DBG_ASSERT(slider_dialog_ == dlg);
+  slider_dialog_ = 0;
 }

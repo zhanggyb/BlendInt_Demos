@@ -225,13 +225,11 @@ void FontViewerWindow::OnTestNodeView ()
 
   f1->AddWidget(widget);
 
-  Label* label = new Label("Example Node");
   NumericalSlider* ns1 = new NumericalSlider;
   NumericalSlider* ns2 = new NumericalSlider;
   NumericalSlider* ns3 = new NumericalSlider;
 
-  Node* node = new Node(new LinearLayout(Vertical));
-  node->AddWidget(label);
+  Node* node = new Node("Example Node");
   node->AddWidget(ns1);
   node->AddWidget(ns2);
   node->AddWidget(ns3);
