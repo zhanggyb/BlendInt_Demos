@@ -35,6 +35,7 @@
 #include <gui/node.hpp>
 #include <gui/abstract-window.hpp>
 #include <gui/cv-image-view.hpp>
+#include <gui/table-layout.hpp>
 
 using namespace BI;
 
@@ -159,6 +160,7 @@ Workspace* GalleryWindow::CreateNodeSpace ()
   LinearLayout* vlayout = new LinearLayout(Vertical);
   vlayout->SetMargin(Margin(0, 0, 0, 0));
   Frame* node_frame = new Frame(vlayout);
+  node_frame->EnableViewBuffer();
 
   NodeView* node_view = new NodeView;
   node_frame->AddWidget(node_view);
