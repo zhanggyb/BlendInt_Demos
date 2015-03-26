@@ -31,11 +31,13 @@
 
 #include <gui/menu-button.hpp>
 #include <gui/linear-adjustment.hpp>
+#include <gui/font.hpp>
 
 #include <gui/node.hpp>
 #include <gui/abstract-window.hpp>
 #include <gui/cv-image-view.hpp>
 #include <gui/table-layout.hpp>
+#include <gui/option-label.hpp>
 
 using namespace BI;
 
@@ -47,7 +49,8 @@ GalleryWindow::GalleryWindow (int width, int height, const char* name)
   widgets_dialog_(0),
   buttons_dialog_(0),
   tab_dialog_(0),
-  slider_dialog_(0)
+  slider_dialog_(0),
+  label_dialog_(0)
 {
   splitter_ = new FrameSplitter(Vertical);
 
@@ -123,7 +126,8 @@ Frame* GalleryWindow::CreateTools ()
 
   PushButton* b4 = new PushButton;
   b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
-
+  events()->connect(b4->clicked(), this, &GalleryWindow::OnCreateLabelDemo);
+  
   tools->AddWidget(b1);
   tools->AddWidget(b2);
   tools->AddWidget(b3);
@@ -369,4 +373,42 @@ void GalleryWindow::OnSliderDialogDestroyed (BI::AbstractFrame* dlg)
 {
   DBG_ASSERT(slider_dialog_ == dlg);
   slider_dialog_ = 0;
+}
+
+void GalleryWindow::OnCreateLabelDemo ()
+{
+  if (label_dialog_) return;
+
+  label_dialog_ = new Dialog ("Labels", new LinearLayout(Vertical));
+
+  Font font1((const FcChar8*)"Source Code Pro", 16, FC_WEIGHT_REGULAR, FC_SLANT_ITALIC);
+  Label* l1 = new Label("The quick brown fox jumps over the lazy dog.", AlignCenter);
+  l1->SetFont(font1);
+  l1->SetBackground(Color(0x7F7F7F9F));
+
+  Font font3((const FcChar8*)"Source Han Sans CN", 16, FC_WEIGHT_BOLD, FC_SLANT_ITALIC);
+  Label* l3 = new Label(L"千呼万唤始出来，犹抱琵琶半遮面。", AlignCenter);
+  l3->SetFont(font3);
+  l3->SetBackground(Color(0x7F7F7F9F));
+
+//  Font font2((const FcChar8*)"Source Han Sans CN", 16, FC_WEIGHT_REGULAR);
+//  Label* l2 = new Label(L"もろともに あはれと思へ 山桜", AlignCenter);
+//  l2->SetFont(font2);
+//  l2->SetBackground(Color(0x7F7F7F9F));
+
+  label_dialog_->AddWidget(l1);
+  label_dialog_->AddWidget(l3);
+//  label_dialog_->AddWidget(l2);
+  
+  label_dialog_->Resize(label_dialog_->GetPreferredSize());
+  AddFrame(label_dialog_);
+
+  events()->connect(label_dialog_->destroyed(), this,
+                    &GalleryWindow::OnLabelDialogDestroyed);
+}
+
+void GalleryWindow::OnLabelDialogDestroyed (BI::AbstractFrame* dlg)
+{
+  DBG_ASSERT(label_dialog_ == dlg);
+  label_dialog_ = 0;
 }

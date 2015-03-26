@@ -84,6 +84,10 @@ private:
 
   void OnSliderDialogDestroyed (BI::AbstractFrame* dlg);
 
+  void OnCreateLabelDemo ();
+
+  void OnLabelDialogDestroyed (BI::AbstractFrame* dlg);
+
   BI::ModelViewport* viewport_;
 
   BI::Frame* tools_;
@@ -97,6 +101,9 @@ private:
   BI::Dialog* tab_dialog_;
 
   BI::Dialog* slider_dialog_;
+
+  BI::Dialog* label_dialog_;
+
 };
 
 
