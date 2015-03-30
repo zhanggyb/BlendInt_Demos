@@ -18,6 +18,8 @@
 using namespace BlendInt;
 
 CVSpace::CVSpace ()
+: Workspace(),
+  img_view_(0)
 {
   Frame* header = CreateHeader();
 
@@ -25,8 +27,8 @@ CVSpace::CVSpace ()
   vlayout->SetMargin(Margin(0, 0, 0, 0));
   Frame* image_frame = new Frame(vlayout);
 
-  CVImageView* img_view = new CVImageView;
-  image_frame->AddWidget(img_view);
+  img_view_ = new CVImageView;
+  image_frame->AddWidget(img_view_);
 
   SetHeaderFrame(header);
   SetMainFrame(image_frame);
@@ -79,5 +81,28 @@ Frame* CVSpace::CreateHeader ()
 
   header->Resize(header->GetPreferredSize());
 
+  events()->connect(open_button->clicked(), this, &CVSpace::OnOpenCamera);
+  events()->connect(b1->clicked(), this, &CVSpace::OnPlay);
+  events()->connect(b2->clicked(), this, &CVSpace::OnPause);
+
   return header;
+}
+
+void CVSpace::OnOpenCamera ()
+{
+#ifdef __APPLE__
+    img_view_->OpenCamera(0, 15, Size(1080, 720));
+#else
+    img_view_->OpenCamera(0, 15, Size(640, 480));
+#endif
+}
+
+void CVSpace::OnPlay ()
+{
+  img_view_->Play();
+}
+
+void CVSpace::OnPause ()
+{
+  img_view_->Pause();
 }

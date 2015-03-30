@@ -21,6 +21,14 @@ public:
 
 private:
 
+  BI::CVImageView* img_view_;
+
   BI::Frame* CreateHeader ();
+
+  void OnOpenCamera ();
+
+  void OnPlay ();
+
+  void OnPause ();
 
 };
