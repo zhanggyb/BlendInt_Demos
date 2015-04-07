@@ -204,7 +204,9 @@ void FontViewerWindow::OnOpenListView ()
   model->AddString("Row 1");
   model->AddString("Row 2");
 
+#ifdef DEBUG
   model->Print();
+#endif
 
   ListView* widget = new ListView;
   widget->SetModel(model);
