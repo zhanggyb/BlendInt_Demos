@@ -71,7 +71,7 @@ GalleryWindow::GalleryWindow (int width, int height, const char* name)
   dlg->MoveTo(size().width() - dlg->size().width() - 50,
               size().height() - dlg->size().height() - 50);
 
-  events()->connect(resized(), this, &GalleryWindow::OnResize);
+  resized().connect(this, &GalleryWindow::OnResize);
 
   OnResize(size());
 }
@@ -114,19 +114,19 @@ Frame* GalleryWindow::CreateTools ()
 
   PushButton* b1 = new PushButton;
   b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
-  events()->connect(b1->clicked(), this, &GalleryWindow::OnCreateButtonsDemo);
+  b1->clicked().connect(this, &GalleryWindow::OnCreateButtonsDemo);
 
   PushButton* b2 = new PushButton;
   b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
-  events()->connect(b2->clicked(), this, &GalleryWindow::OnCreateTabDemo);
+  b2->clicked().connect(this, &GalleryWindow::OnCreateTabDemo);
 
   PushButton* b3 = new PushButton;
   b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
-  events()->connect(b3->clicked(), this, &GalleryWindow::OnCreateSliderDemo);
+  b3->clicked().connect(this, &GalleryWindow::OnCreateSliderDemo);
 
   PushButton* b4 = new PushButton;
   b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
-  events()->connect(b4->clicked(), this, &GalleryWindow::OnCreateLabelDemo);
+  b4->clicked().connect(this, &GalleryWindow::OnCreateLabelDemo);
   
   tools->AddWidget(b1);
   tools->AddWidget(b2);
@@ -294,7 +294,7 @@ void GalleryWindow::OnCreateButtonsDemo ()
 
   AddFrame(buttons_dialog_);
 
-  events()->connect(buttons_dialog_->destroyed(), this,
+  buttons_dialog_->destroyed().connect(this,
                     &GalleryWindow::OnButtonsDialogDestroyed);
 }
 
@@ -335,7 +335,7 @@ void GalleryWindow::OnCreateTabDemo ()
 
   AddFrame(tab_dialog_);
 
-  events()->connect(tab_dialog_->destroyed(), this,
+  tab_dialog_->destroyed().connect(this,
                     &GalleryWindow::OnTabDialogDestroyed);
 }
 
@@ -365,7 +365,7 @@ void GalleryWindow::OnCreateSliderDemo ()
 
   AddFrame(slider_dialog_);
 
-  events()->connect(slider_dialog_->destroyed(), this,
+  slider_dialog_->destroyed().connect(this,
                     &GalleryWindow::OnSliderDialogDestroyed);
 }
 
@@ -403,7 +403,7 @@ void GalleryWindow::OnCreateLabelDemo ()
   label_dialog_->Resize(label_dialog_->GetPreferredSize());
   AddFrame(label_dialog_);
 
-  events()->connect(label_dialog_->destroyed(), this,
+  label_dialog_->destroyed().connect(this,
                     &GalleryWindow::OnLabelDialogDestroyed);
 }
 

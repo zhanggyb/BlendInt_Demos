@@ -81,9 +81,9 @@ Frame* CVSpace::CreateHeader ()
 
   header->Resize(header->GetPreferredSize());
 
-  events()->connect(open_button->clicked(), this, &CVSpace::OnOpenCamera);
-  events()->connect(b1->clicked(), this, &CVSpace::OnPlay);
-  events()->connect(b2->clicked(), this, &CVSpace::OnPause);
+  open_button->clicked().connect(this, &CVSpace::OnOpenCamera);
+  b1->clicked().connect(this, &CVSpace::OnPlay);
+  b2->clicked().connect(this, &CVSpace::OnPause);
 
   return header;
 }

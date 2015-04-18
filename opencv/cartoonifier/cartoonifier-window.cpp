@@ -44,7 +44,7 @@ CartoonifierWindow::CartoonifierWindow(int width, int height, const char* name)
 	main_frame_->Resize(size());
 
 	//events()->connect(resized(), splitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
-	events()->connect(resized(), this, &CartoonifierWindow::OnResize);
+	resized().connect(this, &CartoonifierWindow::OnResize);
 }
 
 CartoonifierWindow::~CartoonifierWindow ()
@@ -76,9 +76,9 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 
 	tools->Resize(tools->GetPreferredSize());
 
-	events()->connect(play->clicked(), this, &CartoonifierWindow::OnPlay);
-	events()->connect(pause->clicked(), this, &CartoonifierWindow::OnPause);
-	events()->connect(stop->clicked(), this, &CartoonifierWindow::OnStop);
+	play->clicked().connect(this, &CartoonifierWindow::OnPlay);
+	pause->clicked().connect(this, &CartoonifierWindow::OnPause);
+	stop->clicked().connect(this, &CartoonifierWindow::OnStop);
 
 	return tools;
 }

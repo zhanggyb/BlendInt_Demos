@@ -24,7 +24,7 @@ FontViewerWindow::FontViewerWindow (int width, int height, const char* name)
 
   OnResize(size());
 
-  events()->connect(resized(), this, &FontViewerWindow::OnResize);
+  resized().connect(this, &FontViewerWindow::OnResize);
 }
 
 FontViewerWindow::~FontViewerWindow ()
@@ -50,43 +50,43 @@ BI::Frame* FontViewerWindow::CreateMenuBar ()
 
   MenuButton* menubtn1 = new MenuButton("Open");
   menubar->AddWidget(menubtn1);
-  events()->connect(menubtn1->clicked(), this, &FontViewerWindow::OnOpen);
+  menubtn1->clicked().connect(this, &FontViewerWindow::OnOpen);
 
   MenuButton* menubtn2 = new MenuButton("Test CVImageView");
   menubar->AddWidget(menubtn2);
 
 #ifdef __USE_OPENCV__
-  events()->connect(menubtn2->clicked(), this,
+  menubtn2->clicked().connect(this,
                     &FontViewerWindow::OnOpenCVImageView);
 #endif
 
   MenuButton* menubtn3 = new MenuButton("Test RequestDraw");
   menubar->AddWidget(menubtn3);
 
-  events()->connect(menubtn3->clicked(), this, &FontViewerWindow::OnOpenClock);
+  menubtn3->clicked().connect(this, &FontViewerWindow::OnOpenClock);
 
   MenuButton* menubtn4 = new MenuButton("Test ComboBox");
   menubar->AddWidget(menubtn4);
 
-  events()->connect(menubtn4->clicked(), this,
+  menubtn4->clicked().connect(this,
                     &FontViewerWindow::OnOpenComboBox);
 
   MenuButton* menubtn5 = new MenuButton("Test ListView");
   menubar->AddWidget(menubtn5);
 
-  events()->connect(menubtn5->clicked(), this,
+  menubtn5->clicked().connect(this,
                     &FontViewerWindow::OnOpenListView);
 
   MenuButton* menubtn6 = new MenuButton("Test NodeView");
   menubar->AddWidget(menubtn6);
 
-  events()->connect(menubtn6->clicked(), this,
+  menubtn6->clicked().connect(this,
                     &FontViewerWindow::OnTestNodeView);
 
   MenuButton* menubtn7 = new MenuButton("Test Menu");
   menubar->AddWidget(menubtn7);
 
-  events()->connect(menubtn7->clicked(), this, &FontViewerWindow::OnTestMenu);
+  menubtn7->clicked().connect(this, &FontViewerWindow::OnTestMenu);
 
   return menubar;
 }

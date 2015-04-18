@@ -12,8 +12,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
-
 	if(Window::Initialize()) {
 
 		CartoonifierWindow win(640, 700, "Cartoonifier");

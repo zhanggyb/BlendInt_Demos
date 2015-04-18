@@ -9,8 +9,6 @@ int main(int argc, char* argv[])
 {
 	using namespace BlendInt;
 
-	BLENDINT_EVENTS_INIT_ONCE_IN_MAIN;
-
 	if(Window::Initialize()) {
 
 		Window win(240, 180, "Tutorial 01");

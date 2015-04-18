@@ -52,7 +52,7 @@ MBARWindow::MBARWindow (int width, int height, const char* name)
   AddFrame(main_frame_);
   main_frame_->Resize(size());
 
-  events()->connect(resized(), this, &MBARWindow::OnResize);
+  resized().connect(this, &MBARWindow::OnResize);
 
   //events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }
@@ -100,10 +100,10 @@ Frame* MBARWindow::CreateToolBoxOnce ()
   tools->AddWidget(separator2);
   tools->AddWidget(vblock1);
 
-  events()->connect(open->toggled(), this, &MBARWindow::OnToggleCamera);
-  events()->connect(play->clicked(), this, &MBARWindow::OnPlay);
-  events()->connect(pause->clicked(), this, &MBARWindow::OnPause);
-  events()->connect(stop->clicked(), this, &MBARWindow::OnStop);
+  open->toggled().connect(this, &MBARWindow::OnToggleCamera);
+  play->clicked().connect(this, &MBARWindow::OnPlay);
+  pause->clicked().connect(this, &MBARWindow::OnPause);
+  stop->clicked().connect(this, &MBARWindow::OnStop);
 
   return tools;
 }

@@ -23,7 +23,7 @@ StudioWindow::StudioWindow(int width, int height, const char* name)
 	AddFrame(toolbar_);
 
 	OnResize(size());
-	events()->connect(resized(), this, &StudioWindow::OnResize);
+	resized().connect(this, &StudioWindow::OnResize);
 }
 
 StudioWindow::~StudioWindow ()
@@ -60,10 +60,10 @@ BI::Frame* StudioWindow::CreateToolBar()
 
 	tools->Resize(tools->GetPreferredSize());
 
-	events()->connect(b1->clicked(), this, &StudioWindow::OnOpenDialogForButtons);
-	events()->connect(b2->clicked(), this, &StudioWindow::OnOpenDialogForNumericalSlider);
-  events()->connect(b3->clicked(), this, &StudioWindow::OnTestAdaptiveLayout);
-	events()->connect(b4->clicked(), this, &StudioWindow::OnTakeScreenshot);
+	b1->clicked().connect(this, &StudioWindow::OnOpenDialogForButtons);
+	b2->clicked().connect(this, &StudioWindow::OnOpenDialogForNumericalSlider);
+  b3->clicked().connect(this, &StudioWindow::OnTestAdaptiveLayout);
+	b4->clicked().connect(this, &StudioWindow::OnTakeScreenshot);
 
 	return tools;
 }

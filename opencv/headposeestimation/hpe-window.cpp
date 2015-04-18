@@ -61,7 +61,7 @@ HPEWindow::HPEWindow (int width, int height, const char* name)
   AddFrame(main_frame_);
   main_frame_->Resize(size());
 
-  events()->connect(resized(), this, &HPEWindow::OnResize);
+  resized().connect(this, &HPEWindow::OnResize);
 
   //events()->connect(resized(), vsplitter, static_cast<void (BI::AbstractView::*)(const BI::Size&) >(&BI::FrameSplitter::Resize));
 }

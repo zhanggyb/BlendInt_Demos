@@ -59,7 +59,7 @@ NodeEditorWindow::NodeEditorWindow (int width, int height, const char* name)
 
   AddFrame(workspace_);
 
-  events()->connect(resized(), this, &NodeEditorWindow::OnResize);
+  resized().connect(this, &NodeEditorWindow::OnResize);
 
   OnResize(size());
 }
@@ -109,7 +109,7 @@ BI::Frame* NodeEditorWindow::CreateRightTools ()
 
   frame->AddWidget(expander);
 
-  events()->connect(b1->clicked(), this, &NodeEditorWindow::OnAddNode);
+  b1->clicked().connect(this, &NodeEditorWindow::OnAddNode);
 
   return frame;
 }
