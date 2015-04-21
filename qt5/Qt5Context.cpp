@@ -5,7 +5,7 @@
 #include "Qt5Context.hpp"
 #include <QtGui/QCursor>
 
-#include <gui/abstract-round-frame.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
 
 using namespace BI;
 

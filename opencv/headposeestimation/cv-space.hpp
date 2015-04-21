@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <gui/workspace.hpp>
-#include <gui/cv-image-view.hpp>
+#include <blendint/gui/workspace.hpp>
+#include <blendint/gui/cv-image-view.hpp>
 
 namespace BI = BlendInt;
 

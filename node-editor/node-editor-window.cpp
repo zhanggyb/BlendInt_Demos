@@ -4,39 +4,39 @@
 
 #include "node-editor-window.hpp"
 
-#include <core/image.hpp>
+#include <blendint/core/image.hpp>
 
-#include <font/fc-config.hpp>
-#include <font/fc-pattern.hpp>
+#include <blendint/font/fc-config.hpp>
+#include <blendint/font/fc-pattern.hpp>
 
-#include <gui/abstract-round-widget.hpp>
-#include <gui/radio-button.hpp>
-#include <gui/check-button.hpp>
-#include <gui/abstract-round-frame.hpp>
-#include <gui/frame-splitter.hpp>
-#include <gui/filebutton.hpp>
-#include <gui/color-wheel.hpp>
-#include <gui/viewport2d.hpp>
-#include <gui/model-viewport.hpp>
-#include <gui/color-selector.hpp>
+#include <blendint/gui/abstract-round-widget.hpp>
+#include <blendint/gui/radio-button.hpp>
+#include <blendint/gui/check-button.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
+#include <blendint/gui/frame-splitter.hpp>
+#include <blendint/gui/filebutton.hpp>
+#include <blendint/gui/color-wheel.hpp>
+#include <blendint/gui/viewport2d.hpp>
+#include <blendint/gui/model-viewport.hpp>
+#include <blendint/gui/color-selector.hpp>
 
-#include <stock/shaders.hpp>
-#include <gui/dialog.hpp>
+#include <blendint/stock/shaders.hpp>
+#include <blendint/gui/dialog.hpp>
 
-#include <gui/abstract-round-frame.hpp>
-#include <gui/frame.hpp>
-#include <gui/block.hpp>
-#include <gui/close-button.hpp>
-#include <gui/folder-list.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/block.hpp>
+#include <blendint/gui/close-button.hpp>
+#include <blendint/gui/folder-list.hpp>
 
-#include <gui/menu-button.hpp>
-#include <gui/linear-adjustment.hpp>
-#include <gui/adaptive-layout.hpp>
+#include <blendint/gui/menu-button.hpp>
+#include <blendint/gui/linear-adjustment.hpp>
+#include <blendint/gui/adaptive-layout.hpp>
 
-#include <gui/node.hpp>
-#include <gui/abstract-window.hpp>
-#include <gui/cv-image-view.hpp>
-#include <core/timer.hpp>
+#include <blendint/gui/node.hpp>
+#include <blendint/gui/abstract-window.hpp>
+#include <blendint/gui/cv-image-view.hpp>
+#include <blendint/core/timer.hpp>
 
 using namespace BI;
 

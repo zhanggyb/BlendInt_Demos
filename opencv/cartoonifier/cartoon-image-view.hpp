@@ -8,7 +8,7 @@
 #ifndef _CARTOONIFIER_CARTOON_IMAGE_VIEW_HPP_
 #define _CARTOONIFIER_CARTOON_IMAGE_VIEW_HPP_
 
-#include <gui/cv-image-view.hpp>
+#include <blendint/gui/cv-image-view.hpp>
 
 namespace BI = BlendInt;
 

@@ -5,12 +5,12 @@
 #ifndef _CARTOONIFIERCONTEXT_HPP_
 #define _CARTOONIFIERCONTEXT_HPP_
 
-#include <gui/window.hpp>
-#include <gui/frame.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/frame.hpp>
 
-#include <gui/frame.hpp>
-#include <gui/push-button.hpp>
-#include <gui/cv-image-view.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/cv-image-view.hpp>
 
 #include "cartoon-image-view.hpp"
 

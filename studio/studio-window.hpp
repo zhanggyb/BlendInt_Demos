@@ -7,47 +7,47 @@
 
 #include <GLFW/glfw3.h>
 
-#include <gui/push-button.hpp>
-#include <gui/clock.hpp>
-#include <gui/combo-box.hpp>
-#include <gui/toggle-button.hpp>
-#include <gui/linear-layout.hpp>
-#include <gui/label.hpp>
-#include <gui/slider.hpp>
-#include <gui/panel.hpp>
-#include <gui/vector-icon.hpp>
-#include <gui/scroll-bar.hpp>
-#include <gui/scroll-view.hpp>
-#include <gui/menu.hpp>
-#include <gui/textentry.hpp>
-#include <gui/viewport3d.hpp>
-#include <gui/numerical-slider.hpp>
-#include <gui/scroll-area.hpp>
-#include <gui/tool-button.hpp>
-#include <gui/separator.hpp>
-#include <gui/color-selector.hpp>
-#include <gui/frame.hpp>
-#include <gui/tab.hpp>
-#include <gui/tab-button.hpp>
-#include <gui/tab-header.hpp>
-#include <gui/expander.hpp>
-#include <gui/color-button.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/clock.hpp>
+#include <blendint/gui/combo-box.hpp>
+#include <blendint/gui/toggle-button.hpp>
+#include <blendint/gui/linear-layout.hpp>
+#include <blendint/gui/label.hpp>
+#include <blendint/gui/slider.hpp>
+#include <blendint/gui/panel.hpp>
+#include <blendint/gui/vector-icon.hpp>
+#include <blendint/gui/scroll-bar.hpp>
+#include <blendint/gui/scroll-view.hpp>
+#include <blendint/gui/menu.hpp>
+#include <blendint/gui/textentry.hpp>
+#include <blendint/gui/viewport3d.hpp>
+#include <blendint/gui/numerical-slider.hpp>
+#include <blendint/gui/scroll-area.hpp>
+#include <blendint/gui/tool-button.hpp>
+#include <blendint/gui/separator.hpp>
+#include <blendint/gui/color-selector.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/tab.hpp>
+#include <blendint/gui/tab-button.hpp>
+#include <blendint/gui/tab-header.hpp>
+#include <blendint/gui/expander.hpp>
+#include <blendint/gui/color-button.hpp>
 
-#include <stock/icons.hpp>
-#include <gui/file-selector.hpp>
-#include <gui/block.hpp>
-#include <gui/panel.hpp>
+#include <blendint/stock/icons.hpp>
+#include <blendint/gui/file-selector.hpp>
+#include <blendint/gui/block.hpp>
+#include <blendint/gui/panel.hpp>
 
-#include <gui/panel.hpp>
-#include <gui/node-view.hpp>
-#include <gui/progress-bar.hpp>
-#include <gui/workspace.hpp>
-#include <gui/list-view.hpp>
-#include <gui/texture-view.hpp>
-#include <gui/frame.hpp>
-#include <gui/dialog.hpp>
+#include <blendint/gui/panel.hpp>
+#include <blendint/gui/node-view.hpp>
+#include <blendint/gui/progress-bar.hpp>
+#include <blendint/gui/workspace.hpp>
+#include <blendint/gui/list-view.hpp>
+#include <blendint/gui/texture-view.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/dialog.hpp>
 
-#include <gui/window.hpp>
+#include <blendint/gui/window.hpp>
 
 namespace BI=BlendInt;
 

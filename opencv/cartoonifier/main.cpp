@@ -2,9 +2,9 @@
  * BlendInt demo
  */
 
-#include <gui/window.hpp>
-#include <gui/frame-splitter.hpp>
-#include <gui/model-viewport.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/frame-splitter.hpp>
+#include <blendint/gui/model-viewport.hpp>
 #include "cartoonifier-window.hpp"
 
 using namespace BlendInt;

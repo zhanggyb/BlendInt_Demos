@@ -4,11 +4,11 @@
 
 #include "gallery-window.hpp"
 
-#include <core/types.hpp>
+#include <blendint/core/types.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-#include <gui/window.hpp>
+#include <blendint/gui/window.hpp>
 
 void GenerateCrossIconVertices (float min = 0.12f, float max = 0.9f)
 {

@@ -2,7 +2,7 @@
  * BlendInt demo
  */
 
-#include <core/types.hpp>
+#include <blendint/core/types.hpp>
 
 #include "studio-window.hpp"
 

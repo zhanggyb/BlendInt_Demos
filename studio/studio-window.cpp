@@ -4,12 +4,12 @@
 
 #include "studio-window.hpp"
 
-#include <gui/abstract-round-frame.hpp>
-#include <gui/menu-button.hpp>
-#include <gui/clock.hpp>
-#include <gui/scroll-area.hpp>
-#include <gui/tab-header.hpp>
-#include <gui/adaptive-layout.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
+#include <blendint/gui/menu-button.hpp>
+#include <blendint/gui/clock.hpp>
+#include <blendint/gui/scroll-area.hpp>
+#include <blendint/gui/tab-header.hpp>
+#include <blendint/gui/adaptive-layout.hpp>
 
 using namespace BI;
 

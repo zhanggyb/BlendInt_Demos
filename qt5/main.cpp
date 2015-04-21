@@ -9,9 +9,9 @@
 
 #include <QtCore/qmath.h>
 
-#include <core/types.hpp>
-#include <gui/push-button.hpp>
-#include <gui/viewport3d.hpp>
+#include <blendint/core/types.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/viewport3d.hpp>
 
 #include <BlendInt/HID/KeyEvent.hpp>
 #include <BlendInt/HID/MouseEvent.hpp>

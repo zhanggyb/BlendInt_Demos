@@ -5,25 +5,25 @@
 #ifndef _HPECONTEXT_HPP_
 #define _HPECONTEXT_HPP_
 
-#include <core/timer.hpp>
+#include <blendint/core/timer.hpp>
 
-#include <gui/window.hpp>
-#include <gui/frame.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/frame.hpp>
 
-#include <gui/image-viewport.hpp>
-#include <gui/model-viewport.hpp>
-#include <gui/panel.hpp>
-#include <gui/frame-splitter.hpp>
-#include <gui/cv-image-view.hpp>
-#include <gui/node.hpp>
-#include <gui/node-view.hpp>
-#include <gui/label.hpp>
-#include <gui/texture-view.hpp>
+#include <blendint/gui/image-viewport.hpp>
+#include <blendint/gui/model-viewport.hpp>
+#include <blendint/gui/panel.hpp>
+#include <blendint/gui/frame-splitter.hpp>
+#include <blendint/gui/cv-image-view.hpp>
+#include <blendint/gui/node.hpp>
+#include <blendint/gui/node-view.hpp>
+#include <blendint/gui/label.hpp>
+#include <blendint/gui/texture-view.hpp>
 
-#include <gui/push-button.hpp>
-#include <gui/workspace.hpp>
-#include <gui/linear-layout.hpp>
-#include <gui/button-group.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/workspace.hpp>
+#include <blendint/gui/linear-layout.hpp>
+#include <blendint/gui/button-group.hpp>
 
 #include "cv-space.hpp"
 

@@ -4,15 +4,15 @@
 
 #include "font-viewer-window.hpp"
 
-#include <gui/abstract-round-frame.hpp>
-#include <gui/menu-button.hpp>
-#include <gui/clock.hpp>
-#include <gui/scroll-area.hpp>
-#include <gui/tab-header.hpp>
-#include <gui/dialog.hpp>
-#include <gui/cv-image-view.hpp>
-#include <gui/string-list-model.hpp>
-#include <gui/node.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
+#include <blendint/gui/menu-button.hpp>
+#include <blendint/gui/clock.hpp>
+#include <blendint/gui/scroll-area.hpp>
+#include <blendint/gui/tab-header.hpp>
+#include <blendint/gui/dialog.hpp>
+#include <blendint/gui/cv-image-view.hpp>
+#include <blendint/gui/string-list-model.hpp>
+#include <blendint/gui/node.hpp>
 
 using namespace BI;
 

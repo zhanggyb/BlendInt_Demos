@@ -2,7 +2,7 @@
  * BlendInt demo
  */
 
-#include <core/types.hpp>
+#include <blendint/core/types.hpp>
 
 #include "hpe-window.hpp"
 

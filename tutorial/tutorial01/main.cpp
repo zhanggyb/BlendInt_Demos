@@ -2,8 +2,8 @@
  * BlendInt demo
  */
 
-#include <gui/window.hpp>
-#include <gui/message-box.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/message-box.hpp>
 
 int main(int argc, char* argv[])
 {

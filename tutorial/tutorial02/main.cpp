@@ -5,8 +5,8 @@
 #include <iostream>
 #include <cassert>
 
-#include <gui/window.hpp>
-#include <gui/message-box.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/message-box.hpp>
 #include <event/event.hpp>
 
 class TestClassBase

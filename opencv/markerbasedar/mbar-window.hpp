@@ -10,12 +10,12 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <gui/window.hpp>
-#include <gui/frame.hpp>
+#include <blendint/gui/window.hpp>
+#include <blendint/gui/frame.hpp>
 
-#include <core/timer.hpp>
-#include <gui/push-button.hpp>
-#include <gui/toggle-button.hpp>
+#include <blendint/core/timer.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/toggle-button.hpp>
 
 #include "mbar-image-view.hpp"
 

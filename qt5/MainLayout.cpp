@@ -2,10 +2,10 @@
  * Main Layout
  */
 
-#include <gui/abstract-round-widget.hpp>
-#include <core/string.hpp>
-#include <gui/menu.hpp>
-#include <stock/icons.hpp>
+#include <blendint/gui/abstract-round-widget.hpp>
+#include <blendint/core/string.hpp>
+#include <blendint/gui/menu.hpp>
+#include <blendint/stock/icons.hpp>
 
 #include "MainLayout.hpp"
 

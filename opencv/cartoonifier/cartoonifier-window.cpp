@@ -6,18 +6,18 @@
 
 #include "cartoonifier-window.hpp"
 
-#include <gui/abstract-round-frame.hpp>
-#include <gui/image-viewport.hpp>
-#include <gui/linear-layout.hpp>
-#include <gui/push-button.hpp>
-#include <gui/expander.hpp>
-#include <gui/numerical-slider.hpp>
-#include <gui/block.hpp>
+#include <blendint/gui/abstract-round-frame.hpp>
+#include <blendint/gui/image-viewport.hpp>
+#include <blendint/gui/linear-layout.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/expander.hpp>
+#include <blendint/gui/numerical-slider.hpp>
+#include <blendint/gui/block.hpp>
 
-#include <gui/frame.hpp>
-#include <gui/frame-splitter.hpp>
-#include <gui/separator.hpp>
-#include <gui/cv-image-view.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/frame-splitter.hpp>
+#include <blendint/gui/separator.hpp>
+#include <blendint/gui/cv-image-view.hpp>
 
 using namespace BlendInt;
 

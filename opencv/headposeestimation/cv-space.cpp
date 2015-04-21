@@ -5,13 +5,13 @@
  *      Author: zhanggyb
  */
 
-#include <gui/linear-layout.hpp>
-#include <gui/cv-image-view.hpp>
-#include <gui/menu-button.hpp>
-#include <gui/combo-box.hpp>
-#include <gui/frame.hpp>
-#include <gui/push-button.hpp>
-#include <gui/block.hpp>
+#include <blendint/gui/linear-layout.hpp>
+#include <blendint/gui/cv-image-view.hpp>
+#include <blendint/gui/menu-button.hpp>
+#include <blendint/gui/combo-box.hpp>
+#include <blendint/gui/frame.hpp>
+#include <blendint/gui/push-button.hpp>
+#include <blendint/gui/block.hpp>
 
 #include "cv-space.hpp"
 
