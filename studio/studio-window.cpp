@@ -75,15 +75,15 @@ void StudioWindow::OnTakeScreenshot ()
 
 void StudioWindow::OnOpenDialogForButtons()
 {
-	Dialog* dialog = Manage(new Dialog("Test", new LinearLayout(Horizontal)));
+	Dialog* dialog = new Dialog("Test", new LinearLayout(Horizontal));
 
-	PushButton* btn = Manage(new PushButton("PushButton"));
+	PushButton* btn = new PushButton("PushButton");
 	btn->MoveTo(100, 50);
 
-	ToggleButton* toggle_btn = Manage(new ToggleButton("ToggleButton"));
+	ToggleButton* toggle_btn = new ToggleButton("ToggleButton");
 	toggle_btn->MoveTo(100, 100);
 
-	TabButton* tab_btn = Manage(new TabButton("TabButton"));
+	TabButton* tab_btn = new TabButton("TabButton");
 	tab_btn->MoveTo(100, 150);
 
 	dialog->AddWidget(btn);
@@ -98,8 +98,8 @@ void StudioWindow::OnOpenDialogForButtons()
 
 void StudioWindow::OnOpenDialogForTextureView()
 {
-	Dialog* dialog = Manage(new Dialog("ButtonTest1"));
-	TextureView* textureview = Manage(new TextureView);
+	Dialog* dialog = new Dialog("ButtonTest1");
+	TextureView* textureview = new TextureView;
 	textureview->MoveTo(50, 50);
 	dialog->Resize(textureview->size().width() + 100, textureview->size().height() + 100);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
@@ -109,14 +109,14 @@ void StudioWindow::OnOpenDialogForTextureView()
 
 void StudioWindow::OnOpenModalDialog()
 {
-	Dialog * dialog = Manage(new Dialog("Hello"));
+	Dialog * dialog = new Dialog("Hello");
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 	AddFrame(dialog);
 }
 
 void StudioWindow::OnOpenFileSelector()
 {
-	FileSelector * fs = Manage(new FileSelector);
+	FileSelector * fs = new FileSelector;
 	fs->Resize(800, 600);
 	fs->MoveTo((size().width() - fs->size().width()) / 2, (size().height() - fs->size().height()) / 2);
 
@@ -131,12 +131,12 @@ void StudioWindow::OnResize(const BI::Size& size)
 
 void StudioWindow::OnOpenDialogForScrollView()
 {
-	Dialog * dialog = Manage(new Dialog("ScrollView"));
+	Dialog * dialog = new Dialog("ScrollView");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	ScrollView* scroll = Manage(new ScrollView);
-	PushButton* test_btn = Manage(new PushButton("Test test"));
+	ScrollView* scroll = new ScrollView;
+	PushButton* test_btn = new PushButton("Test test");
 	scroll->Setup(test_btn);
 
 	scroll->MoveTo(50, 25);
@@ -149,15 +149,15 @@ void StudioWindow::OnOpenDialogForScrollView()
 
 void StudioWindow::OnOpenDialogForNumericalSlider()
 {
-	Dialog * dialog = Manage(new Dialog("NumericalSlider", new LinearLayout(Vertical)));
+	Dialog * dialog = new Dialog("NumericalSlider", new LinearLayout(Vertical));
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
 	Block* block = new Block(Vertical);
 
-	NumericalSlider* ns1 = Manage(new NumericalSlider);
-  NumericalSlider* ns2 = Manage(new NumericalSlider);
-  NumericalSlider* ns3 = Manage(new NumericalSlider);
+	NumericalSlider* ns1 = new NumericalSlider;
+  NumericalSlider* ns2 = new NumericalSlider;
+  NumericalSlider* ns3 = new NumericalSlider;
 
   block->AddWidget(ns1);
   block->AddWidget(ns2);
@@ -199,27 +199,27 @@ void StudioWindow::OnOpenPanel (AbstractButton* btn)
 
 void StudioWindow::OnOpenDialogForBlocks()
 {
-	Dialog * dialog = Manage(new Dialog("ScrollView"));
+	Dialog * dialog = new Dialog("ScrollView");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	Block* main_block = Manage(new Block(Vertical));
+	Block* main_block = new Block(Vertical);
 	DBG_SET_NAME(main_block, "MainBlock");
 
-	Block* block1 = Manage(new Block(Horizontal));
+	Block* block1 = new Block(Horizontal);
 	DBG_SET_NAME(block1, "Block1");
-	PushButton* btn1 = Manage(new PushButton("Button1"));
-	PushButton* btn2 = Manage(new PushButton("Button2"));
-	PushButton* btn3 = Manage(new PushButton("Button3"));
+	PushButton* btn1 = new PushButton("Button1");
+	PushButton* btn2 = new PushButton("Button2");
+	PushButton* btn3 = new PushButton("Button3");
 	block1->AddWidget(btn1);
 	block1->AddWidget(btn2);
 	block1->AddWidget(btn3);
 
-	Block* block2 = Manage(new Block(Horizontal));
+	Block* block2 = new Block(Horizontal);
 	DBG_SET_NAME(block2, "Block2");
-	PushButton* btn4 = Manage(new PushButton("Button4"));
-	PushButton* btn5 = Manage(new PushButton("Button5"));
-	PushButton* btn6 = Manage(new PushButton("Button6"));
+	PushButton* btn4 = new PushButton("Button4");
+	PushButton* btn5 = new PushButton("Button5");
+	PushButton* btn6 = new PushButton("Button6");
 	block2->AddWidget(btn4);
 	block2->AddWidget(btn5);
 	block2->AddWidget(btn6);
@@ -238,11 +238,11 @@ void StudioWindow::OnOpenDialogForBlocks()
 
 void StudioWindow::OnOpenDialogForClock()
 {
-	Dialog * dialog = Manage(new Dialog("Clock"));
+	Dialog * dialog = new Dialog("Clock");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
-	Clock* clock = Manage(new Clock);
+	Clock* clock = new Clock;
 	clock->Start();
 
 	dialog->AddWidget(clock);
@@ -253,10 +253,10 @@ void StudioWindow::OnOpenDialogForClock()
 
 void StudioWindow::OnOpenMenu1()
 {
-	Menu* menu1 = Manage(new Menu);
+	Menu* menu1 = new Menu;
 
 	menu1->AddAction("MenuItem1");
-	menu1->AddWidget(Manage(new PushButton("Test")));
+	menu1->AddWidget(new PushButton("Test"));
 
   menu1->Resize(menu1->GetPreferredSize());
   menu1->MoveTo((size().width() - menu1->size().width()) / 2, (size().height() - menu1->size().height()) / 2);
@@ -266,11 +266,11 @@ void StudioWindow::OnOpenMenu1()
 
 void StudioWindow::OnOpenDialogForTab()
 {
-	Tab* tab = Manage(new Tab);
-	tab->AddWidget("test1", Manage(new PushButton("Button1")));
-	tab->AddWidget("test2", Manage(new PushButton("Button2")));
+	Tab* tab = new Tab;
+	tab->AddWidget("test1", new PushButton("Button1"));
+	tab->AddWidget("test2", new PushButton("Button2"));
 
-	Dialog * dialog = Manage(new Dialog("Tab"));
+	Dialog * dialog = new Dialog("Tab");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
@@ -283,9 +283,9 @@ void StudioWindow::OnOpenDialogForTab()
 
 void StudioWindow::OnOpenDialogForScrollArea()
 {
-	ScrollArea* area = Manage(new ScrollArea);
+	ScrollArea* area = new ScrollArea;
 
-	Dialog * dialog = Manage(new Dialog("Tab"));
+	Dialog * dialog = new Dialog("Tab");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
@@ -298,12 +298,12 @@ void StudioWindow::OnOpenDialogForScrollArea()
 
 void StudioWindow::OnOpenDialogForTabHeader()
 {
-	TabHeader* header = Manage(new TabHeader);
-	header->AddButton(Manage(new TabButton("tab1")));
-	header->AddButton(Manage(new TabButton("tab2")));
-	header->AddButton(Manage(new TabButton("tab3")));
+	TabHeader* header = new TabHeader;
+	header->AddButton(new TabButton("tab1"));
+	header->AddButton(new TabButton("tab2"));
+	header->AddButton(new TabButton("tab3"));
 
-	Dialog * dialog = Manage(new Dialog("Tab"));
+	Dialog * dialog = new Dialog("Tab");
 	dialog->Resize(500, 400);
 	dialog->MoveTo((size().width() - dialog->size().width()) / 2, (size().height() - dialog->size().height()) / 2);
 
@@ -316,14 +316,14 @@ void StudioWindow::OnOpenDialogForTabHeader()
 
 void StudioWindow::OnTestAdaptiveLayout ()
 {
-  Dialog * dialog1 = Manage(
-      new Dialog("Horizontal AdaptiveLayout", new AdaptiveLayout(Horizontal)));
+  Dialog * dialog1 =
+      new Dialog("Horizontal AdaptiveLayout", new AdaptiveLayout(Horizontal));
   dialog1->Resize(500, 400);
   dialog1->MoveTo(100, (size().height() - dialog1->size().height()) / 2);
 
-  NumericalSlider* ns1 = Manage(new NumericalSlider);
-  NumericalSlider* ns2 = Manage(new NumericalSlider);
-  NumericalSlider* ns3 = Manage(new NumericalSlider);
+  NumericalSlider* ns1 = new NumericalSlider;
+  NumericalSlider* ns2 = new NumericalSlider;
+  NumericalSlider* ns3 = new NumericalSlider;
 
   dialog1->AddWidget(ns1);
   dialog1->AddWidget(ns2);
@@ -336,15 +336,15 @@ void StudioWindow::OnTestAdaptiveLayout ()
 
   AddFrame(dialog1);
 
-  Dialog * dialog2 = Manage(
-      new Dialog("Vertical AdaptiveLayout", new AdaptiveLayout(Vertical, AlignLeft)));
+  Dialog * dialog2 =
+      new Dialog("Vertical AdaptiveLayout", new AdaptiveLayout(Vertical, AlignLeft));
   dialog2->Resize(500, 400);
   dialog2->MoveTo(100 + dialog1->size().width() + 50,
                   (size().height() - dialog2->size().height()) / 2);
 
-  NumericalSlider* ns4 = Manage(new NumericalSlider);
-  NumericalSlider* ns5 = Manage(new NumericalSlider);
-  NumericalSlider* ns6 = Manage(new NumericalSlider);
+  NumericalSlider* ns4 = new NumericalSlider;
+  NumericalSlider* ns5 = new NumericalSlider;
+  NumericalSlider* ns6 = new NumericalSlider;
 
   dialog2->AddWidget(ns4);
   dialog2->AddWidget(ns5);
@@ -357,8 +357,8 @@ void StudioWindow::OnTestAdaptiveLayout ()
 
   AddFrame(dialog2);
 
-  Dialog * dialog3 = Manage(
-      new Dialog("Test Expander", new LinearLayout(Vertical)));
+  Dialog * dialog3 =
+      new Dialog("Test Expander", new LinearLayout(Vertical));
   dialog3->Resize(500, 400);
   dialog3->MoveTo((size().width() - dialog1->size().width()) / 2,
                   (size().height() - dialog2->size().height()) / 2);
