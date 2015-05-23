@@ -67,12 +67,12 @@ Frame* CVSpace::CreateHeader ()
   header->AddWidget(btn2);
   header->AddWidget(btn3);
 
-  PushButton* open_button = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::SCENE), "Open Camera");
+  PushButton* open_button = new PushButton(icons()->icon_16x16(Icons::SCENE), "Open Camera");
   header->AddWidget(open_button);
 
   Block* block = new Block;
-  PushButton* b1 = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::PLAY));
-  PushButton* b2 = new PushButton(AbstractWindow::icons()->icon_16x16(Icons::PAUSE));
+  PushButton* b1 = new PushButton(icons()->icon_16x16(Icons::PLAY));
+  PushButton* b2 = new PushButton(icons()->icon_16x16(Icons::PAUSE));
 
   block->AddWidget(b1);
   block->AddWidget(b2);

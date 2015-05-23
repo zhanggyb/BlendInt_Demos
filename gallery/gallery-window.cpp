@@ -253,15 +253,15 @@ void GalleryWindow::OnCreateButtonsDemo ()
   Label* l3 = new Label("Radio Button: ", AlignRight);
   Block* block1 = new Block(Horizontal);
   RadioButton* radio1 = new RadioButton(
-      AbstractWindow::icons()->icon_16x16(Icons::SCENE));
+      icons()->icon_16x16(Icons::SCENE));
   RadioButton* radio2 = new RadioButton(
-      AbstractWindow::icons()->icon_16x16(Icons::SCENE_DATA));
+      icons()->icon_16x16(Icons::SCENE_DATA));
   RadioButton* radio3 = new RadioButton(
-      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+      icons()->icon_16x16(Icons::SURFACE_NSURFACE));
   RadioButton* radio4 = new RadioButton(
-      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+      icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
   RadioButton* radio5 = new RadioButton(
-      AbstractWindow::icons()->icon_16x16(Icons::SURFACE_NCURVE));
+      icons()->icon_16x16(Icons::SURFACE_NCURVE));
 
   block1->AddWidget(radio1);
   block1->AddWidget(radio2);

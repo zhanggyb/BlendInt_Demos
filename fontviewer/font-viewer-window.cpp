@@ -169,17 +169,17 @@ void FontViewerWindow::OnOpenComboBox ()
   ModelIndex index = root.GetChildIndex(0, 0);
   ModelIndex next;
 
-  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_RGB));
+  model->SetIcon(index, icons()->icon_16x16(Icons::IMAGE_RGB));
   next = index.GetRightIndex();
   model->SetText(next, RefPtr<Text>(new Text("Row 0")));
 
   index = index.GetDownIndex();
-  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_RGB_ALPHA));
+  model->SetIcon(index, icons()->icon_16x16(Icons::IMAGE_RGB_ALPHA));
   next = index.GetRightIndex();
   model->SetText(next, RefPtr<Text>(new Text("Row 1")));
 
   index = index.GetDownIndex();
-  model->SetIcon(index, AbstractWindow::icons()->icon_16x16(Icons::IMAGE_DATA));
+  model->SetIcon(index, icons()->icon_16x16(Icons::IMAGE_DATA));
   next = index.GetRightIndex();
   model->SetText(next, RefPtr<Text>(new Text("Row 2")));
 

@@ -61,9 +61,9 @@ Frame* CartoonifierWindow::CreateToolBoxOnce()
 	Frame* tools = new Frame(layout);
 	tools->EnableViewBuffer();
 
-	PushButton* pause = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::PAUSE));
-	PushButton* play = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::PLAY));
-	PushButton* stop = new PushButton(CartoonifierWindow::icons()->icon_32x32(Icons::REC));
+	PushButton* pause = new PushButton(icons()->icon_32x32(Icons::PAUSE));
+	PushButton* play = new PushButton(icons()->icon_32x32(Icons::PLAY));
+	PushButton* stop = new PushButton(icons()->icon_32x32(Icons::REC));
 
 	Separator* sp1 = new Separator(true);
 	Separator* sp2 = new Separator(true);
