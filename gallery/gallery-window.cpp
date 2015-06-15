@@ -113,19 +113,19 @@ Frame* GalleryWindow::CreateTools ()
   tools->EnableViewBuffer();
 
   PushButton* b1 = new PushButton;
-  b1->SetIcon(icons()->icon_16x16(Icons::ACTION));
+  b1->SetIcon(icons()->pixel_icon(Icons::ACTION));
   b1->clicked().connect(this, &GalleryWindow::OnCreateButtonsDemo);
 
   PushButton* b2 = new PushButton;
-  b2->SetIcon(icons()->icon_16x16(Icons::ALIASED));
+  b2->SetIcon(icons()->pixel_icon(Icons::ALIASED));
   b2->clicked().connect(this, &GalleryWindow::OnCreateTabDemo);
 
   PushButton* b3 = new PushButton;
-  b3->SetIcon(icons()->icon_16x16(Icons::AUTO));
+  b3->SetIcon(icons()->pixel_icon(Icons::AUTO));
   b3->clicked().connect(this, &GalleryWindow::OnCreateSliderDemo);
 
   PushButton* b4 = new PushButton;
-  b4->SetIcon(icons()->icon_16x16(Icons::CAMERA_DATA));
+  b4->SetIcon(icons()->pixel_icon(Icons::CAMERA_DATA));
   b4->clicked().connect(this, &GalleryWindow::OnCreateLabelDemo);
   
   tools->AddWidget(b1);
@@ -253,15 +253,15 @@ void GalleryWindow::OnCreateButtonsDemo ()
   Label* l3 = new Label("Radio Button: ", AlignRight);
   Block* block1 = new Block(Horizontal);
   RadioButton* radio1 = new RadioButton(
-      icons()->icon_16x16(Icons::SCENE));
+      icons()->pixel_icon(Icons::SCENE));
   RadioButton* radio2 = new RadioButton(
-      icons()->icon_16x16(Icons::SCENE_DATA));
+      icons()->pixel_icon(Icons::SCENE_DATA));
   RadioButton* radio3 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+      icons()->pixel_icon(Icons::SURFACE_NSURFACE));
   RadioButton* radio4 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+      icons()->pixel_icon(Icons::SURFACE_NCIRCLE));
   RadioButton* radio5 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NCURVE));
+      icons()->pixel_icon(Icons::SURFACE_NCURVE));
 
   block1->AddWidget(radio1);
   block1->AddWidget(radio2);

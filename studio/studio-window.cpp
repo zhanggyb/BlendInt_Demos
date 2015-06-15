@@ -39,18 +39,18 @@ BI::Frame* StudioWindow::CreateToolBar()
 	tools->EnableViewBuffer();
 
 	PushButton* b1 = new PushButton;
-	b1->SetIcon(icons()->icon_16x16(Icons::MESH_PLANE));
+	b1->SetIcon(icons()->pixel_icon(Icons::MESH_PLANE));
 
 	PushButton* b2 = new PushButton;
-	b2->SetIcon(icons()->icon_16x16(Icons::FULLSCREEN));
+	b2->SetIcon(icons()->pixel_icon(Icons::FULLSCREEN));
 
 	PushButton* b3 = new PushButton;
-	b3->SetIcon(icons()->icon_16x16(Icons::SPLITSCREEN));
+	b3->SetIcon(icons()->pixel_icon(Icons::SPLITSCREEN));
 
 	Separator* sp1 = new Separator;
 
 	PushButton* b4 = new PushButton;
-	b4->SetIcon(icons()->icon_16x16(Icons::OUTLINER_DATA_CAMERA));
+	b4->SetIcon(icons()->pixel_icon(Icons::OUTLINER_DATA_CAMERA));
 
 	tools->AddWidget(b1);
 	tools->AddWidget(b2);

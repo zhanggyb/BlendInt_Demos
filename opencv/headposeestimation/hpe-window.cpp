@@ -108,7 +108,7 @@ Workspace* HPEWindow::CreateViewportSpace ()
 
   ComboBox* combo = new ComboBox;
 
-  PushButton* open_btn = new PushButton(icons()->icon_16x16(Icons::MESH_MONKEY), "Open Mesh");
+  PushButton* open_btn = new PushButton(icons()->pixel_icon(Icons::MESH_MONKEY), "Open Mesh");
 
   header->AddWidget(combo);
   header->AddWidget(open_btn);
@@ -172,15 +172,15 @@ Frame* HPEWindow::CreateRadios ()
   Block* hblock = new Block(Horizontal);
 
   RadioButton* radio1 = new RadioButton(
-      icons()->icon_16x16(Icons::SCENE));
+      icons()->pixel_icon(Icons::SCENE));
   RadioButton* radio2 = new RadioButton(
-      icons()->icon_16x16(Icons::SCENE_DATA));
+      icons()->pixel_icon(Icons::SCENE_DATA));
   RadioButton* radio3 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NSURFACE));
+      icons()->pixel_icon(Icons::SURFACE_NSURFACE));
   RadioButton* radio4 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NCIRCLE));
+      icons()->pixel_icon(Icons::SURFACE_NCIRCLE));
   RadioButton* radio5 = new RadioButton(
-      icons()->icon_16x16(Icons::SURFACE_NCURVE));
+      icons()->pixel_icon(Icons::SURFACE_NCURVE));
 
 //	radio_group_->AddButton(radio1);
 //	radio_group_->AddButton(radio2);
